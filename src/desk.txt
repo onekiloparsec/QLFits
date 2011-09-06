@@ -1,0 +1,142 @@
+			for (var i = 1; i <= 10; i++) {
+				extension = document.getElementById("fits-image-ext"+i.toString());
+				if (extension) {
+					extension.style.display = "none";
+				}
+			}
+			document.getElementById(d).style.display = "block";
+
+						(item[1][1].ljust(21).replace(" ", "&nbsp;"), item[1][0] or "?", item[1][2] or "?")
+
+/*
+
+	NSString *targetCFS = [NSString stringWithString:[[(NSURL *)url absoluteURL] path]];
+	
+	fitsfile *fptr;
+	int status = 0; 
+	fits_open_file(&fptr, filename, READONLY, &status);
+
+	int hdunum;
+	fits_get_num_hdus(fptr, &hdunum, &status);
+	NSLog(@"[QLFits] (cfitsio) Number of HUDs %d", hdunum);
+	
+	int ii, hdutype;
+	int maxdim = 10, bitpix, naxis;
+	long naxes[2];
+	
+	for (ii = 1; ii <= hdunum; ii++)  { 
+		fits_movabs_hdu(fptr, ii, &hdutype, &status);
+		NSLog(@"[QLFits] (cfitsio) Moving to HDU #%d", ii);
+		fits_get_img_param(fptr, maxdim, &bitpix, &naxis, naxes, &status);
+		NSLog(@"[QLFits] (cfitsio) Fits properties bitpix %d, naxis %d, naxes [%d,%d]", bitpix, naxis, naxes[0], naxes[1]);
+	}
+	
+	int anynull;
+	long startpix, nbuffer, npixels;
+	float datamin, datamax, nullval, buffer[buffsize];
+
+	status   = 0;
+	npixels  = naxes[0] * naxes[1];         
+	startpix = 1;
+	nullval  = 0;            
+	datamin  = 1.0E30;
+	datamax  = -1.0E30;
+		
+	while (npixels > 0) {
+		nbuffer = npixels;
+		if (npixels > buffsize)
+			nbuffer = buffsize;     
+
+		NSLog(@"Reading #%d pixels starting at %d for a remaining total of %d.", nbuffer, startpix, npixels);
+		if ( fits_read_img(fptr, TFLOAT, startpix, nbuffer, &nullval, buffer, &anynull, &status) )
+			printf("%d", status);
+		NSLog(@"startpix is now at %d for a remaining total of %d.", startpix, npixels);
+				
+		for (ii = 0; ii < nbuffer; ii++)  {
+//			int jj = startpix + ii;
+//			imageData[jj] = buffer[ii];
+			if ( buffer[ii] < datamin )
+				datamin = buffer[ii];
+			if ( buffer[ii] > datamax )
+				datamax = buffer[ii];
+		}
+		
+		npixels  -= nbuffer;  
+		startpix += nbuffer;  
+	}
+    printf("\nMin and max image pixels =  %.0f, %.0f\n", datamin, datamax);
+
+	fits_close_file(fptr, &status);	
+
+	int npixels2 = naxes[0] * naxes[1];
+	unsigned char *imageData[npixels2];
+*/
+/*	naxes[0] = 100;
+	naxes[1] = 100;
+    long npixels  = naxes[0] * naxes[1]; 
+		
+	unsigned char imageData[2*npixels];
+	
+	for (ii = 0; ii < 2*npixels; ii++) {
+		imageData[ii] = (unsigned char) 120;
+	}
+
+	imageData[150] = (unsigned char) 0;
+	imageData[151] = (unsigned char) 0;
+	imageData[250] = (unsigned char) 0;
+	imageData[251] = (unsigned char) 0;
+	imageData[350] = (unsigned char) 0;
+	imageData[351] = (unsigned char) 0;
+	imageData[450] = (unsigned char) 0;
+	imageData[451] = (unsigned char) 0;
+
+	unsigned char *imageDataPlane[1];
+	imageDataPlane[0] = imageData;
+
+*/
+/*
+	NSString *targetCFS = [NSString stringWithString:[[(NSURL *)url absoluteURL] path]];
+	NSLog(@"[QLFits] Fits file to be loaded %@", targetCFS);
+	char *filename = [targetCFS cStringUsingEncoding:NSUTF8StringEncoding];
+*/	
+/*	int seg_start, seg_size;
+	int fitsdata_status = qfits_get_datinfo(filename, 1, &seg_start, &seg_size);
+	NSLog(@"[QLFits] Fits data extension 1: start = %i, size = %i", seg_start, seg_size);
+
+	fitsdata_status = qfits_get_datinfo(filename, 2, &seg_start, &seg_size);
+	NSLog(@"[QLFits] Fits data extension 2: start = %i, size = %i", seg_start, seg_size);
+	
+	int num_extensions = qfits_query_n_ext(filename);
+	NSLog(@"[QLFits] Fits has %i extensions.", num_extensions);
+*/		
+/*	qfitsloader ql;
+	ql.filename = filename;
+	ql.xtnum    = 1 ;
+	ql.pnum		= 0 ;
+	ql.ptype	= PTYPE_FLOAT;
+	
+	int fitsloader_status = qfitsloader_init(&ql);
+	NSLog(@"[QLFits] Fits loader status %i", fitsloader_status);
+	
+	int fitsload_status = qfits_loadpix(&ql);
+	NSLog(@"[QLFits] Is fits loaded (0=YES): %i", fitsload_status);
+	NSLog(@"[QLFits] Fits properties: #ext %d, size X %d, size Y %d, bitpix %d, bscale %d, bzero %d", 
+														ql.exts, ql.lx, ql.ly, ql.bitpix, ql.bscale, ql.bzero);
+*/														
+
+//	int ii;
+//	float datamin, datamax;
+
+
+//	for (ii = 0; ii < ql.lx*ql.ly; ii++) {
+//		if (datamin > ql.fbuf[ii]) datamin = ql.fbuf[ii];
+//		if (datamax < ql.fbuf[ii]) datamax = ql.fbuf[ii];
+//	}
+	
+//	unsigned char imageData[ql.lx*ql.ly];
+//	for (ii = 0; ii < ql.lx*ql.ly; ii++) {
+//		imageData[ii] = (unsigned char) (ql.fbuf[ii] - datamin)/(datamax - datamin) * 255;
+//	}
+
+//	unsigned char *imageDataPlane[1];
+//	imageDataPlane[0] = imageData;
