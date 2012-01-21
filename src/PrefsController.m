@@ -36,7 +36,7 @@
 					 @"Stars are white on a black sky.", @"positive", 				
 					 nil];
         
-		currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+		currentVersion = @"2.4.0";
 	}
     return self;
 }

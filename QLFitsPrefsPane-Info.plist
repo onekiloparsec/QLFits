@@ -13,9 +13,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.0</string>
+	<string>2.4.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.3.0</string>
+	<string>2.4.0</string>
 	<key>CFBundleName</key>
 	<string>QLFits</string>
 	<key>CFBundleSignature</key>
