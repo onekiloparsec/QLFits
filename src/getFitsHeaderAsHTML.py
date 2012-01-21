@@ -28,18 +28,10 @@ import re
 import time
 import string
 
-__version__        = "2.X.Y"
+__version__        = "2.4.0"
 __abort_time_limit = 3.0
 __num_images       = int(sys.argv[2])
 
-# Ugly, but I don't want to use true XML parser nor PyObjC just for that. Note that split implies strip.
-f = open('../Info.plist', 'r')
-lines = f.readlines()
-f.close()
-for idx, line in enumerate(lines):
-	if line.strip().startswith("<key>CFBundleVersion</key>"):
-		__version__ = lines[idx+1].split('</key>')[0].split('<string>')[-1].strip()
-		break
 
 header_start = """
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"><html><head><title>QLFits Generated HTML</title>
@@ -109,14 +101,39 @@ ESO_PROG_URL = "http://archive.eso.org/wdb/wdb/eso/sched_rep_arc/query?progid=%s
 ESO_SEEING_URL = "http://archive.eso.org/asm/ambient-server?site=%s&mjd=%s"
 
 def isESOLine(line):
-	if line.startswith("HIERARCH ESO"):
+	return line.startswith("HIERARCH ESO")
+
+def isCommentLine(line):
+	if '=' in line and (line.index('=') == 8 or line.index('=') == 29):
+		return False
+	return True
+
+def hasBracketValue(line):
+	if line.count("'") == 2:
 		return True
 	return False
 
-def isCommentLine(line):
-	if '=' in line:
-		return False
-	return True
+def parseValue(line):
+	subline = line.split("=")[1]
+	if hasBracketValue(subline):
+		start = subline.lfind("'")
+		stop  = subline.rfind("'")
+		return subline[start-1:stop+1]
+	if '/' in subline[22:]:
+		stopIndex = subline.index('/')
+		return subline[:stopIndex-1]
+	return subline
+
+def parseComment(line):
+	if hasBracketValue(line):
+		stopValue = line.rfind("'")
+		startComment = line[stopValue:].index('/')
+		return line[stopValue:][startComment:]	
+	subline = line.split("=")[1]
+	if '/' in subline[22:]:
+		startComment = subline.index('/')
+		return subline[startComment+1:]
+	return ""
 
 class Line:
 	def __init__(self, key="", value="", comment=""):
@@ -184,13 +201,9 @@ class HeaderLines:
 			self._ls.append(Line(**self.__parseLine(line)))
 		
 	def __parseLine(self, line):
-		ls = line.split('=')
-		# Important to NOT strip k at this stage because RA detection below won't work otherwise.
-		k, v = ls[0], "=".join(ls[1:])
-		c = ""
-		if "/" in v:
-			ls = v.split('/')
-			v, c = ls[0].strip(), " ".join(ls[1:]).strip()
+		k = line.split('=')[0]
+		v = parseValue(line)
+		c = parseComment(line)
 		self.__checkSummaryInfos(k, v, c)
 		return {'key':k, 'value':v, 'comment':c}
 

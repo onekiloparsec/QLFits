@@ -40,7 +40,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	CocoaFITS *fits = [[CocoaFITS alloc] initWithFilename:[(NSURL *)url absoluteString]];
+	NSString *targetCFS = [NSString stringWithString:[[(NSURL *)url absoluteURL] path]];
+	CocoaFITS *fits = [[CocoaFITS alloc] initWithFilename:targetCFS];
 	char *objectName = [fits headerValueForKeyword:"OBJECT"];
 	NSString *objectNameString = [[NSString stringWithFormat:@"%s", objectName] stringByReplacingOccurrencesOfString:@"'" withString:@""];
 	// The above line is needed for the string being drawn correctly into the image. Do not nest inside NSAttributedString init.

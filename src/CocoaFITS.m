@@ -44,14 +44,20 @@
 		ql.filename = (char *) [filename cStringUsingEncoding:NSUTF8StringEncoding];
 		ql.ptype = PTYPE_FLOAT;
 		ql.pnum  = 0;			
-		numberOfExtensions = qfits_query_n_ext(ql.filename) + 1;
+		numberOfExtensions = qfits_query_n_ext(ql.filename);
 		
 		if (numberOfExtensions == 0) { 
+			NSLog(@"[QLFits] Found no extensions."); 
+		}
+		else if (numberOfExtensions == -1) { 
 			NSLog(@"[QLFits] Error in querying number of extensions."); 
 		}
 		else { 
 			NSLog(@"[QLFits] Found #%i extensions.", numberOfExtensions); 
 		}
+		
+		// In FITS, it starts at 1, not 0.
+		numberOfExtensions ++;
 		
 		int ii, status;
 		numberOfFirstExtensionWithData = -1;

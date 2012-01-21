@@ -39,27 +39,29 @@ NSData *getFitsHeaderAsHTML(CFBundleRef bundle,
 							NSString *appearanceStyleName, 
 							int *status) 
 {
-	NSString *cmd = [[NSBundle mainBundle] pathForResource:@"getFitsHeaderAsHTML.py" ofType:nil];    
-	NSString *target = [[(NSURL *)url absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString *cmd = [[NSBundle bundleWithIdentifier:@"com.softtenebraslux.qlfitsgenerator"] pathForResource:@"getFitsHeaderAsHTML" ofType:@"py"];    
+	NSString *target = [[(NSURL *)url path] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 		
 	NSLog(@"[QLFits] Python processing of header and file organisation.");
     NSTask *task = [[NSTask alloc] init];
     NSPipe *pipe = [NSPipe pipe];
     NSFileHandle *fileHandle = [pipe fileHandleForReading];
 
+	NSArray *arguments = [NSArray arrayWithObjects:
+						  cmd, 
+						  target, 
+						  nimages, 
+						  height, 
+						  headerFontSize, 
+						  showQuickSummary, 
+						  showESOLinks, 
+						  appearanceStyleName, 
+						  nil];
+		
     [task setStandardOutput:pipe];
     [task setStandardError:pipe];
     [task setLaunchPath:@"/System/Library/Frameworks/Python.framework/Versions/Current/bin/python"];
-    [task setArguments:[NSArray arrayWithObjects:
-						cmd, 
-						target, 
-						nimages, 
-						height, 
-						headerFontSize, 
-						showQuickSummary, 
-						showESOLinks, 
-						appearanceStyleName, 
-						nil]];
+    [task setArguments:arguments];
     
     [task launch];
 	
