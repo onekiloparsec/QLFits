@@ -15,7 +15,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D57630D048677EA00EA77CD"
                BuildableName = "QLFits.qlgenerator"
-               BlueprintName = "QLFits">
+               BlueprintName = "QLFits"
+               ReferencedContainer = "container:QLFits.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

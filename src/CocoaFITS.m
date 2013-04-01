@@ -22,6 +22,7 @@
 
 #import "CocoaFITS.h"
 #import "Constants.h"
+#import "math.h"
 
 /* Utility macros. */
 #undef	max
@@ -163,7 +164,8 @@
 	wstop  = (crval1 + cdelt1 * (nx - crpix1));
 }
 
-/*- (unsigned char *)	prepareDataForBitmapRepWithZScaling {
+/*
+- (unsigned char *)	prepareDataForBitmapRepWithZScaling {
 	unsigned char *imageData;
 	int ii;
 	float avg;
@@ -175,7 +177,7 @@
 	printf("%f\n", avg/(nx*ny));
 	float z1, z2;
 	cdl_zscale(imageData, nx, ny, 8, &z1, &z2, 0.2, 100, 10);
-	if (DEBUG) {NSLog(@"[QLFits] Z Scaling process found z1=%f, z2=%f. Applying.", z1, z2);}
+//	if (DEBUG) {NSLog(@"[QLFits] Z Scaling process found z1=%f, z2=%f. Applying.", z1, z2);}
 	
 	z1 = 600;
 	z2 = 650;
@@ -200,7 +202,7 @@
 		imageData[ii] = (unsigned char) max (pmin, min (pmax, (unsigned char)(dscale * pval) ));
 		}
 
-	if (DEBUG) {NSLog(@"[QLFits] Image ready.");}
+//	if (DEBUG) {NSLog(@"[QLFits] Image ready.");}
 	return imageData;
 }
 */
