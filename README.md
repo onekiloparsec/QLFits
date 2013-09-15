@@ -22,4 +22,3 @@ Once done, you can enjoy seeing the content of your FITS files directly in the F
 
 Note that you can use [FITSImporter](https://github.com/SoftTenebrasLux/FITSImporter), the OSX Spotlight plugin for FITS file as good companion.
 
-<a href="https://flattr.com/submit/auto?user_id=onekiloparsec&url=https%3A%2F%2Fgithub.com%2Fonekiloparsec%2FQLFits" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
