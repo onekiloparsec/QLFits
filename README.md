@@ -20,5 +20,5 @@ Once done, you can enjoy seeing the content of your FITS files directly in the F
 <img src="Resources/QLFits2.0_snap3.png" width=616px>
 <img src="Resources/QLFits2.2_snap4.png" width=748px>
 
-Note that you can use [FITSImporter](https://github.com/SoftTenebrasLux/FITSImporter), the OSX Spotlight plugin for FITS file as good companion.
+Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImporter), the OSX Spotlight plugin for FITS file as good companion.
 
