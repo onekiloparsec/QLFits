@@ -3,7 +3,7 @@ QLFits 2
 
 QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data.)
 
-It has been originally developed by Cédric Foellmi (@onekiloparsec). 
+It has been originally developed by Cédric Foellmi ([@onekiloparsec](https://twitter.com/onekiloparsec)). 
 
 [Direct download](http://onekilopars.ec/softwares/QLFits2.3.0.pkg) (from the onekilopars.ec' website).
 
