@@ -15,7 +15,7 @@ The following command line is run at the end of the Xcode build phase to ensure 
     
 Once done, you can enjoy seeing the content of your FITS files directly in the Finder!
 
-<a href="https://flattr.com/submit/auto?user_id=onekiloparsec&url=https%3A%2F%2Fgithub.com%2Fonekiloparsec%2FQLFits" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
+<a href="https://flattr.com/submit/auto?user_id=onekiloparsec&url=https%3A%2F%2Fgithub.com%2Fonekiloparsec%2FQLFits" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
 
 <img src="Resources/QLFits2.0_snap1.png" width=1047px>
 <img src="Resources/QLFits2.0_snap2.png" width=616px>
