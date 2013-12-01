@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-QLFits3-AstroCocoaPackage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-QLFits3-KissXML.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-QLFits3-ObjCFITSIO.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-QLFits3-RegexKitLite.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-QLFits3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2A5A915D40E747D4ABC852A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5744CA44AD134097A6B74034</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7D6E295DD18A41B1A42DE8EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A050256E5F5943FCAADCA973</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA0DF2B16EA14760AC595B61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

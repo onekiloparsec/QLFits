@@ -1,0 +1,1 @@
+../../../../ObjCFITSIO/ObjCFITSIO/FITSImage.h
