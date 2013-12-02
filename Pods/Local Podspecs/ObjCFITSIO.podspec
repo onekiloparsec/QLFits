@@ -10,14 +10,16 @@ Pod::Spec.new do |s|
   s.homepage     			= "http://onekilopars.ec/stif"
   s.license      			= { :type => 'GPLv2', :file => 'LICENSE' }
   s.author       			= { "Cédric Foellmi" => "cedric@onekilopars.ec" }
-  s.platform     			= :osx
   s.osx.deployment_target 	= '10.8'
-  s.source       			= { :git => "https://github.com/onekiloparsec/ObjCFITSIO.git", :tag => "0.0.1" }
-  s.source_files 			= 'ObjCFITSIO', 'Utilities', 'cfitsio'
-  s.public_header_files 	= 'ObjCFITSIO/.{h}'
+  s.ios.deployment_target 	= '6.1'
+  s.source       			= { :git => "https://github.com/onekiloparsec/ObjCFITSIO.git", :tag => "#{s.version}" }
+  s.source_files 			= 'ObjCFITSIO/**/*.{h,m,c}', 'Utilities/**/*.{h,m,c}', 'cfitsio/**/*.{h,m,c}'
+  s.public_header_files 	= 'ObjCFITSIO/*.h'
   s.private_header_files 	= 'cfitsio/.{h}'
   s.vendored_libraries 	 	= 'cfitsio/libcfitsio.a'
   s.dependency				'RegexKitLite', '~> 4.0'
-  s.framework    			= 'Cocoa'
+  s.osx.framework   		= 'AppKit'
+  s.ios.framework   		= 'UIKit'
   s.requires_arc 			= true
 end
+

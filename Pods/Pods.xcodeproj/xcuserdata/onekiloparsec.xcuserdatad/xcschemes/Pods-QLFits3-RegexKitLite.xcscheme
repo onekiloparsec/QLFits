@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7D6E295DD18A41B1A42DE8EA"
+               BlueprintIdentifier = "98E714BA44C447E3B27DE184"
                BuildableName = "libPods-QLFits3-RegexKitLite.a"
                BlueprintName = "Pods-QLFits3-RegexKitLite"
                ReferencedContainer = "container:Pods.xcodeproj">

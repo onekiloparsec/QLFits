@@ -10,14 +10,36 @@
 		9F66F094184BA3CA00888402 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F66F093184BA3CA00888402 /* QuickLook.framework */; };
 		9F66F096184BA3CA00888402 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F66F095184BA3CA00888402 /* ApplicationServices.framework */; };
 		9F66F098184BA3CA00888402 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F66F097184BA3CA00888402 /* CoreServices.framework */; };
-		9F66F09A184BA3CA00888402 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F66F099184BA3CA00888402 /* CoreFoundation.framework */; };
 		9F66F0A0184BA3CB00888402 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F66F09E184BA3CB00888402 /* InfoPlist.strings */; };
-		9F66F0A2184BA3CB00888402 /* GenerateThumbnailForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.c */; };
-		9F66F0A4184BA3CB00888402 /* GeneratePreviewForURL.c in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.c */; };
+		9F66F0A2184BA3CB00888402 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.m */; };
+		9F66F0A4184BA3CB00888402 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.m */; };
 		9F66F0A6184BA3CC00888402 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0A5184BA3CC00888402 /* main.c */; };
+		9F66F0B2184BAA9C00888402 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F66F0AE184BAA9C00888402 /* Common.h */; };
+		9F66F0B3184BAA9C00888402 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0AF184BAA9C00888402 /* Common.m */; };
+		9F66F0B4184BAA9C00888402 /* DebugLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F66F0B0184BAA9C00888402 /* DebugLog.h */; };
+		9F66F0B5184BAA9C00888402 /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0B1184BAA9C00888402 /* DebugLog.m */; };
+		9F66F0B8184BAB1D00888402 /* cdlzscale.c in Sources */ = {isa = PBXBuildFile; fileRef = 9F66F0B6184BAB1D00888402 /* cdlzscale.c */; };
+		9F66F0B9184BAB1D00888402 /* cdlzscale.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F66F0B7184BAB1D00888402 /* cdlzscale.h */; };
+		9FB0FC1A184C7B4E00BB389F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F66F0BA184BABA900888402 /* AppKit.framework */; };
+		9FB0FC1B184C836100BB389F /* QLFits3.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F66F090184BA3CA00888402 /* QLFits3.qlgenerator */; };
+		BFDD982E1EF147EB8C8B746C /* libPods-QLFits3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F94E5A89D064CD3BB6942D9 /* libPods-QLFits3.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9F66F0D3184BBCE300888402 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${HOME}/Library/QuickLook";
+			dstSubfolderSpec = 0;
+			files = (
+				9FB0FC1B184C836100BB389F /* QLFits3.qlgenerator in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5F94E5A89D064CD3BB6942D9 /* libPods-QLFits3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QLFits3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F66F090184BA3CA00888402 /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F66F093184BA3CA00888402 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		9F66F095184BA3CA00888402 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
@@ -25,10 +47,19 @@
 		9F66F099184BA3CA00888402 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		9F66F09D184BA3CB00888402 /* QLFits3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QLFits3-Info.plist"; sourceTree = "<group>"; };
 		9F66F09F184BA3CB00888402 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GenerateThumbnailForURL.c; sourceTree = "<group>"; };
-		9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GeneratePreviewForURL.c; sourceTree = "<group>"; };
+		9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
+		9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		9F66F0A5184BA3CC00888402 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		9F66F0A7184BA3CC00888402 /* QLFits3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QLFits3-Prefix.pch"; sourceTree = "<group>"; };
+		9F66F0AE184BAA9C00888402 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = SOURCE_ROOT; };
+		9F66F0AF184BAA9C00888402 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = SOURCE_ROOT; };
+		9F66F0B0184BAA9C00888402 /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = SOURCE_ROOT; };
+		9F66F0B1184BAA9C00888402 /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = SOURCE_ROOT; };
+		9F66F0B6184BAB1D00888402 /* cdlzscale.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cdlzscale.c; sourceTree = SOURCE_ROOT; };
+		9F66F0B7184BAB1D00888402 /* cdlzscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdlzscale.h; sourceTree = SOURCE_ROOT; };
+		9F66F0BA184BABA900888402 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9F66F0BC184BAE4700888402 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DA741EEEFBDB4B00B7D31EE8 /* Pods-QLFits3.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.xcconfig"; path = "Pods/Pods-QLFits3.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,10 +67,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F66F09A184BA3CA00888402 /* CoreFoundation.framework in Frameworks */,
+				9FB0FC1A184C7B4E00BB389F /* AppKit.framework in Frameworks */,
 				9F66F094184BA3CA00888402 /* QuickLook.framework in Frameworks */,
 				9F66F098184BA3CA00888402 /* CoreServices.framework in Frameworks */,
 				9F66F096184BA3CA00888402 /* ApplicationServices.framework in Frameworks */,
+				BFDD982E1EF147EB8C8B746C /* libPods-QLFits3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +84,7 @@
 				9F66F09B184BA3CA00888402 /* QLFits3 */,
 				9F66F092184BA3CA00888402 /* Frameworks */,
 				9F66F091184BA3CA00888402 /* Products */,
+				DA741EEEFBDB4B00B7D31EE8 /* Pods-QLFits3.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,10 +99,13 @@
 		9F66F092184BA3CA00888402 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F66F0BC184BAE4700888402 /* Foundation.framework */,
+				9F66F0BA184BABA900888402 /* AppKit.framework */,
 				9F66F093184BA3CA00888402 /* QuickLook.framework */,
 				9F66F095184BA3CA00888402 /* ApplicationServices.framework */,
 				9F66F097184BA3CA00888402 /* CoreServices.framework */,
 				9F66F099184BA3CA00888402 /* CoreFoundation.framework */,
+				5F94E5A89D064CD3BB6942D9 /* libPods-QLFits3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,8 +113,14 @@
 		9F66F09B184BA3CA00888402 /* QLFits3 */ = {
 			isa = PBXGroup;
 			children = (
-				9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.c */,
-				9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.c */,
+				9F66F0AE184BAA9C00888402 /* Common.h */,
+				9F66F0AF184BAA9C00888402 /* Common.m */,
+				9F66F0B0184BAA9C00888402 /* DebugLog.h */,
+				9F66F0B1184BAA9C00888402 /* DebugLog.m */,
+				9F66F0B6184BAB1D00888402 /* cdlzscale.c */,
+				9F66F0B7184BAB1D00888402 /* cdlzscale.h */,
+				9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.m */,
+				9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.m */,
 				9F66F0A5184BA3CC00888402 /* main.c */,
 				9F66F09C184BA3CB00888402 /* Supporting Files */,
 			);
@@ -102,6 +144,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F66F0B9184BAB1D00888402 /* cdlzscale.h in Headers */,
+				9F66F0B2184BAA9C00888402 /* Common.h in Headers */,
+				9F66F0B4184BAA9C00888402 /* DebugLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,11 +157,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F66F0AA184BA3CC00888402 /* Build configuration list for PBXNativeTarget "QLFits3" */;
 			buildPhases = (
+				1A803E57B71C42E38687A3F0 /* Check Pods Manifest.lock */,
 				9F66F08A184BA3CA00888402 /* Sources */,
 				9F66F08B184BA3CA00888402 /* Frameworks */,
 				9F66F08C184BA3CA00888402 /* Headers */,
 				9F66F08D184BA3CA00888402 /* Resources */,
+				9F66F0D3184BBCE300888402 /* CopyFiles */,
 				9F66F08E184BA3CA00888402 /* Rez */,
+				77E224D7D82341978626D953 /* Copy Pods Resources */,
+				9FB0FC1C184C836A00BB389F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -174,13 +223,62 @@
 		};
 /* End PBXRezBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A803E57B71C42E38687A3F0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		77E224D7D82341978626D953 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-QLFits3-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FB0FC1C184C836A00BB389F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "qlmanage -r";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9F66F08A184BA3CA00888402 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F66F0A2184BA3CB00888402 /* GenerateThumbnailForURL.c in Sources */,
-				9F66F0A4184BA3CB00888402 /* GeneratePreviewForURL.c in Sources */,
+				9F66F0B3184BAA9C00888402 /* Common.m in Sources */,
+				9F66F0A2184BA3CB00888402 /* GenerateThumbnailForURL.m in Sources */,
+				9F66F0B5184BAA9C00888402 /* DebugLog.m in Sources */,
+				9F66F0B8184BAB1D00888402 /* cdlzscale.c in Sources */,
+				9F66F0A4184BA3CB00888402 /* GeneratePreviewForURL.m in Sources */,
 				9F66F0A6184BA3CC00888402 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,12 +367,22 @@
 		};
 		9F66F0AB184BA3CC00888402 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA741EEEFBDB4B00B7D31EE8 /* Pods-QLFits3.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "QLFits3/QLFits3-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/../ObjCFITSIO/**",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AstroCocoaPackage\"",
+					"\"${PODS_ROOT}/Headers/KissXML\"",
+					"\"${PODS_ROOT}/Headers/RegexKitLite\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+				);
 				INFOPLIST_FILE = "QLFits3/QLFits3-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
@@ -282,12 +390,22 @@
 		};
 		9F66F0AC184BA3CC00888402 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA741EEEFBDB4B00B7D31EE8 /* Pods-QLFits3.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "QLFits3/QLFits3-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/../ObjCFITSIO/**",
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AstroCocoaPackage\"",
+					"\"${PODS_ROOT}/Headers/KissXML\"",
+					"\"${PODS_ROOT}/Headers/RegexKitLite\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+				);
 				INFOPLIST_FILE = "QLFits3/QLFits3-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
@@ -312,6 +430,7 @@
 				9F66F0AC184BA3CC00888402 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

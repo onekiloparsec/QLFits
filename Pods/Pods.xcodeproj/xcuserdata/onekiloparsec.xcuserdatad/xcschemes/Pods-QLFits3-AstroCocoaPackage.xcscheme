@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5744CA44AD134097A6B74034"
+               BlueprintIdentifier = "CB34FD372A1E471AB64F7875"
                BuildableName = "libPods-QLFits3-AstroCocoaPackage.a"
                BlueprintName = "Pods-QLFits3-AstroCocoaPackage"
                ReferencedContainer = "container:Pods.xcodeproj">

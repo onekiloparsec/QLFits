@@ -1,1 +1,0 @@
-../../../../ObjCFITSIO/cfitsio/f77_wrap.h

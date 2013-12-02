@@ -17,7 +17,7 @@
 		<key>Pods-QLFits3-ObjCFITSIO.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-QLFits3-RegexKitLite.xcscheme</key>
 		<dict>
@@ -32,27 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A5A915D40E747D4ABC852A4</key>
+		<key>0F91A97754F44F78AD006A7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5744CA44AD134097A6B74034</key>
+		<key>195A052340074F32B40112B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D6E295DD18A41B1A42DE8EA</key>
+		<key>2D8EE963F0744810B7770819</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A050256E5F5943FCAADCA973</key>
+		<key>98E714BA44C447E3B27DE184</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA0DF2B16EA14760AC595B61</key>
+		<key>CB34FD372A1E471AB64F7875</key>
 		<dict>
 			<key>primary</key>
 			<true/>
