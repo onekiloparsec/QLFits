@@ -18,7 +18,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
     [fits open];
 
     if ([fits countOfHDUs] >= 1) {
-        [fits syncLoadImageOfHDUAtIndex:0];
+        [fits syncLoadDataOfHDUAtIndex:0];
         // no success
 
         FITSHDU *hdu = [[fits HDUs] objectAtIndex:0];

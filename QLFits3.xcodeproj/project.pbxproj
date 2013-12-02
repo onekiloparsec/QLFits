@@ -22,6 +22,9 @@
 		9F66F0B9184BAB1D00888402 /* cdlzscale.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F66F0B7184BAB1D00888402 /* cdlzscale.h */; };
 		9FB0FC1A184C7B4E00BB389F /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F66F0BA184BABA900888402 /* AppKit.framework */; };
 		9FB0FC1B184C836100BB389F /* QLFits3.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F66F090184BA3CA00888402 /* QLFits3.qlgenerator */; };
+		9FFA0B82184CE578003A31DB /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 9FFA0B81184CE578003A31DB /* template.html */; };
+		9FFA0B85184CED5B003A31DB /* Read Me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9FFA0B83184CED5B003A31DB /* Read Me.rtf */; };
+		9FFA0B86184CED5B003A31DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9FFA0B84184CED5B003A31DB /* README.md */; };
 		BFDD982E1EF147EB8C8B746C /* libPods-QLFits3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F94E5A89D064CD3BB6942D9 /* libPods-QLFits3.a */; };
 /* End PBXBuildFile section */
 
@@ -51,14 +54,17 @@
 		9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		9F66F0A5184BA3CC00888402 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		9F66F0A7184BA3CC00888402 /* QLFits3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QLFits3-Prefix.pch"; sourceTree = "<group>"; };
-		9F66F0AE184BAA9C00888402 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = SOURCE_ROOT; };
-		9F66F0AF184BAA9C00888402 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = SOURCE_ROOT; };
-		9F66F0B0184BAA9C00888402 /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = SOURCE_ROOT; };
-		9F66F0B1184BAA9C00888402 /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = SOURCE_ROOT; };
-		9F66F0B6184BAB1D00888402 /* cdlzscale.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cdlzscale.c; sourceTree = SOURCE_ROOT; };
-		9F66F0B7184BAB1D00888402 /* cdlzscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdlzscale.h; sourceTree = SOURCE_ROOT; };
+		9F66F0AE184BAA9C00888402 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		9F66F0AF184BAA9C00888402 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		9F66F0B0184BAA9C00888402 /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
+		9F66F0B1184BAA9C00888402 /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
+		9F66F0B6184BAB1D00888402 /* cdlzscale.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cdlzscale.c; sourceTree = "<group>"; };
+		9F66F0B7184BAB1D00888402 /* cdlzscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdlzscale.h; sourceTree = "<group>"; };
 		9F66F0BA184BABA900888402 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9F66F0BC184BAE4700888402 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FFA0B81184CE578003A31DB /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
+		9FFA0B83184CED5B003A31DB /* Read Me.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Read Me.rtf"; sourceTree = SOURCE_ROOT; };
+		9FFA0B84184CED5B003A31DB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		DA741EEEFBDB4B00B7D31EE8 /* Pods-QLFits3.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.xcconfig"; path = "Pods/Pods-QLFits3.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,11 +123,12 @@
 				9F66F0AF184BAA9C00888402 /* Common.m */,
 				9F66F0B0184BAA9C00888402 /* DebugLog.h */,
 				9F66F0B1184BAA9C00888402 /* DebugLog.m */,
-				9F66F0B6184BAB1D00888402 /* cdlzscale.c */,
 				9F66F0B7184BAB1D00888402 /* cdlzscale.h */,
+				9F66F0B6184BAB1D00888402 /* cdlzscale.c */,
 				9F66F0A1184BA3CB00888402 /* GenerateThumbnailForURL.m */,
 				9F66F0A3184BA3CB00888402 /* GeneratePreviewForURL.m */,
 				9F66F0A5184BA3CC00888402 /* main.c */,
+				9FFA0B81184CE578003A31DB /* template.html */,
 				9F66F09C184BA3CB00888402 /* Supporting Files */,
 			);
 			path = QLFits3;
@@ -133,6 +140,8 @@
 				9F66F09D184BA3CB00888402 /* QLFits3-Info.plist */,
 				9F66F09E184BA3CB00888402 /* InfoPlist.strings */,
 				9F66F0A7184BA3CC00888402 /* QLFits3-Prefix.pch */,
+				9FFA0B83184CED5B003A31DB /* Read Me.rtf */,
+				9FFA0B84184CED5B003A31DB /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,7 +174,7 @@
 				9F66F0D3184BBCE300888402 /* CopyFiles */,
 				9F66F08E184BA3CA00888402 /* Rez */,
 				77E224D7D82341978626D953 /* Copy Pods Resources */,
-				9FB0FC1C184C836A00BB389F /* ShellScript */,
+				9FB0FC1C184C836A00BB389F /* Reset qlmanage */,
 			);
 			buildRules = (
 			);
@@ -207,6 +216,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FFA0B85184CED5B003A31DB /* Read Me.rtf in Resources */,
+				9FFA0B82184CE578003A31DB /* template.html in Resources */,
+				9FFA0B86184CED5B003A31DB /* README.md in Resources */,
 				9F66F0A0184BA3CB00888402 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,13 +266,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-QLFits3-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9FB0FC1C184C836A00BB389F /* ShellScript */ = {
+		9FB0FC1C184C836A00BB389F /* Reset qlmanage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Reset qlmanage";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +325,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -328,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -349,6 +363,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -360,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
