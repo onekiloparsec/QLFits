@@ -1,17 +1,21 @@
-Provisioning
-============
+QLFits 3
+========
 
-A Quick Look plug-in for .mobileprovision files (on iOS) and .provisionprofile files (on OS X).
+_Note: QLFits2 was broken on OX 10.9 Mavericks! This is the new QLFits3._
 
-A ZIP file with the latest version can be [downloaded from the Releases page](https://github.com/chockenberry/Provisioning/releases).
+QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data.)
 
-If you want to copy information from the Quick Look preview, you need to [change a hidden Finder preference](http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html) using the command line:
+QLFits 3 is an entirely new implementation of QLFits, using the open-source project [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO)
 
-	$ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
-	$ killall Finder
+It is released open source under the [GNU General Public Licence](http://en.wikipedia.org/wiki/GNU_General_Public_License).
 
-Thanks to [Pieter Claerhout](https://github.com/pieterclaerhout) for the OS X and profile type support.
+The following command line is run at the end of the Xcode build phase to ensure the QuickLook daemon is restarted:
 
+    /bin/sh qlmanage -r
+    
+Once done, you can enjoy seeing the content of your FITS files directly in the Finder!
+
+Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImporter), the OSX Spotlight plugin for FITS file as good companion.
 
 Project Notes
 -------------
@@ -20,10 +24,6 @@ Project Notes
 
 * There is a Copy Files build phase that puts the Debug build of Provisioning.qlgenerator in your ~/Library/QuickLook folder.
 
-* The "Provisioning" scheme runs "qlmanage" with the -p argument set to "~/Library/MobileDevice/Provisioning\ Profiles/Iconfactory_Development.mobileprovision". You won't have this file, so change it to something you do have.
-
-* QuickLook plug-ins sometimes don't like to install. Learn to use "qlmanage -r" to reset the daemon. Using "qlmanage -m plugins | grep mobileprovision" will tell you if the plug-in has been recognized. Sometimes you have to login and out before the plug-in is recognized.
-
-* You can use the command-line to debug, as well. To dump of the output in a .qlpreview bundle, use: "qlmanage -p ~/Library/MobileDevice/Provisioning\ Profiles/Iconfactory_Development.mobileprovision -o /tmp/quicklook". You'll need to make the directory first.
+* QuickLook plug-ins sometimes don't like to install. Learn to use "qlmanage -r" to reset the daemon. Using "qlmanage -m plugins" will tell you if the plug-in has been recognized. Sometimes you have to login and out before the plug-in is recognized.
 
 
