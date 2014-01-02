@@ -1,7 +1,7 @@
 QLFits 2
 ========
 
-_Note: QLFits is broken on OX 10.9 Mavericks! I am currently preparing QLFits3 (QLFits2 will be put in a branch)._
+_Note: QLFits is broken on OX 10.9 Mavericks! This is the QLFits2 branch conserved for historical purpose. Use the master branch to follow QLFits development._
 
 QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data.)
 
