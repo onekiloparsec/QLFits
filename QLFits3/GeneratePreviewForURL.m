@@ -43,6 +43,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[fits close];
 		}
 		else {
+			// We differentiate the often-encountered case of 1 Header + 1 Data from all the others.
+			// If # HDU > 1, we suppose a sructure of 1 main HDU followed by extensions
+
+			NSString *title = ([fits countOfHDUs] == 1) ? @"Header" : @"Header of Main HDU";
+			[synthesizedInfo setObject:title forKey:@"HeaderTitle"];
+
 			success = [fits syncLoadHeaderOfMainHDU];
 
 			NSMutableString *headerString = [NSMutableString string];
@@ -72,6 +78,13 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 				success = [fits syncLoadDataOfHDUAtIndex:i];
 				if (success) {
 					FITSHDU *hdu = [fits HDUAtIndex:i];
+
+					if (i == 0) {
+						NSString *tabFirstTitle = ([fits countOfHDUs] == 1) ? @"Show Data" : @"Show Extensions";
+						[synthesizedInfo setObject:tabFirstTitle forKey:@"SecondaryTabFirstTitle"];
+						NSString *tabSecondTitle = ([fits countOfHDUs] == 1) ? @"Show Header" : @"Show Header of Main HDU";
+						[synthesizedInfo setObject:tabSecondTitle forKey:@"SecondaryTabSecondTitle"];
+					}
 
 					if ([hdu type] == FITSHDUTypeImage) {
 						NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];

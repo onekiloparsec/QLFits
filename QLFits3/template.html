@@ -152,17 +152,17 @@
 		<script>
 			function toggleDetails() {
 				var buttonElement = document.getElementById('toggle_button')
-				var helpElement = document.getElementById('raw_help');
-				var dataElement = document.getElementById('raw_data');
+				var headerElement = document.getElementById('firstHeader');
+				var dataElement = document.getElementById('extensions');
 				if (dataElement.style.display == 'none') {
 					dataElement.style.display = 'block';
-					helpElement.style.display = 'none';
-					buttonElement.innerHTML = 'Hide';
+					headerElement.style.display = 'none';
+					buttonElement.innerHTML = '__SecondaryTabSecondTitle__';
 				}
 				else {
 					dataElement.style.display = 'none';
-					helpElement.style.display = 'block ';
-					buttonElement.innerHTML = 'Show';
+					headerElement.style.display = 'block ';
+					buttonElement.innerHTML = '__SecondaryTabFirstTitle__';
 				}
 			}
 		</script>
@@ -177,18 +177,19 @@
 
 		<div class="container" id="devices">
 			<div class="header">
-				<div class="label">Header of Main HDU</div>
-				<div class="detail">__HeaderLinesCount__</div>
+				<div class="label">__HeaderTitle__</div>
+				<div class="detail"><a href="#toggle" onclick="toggleDetails();" id="toggle_button">__SecondaryTabFirstTitle__</a></div>
 			</div>
-			<div class="FITSHeader">__HeaderLinesFormatted__</div>
+			<div class="FITSHeader" id="firstHeader">__HeaderLinesFormatted__</div>
+			<div class="FITSData" id="extensions" style="display: none;">
+				<div class="data">__ExtensionsData__</div>
+			</div>
 		</div>
 
-		<a id="toggle"></a>
 
 		<div class="container" id="data">
 			<div class="header">
 				<div class="item">Raw Data</div>
-				<div class="detail"><a href="#toggle" onclick="toggleDetails();" id="toggle_button">Show</a></div>
 			</div>
 			<div class="section" id="raw_help">
 				<div class="summary">Want to copy text from this Quick Look preview? <a href="http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html">Follow these instructions</a>.</div>
@@ -206,7 +207,7 @@
 				<div class="summary">This software is brought to you by <a href="onekilopars.ec">onekilopars.ec</a>, <i>Far-reaching solutions for ground-based astronomers.</i> We also develop <b>iObserve</b> <a href="http://itunes.com/mac/iobserve">for Mac<a/> and <a href="">for iPad</a>, an app that allows you to observe like a pro.</div>
 				<div class="summary">This software is based on the open source project <a href="https://github.com/onekiloparsec/ObjCFITSIO">ObjCFITSIO</a>.</div>
 			</div>
-			<div class="section" id="raw_help">
+			<div class="section" id="copy_help">
 				<div class="summary">Want to copy text from this Quick Look preview? <a href="http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html">Follow these instructions</a>.</div>
 			</div>
 		</div>
