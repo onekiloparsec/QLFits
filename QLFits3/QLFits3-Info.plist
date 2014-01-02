@@ -58,9 +58,9 @@
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1</string>
+	<string>3.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>3.0</string>
 	<key>CFPlugInDynamicRegisterFunction</key>
 	<string></string>
 	<key>CFPlugInDynamicRegistration</key>
@@ -84,7 +84,7 @@
 	<key>QLNeedsToBeRunInMainThread</key>
 	<false/>
 	<key>QLPreviewHeight</key>
-	<real>600</real>
+	<integer>800</integer>
 	<key>QLPreviewWidth</key>
 	<real>800</real>
 	<key>QLSupportsConcurrentRequests</key>

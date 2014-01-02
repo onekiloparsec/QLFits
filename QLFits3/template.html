@@ -20,7 +20,7 @@
 			margin: 0 0 0.5em 0;
 			border-radius: 3px;
 			border: 1px solid #ddd;
-			background-color: #eee;
+			background-color: #efefef;
 		}
 		div.last {
 			margin: 0;
@@ -40,7 +40,7 @@
 			padding: 0.5em;
 		}
 		div.section > div.label {
-			color: #aaa;
+			color: #999;
 		}
 		div.divider {
 			border-top: 1px solid #ddd;
@@ -53,6 +53,35 @@
 			text-align: right;
 			color: #666;
 		}
+
+		div.FITSHeader {
+			font-family: SourceCodePro, AndaleMono, Courier;
+		}
+		div.FITSHeader > pre {
+			margin: 0;
+			font-size: 0.9em;
+		}
+		div.FITSHeader > table {
+			font-size: 0.7em;
+			border-collapse: collapse;
+		}
+		div.FITSHeader > table > tbody {
+		}
+		div.FITSHeader > table > tbody > tr > td {
+			margin: 0em;
+			padding: 0.25em;
+		}
+		div.FITSHeader > table > tbody > tr > td.FITSHeaderKey {
+			width: 180px;
+		}
+		div.FITSHeader > table > tbody > tr > td.FITSHeaderValue {
+			width: 220px;
+		}
+		div.FITSHeader > table > tbody > tr > td.FITSHeaderComment {
+			width: 400px;
+			color: #666;
+		}
+
 		div.data {
 			font-family: SourceCodePro, AndaleMono, Courier;
 		}
@@ -73,6 +102,7 @@
 		div.data > table > tbody > tr.even {
 			background-color: #ddd;
 		}
+
 		div.summary {
 			color: #aaa;
 		}
@@ -103,9 +133,6 @@
 			float: left;
 		}
 		div#devices > div.header > div.label {
-			float: left;
-		}
-		div#certificates > div.header > div.label {
 			float: left;
 		}
 		div#ad > div.section {
@@ -150,38 +177,10 @@
 
 		<div class="container" id="devices">
 			<div class="header">
-				<div class="label">Provisioned Devices</div>
-				<div class="detail">Update <a href="https://developer.apple.com/account/__Platform__/device/deviceList.action">Devices in Dev Center</a></div>
-			</div>
-			<div class="section">
-				<div class="summary">Your device UDID must be included in this list before it can run an app built with this profile.</div>
-			</div>
-			<div class="section divider">
-				<div class="data">__HeaderLinesFormatted__</div>
+				<div class="label">Header of Main HDU</div>
 				<div class="detail">__HeaderLinesCount__</div>
 			</div>
-		</div>
-
-		<div class="container" id="certificates">
-			<div class="header">
-				<div class="label">Developer Certificates</div>
-				<div class="detail">Update <a href="https://developer.apple.com/account/__Platform__/certificate/certificateList.action">Certificates in Dev Center</a></div>
-			</div>
-			<div class="section">
-				<div class="summary">One of the certificates in this list must be in your keychain before Xcode can build and sign an app with this profile.</div>
-			</div>
-			<div class="section divider">
-				<div class="data">__DeveloperCertificatesFormatted__</div>
-			</div>
-		</div>
-
-		<div class="container" id="entitlements">
-			<div class="header">
-				<div class="label">Entitlements</div>
-			</div>
-			<div class="section">
-				<div class="data">__EntitlementsFormatted__</div>
-			</div>
+			<div class="FITSHeader">__HeaderLinesFormatted__</div>
 		</div>
 
 		<a id="toggle"></a>
@@ -201,10 +200,14 @@
 
 		<div class="container last" id="ad">
 			<div class="header">
-				<div class="label">FITS Quick Look Generator •• Version __BundleVersion__</div>
+				<div class="label">Flexible Image Transport System (FITS) OSX Quick Look Generator • Version __BundleVersion__</div>
 			</div>
 			<div class="section">
-				<div class="summary">This software is brought to you by <a href="onekilopars.ec">onekilopars.ec</a>, "far-reaching solutions for ground-based astronomers. In particular, we develop <b>iObserve</b> <a href="http://itunes.com/mac/iobserve">for Mac<a/> and <a href="">for iPad</a>, an app that allows you to observe like a pro. "</div>
+				<div class="summary">This software is brought to you by <a href="onekilopars.ec">onekilopars.ec</a>, <i>Far-reaching solutions for ground-based astronomers.</i> We also develop <b>iObserve</b> <a href="http://itunes.com/mac/iobserve">for Mac<a/> and <a href="">for iPad</a>, an app that allows you to observe like a pro.</div>
+				<div class="summary">This software is based on the open source project <a href="https://github.com/onekiloparsec/ObjCFITSIO">ObjCFITSIO</a>.</div>
+			</div>
+			<div class="section" id="raw_help">
+				<div class="summary">Want to copy text from this Quick Look preview? <a href="http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html">Follow these instructions</a>.</div>
 			</div>
 		</div>
 
