@@ -29,7 +29,17 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 	@autoreleasepool {
 		BOOL success = NO;
 
-		NSString *synthesizedValue = nil;
+		NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
+
+		NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
+		[previewProperties setObject:@"UTF-8" forKey:(__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey];
+		[previewProperties setObject:@"text/html" forKey:(__bridge NSString *)kQLPreviewPropertyMIMETypeKey];
+		[previewProperties setObject:@(800) forKey:(__bridge NSString *)kQLPreviewPropertyWidthKey];
+		[previewProperties setObject:@(800) forKey:(__bridge NSString *)kQLPreviewPropertyHeightKey];
+
+		NSMutableDictionary *attachements = [NSMutableDictionary dictionary];
+		[previewProperties setObject:attachements forKey:(__bridge NSString *)kQLPreviewPropertyAttachmentsKey];
+
 		NSMutableDictionary *synthesizedInfo = [NSMutableDictionary dictionary];
 		[synthesizedInfo setObject:[[(__bridge NSURL *)url absoluteString] lastPathComponent] forKey:@"FileName"];
 
@@ -43,48 +53,29 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[fits close];
 		}
 		else {
-			// We differentiate the often-encountered case of 1 Header + 1 Data from all the others.
-			// If # HDU > 1, we suppose a sructure of 1 main HDU followed by extensions
-
-			NSString *title = ([fits countOfHDUs] == 1) ? @"Header" : @"Header of Main HDU";
-			[synthesizedInfo setObject:title forKey:@"HeaderTitle"];
-
-			success = [fits syncLoadHeaderOfMainHDU];
-
-			NSMutableString *headerString = [NSMutableString string];
-			[headerString appendString:@"<table>\n"];
-
-			if (success) {
-				FITSHeader *header = [[fits mainHDU] header];
-
-				synthesizedValue = [NSString stringWithFormat:@"(%zd line%s)", [header countOfLines], ([header countOfLines] == 1 ? "" : "s")];
-				[synthesizedInfo setObject:synthesizedValue forKey:@"HeaderLinesCount"];
-
-				for (NSUInteger i = 0; i < [header countOfLines]; i++) {
-					FITSHeaderLine *headerLine = [header lineAtIndex:i];
-					[headerString appendFormat:@"<tr><td class=FITSHeaderKey>%@</td><td> = </td>", headerLine.key];
-					[headerString appendFormat:@"<td class=FITSHeaderValue>%@</td><td> / </td>", headerLine.value];
-					[headerString appendFormat:@"<td class=FITSHeaderComment>%@</td></tr>", headerLine.comment];
-				}
-			}
-
-			[headerString appendString:@"</table>\n"];
-
-			synthesizedValue = [headerString copy];
-			[synthesizedInfo setObject:synthesizedValue forKey:@"HeaderLinesFormatted"];
-
+			NSMutableString *HDULinesString = [NSMutableString string];
 
 			for (NSUInteger i = 0; i < [fits countOfHDUs]; i++) {
+				// We use "NSUserName" to avoid collisions for plugins installed on whole system in multi-users machines.
+				NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3_%@_HDU%lu.tiff", NSUserName(), i+1];
+				NSString *HDUImageFilePath = [[bundle resourcePath] stringByAppendingPathComponent:HDUImageFileName];
+
+				// Table anchor is declared in template.html
+				[HDULinesString appendString:@"\n<tr><td class=\"HDULine\">\n"];
+//				[HDULinesString appendFormat:@"<div class=\"container\" id=\"HDU%lu\">\n", (unsigned long)i];
+//
+//				// HDU line table row
+//				[HDULinesString appendString:@"\t<div class=\"header\">\n"];
+//				[HDULinesString appendFormat:@"\t\t<div class=\"label\">Header #%lu</div>\n", (unsigned long)i];
+//				[HDULinesString appendFormat:
+//				 @"\t\t<div class=\"detail\"><a href=\"#toggle%lu\" onclick=\"toggleDetails(%lu);\" id=\"toggle_button%lu\">Show Data</a></div>\n",
+//				 (unsigned long)i, (unsigned long)i, (unsigned long)i];
+//				[HDULinesString appendString:@"\t</div>\n"];
+
+				// FITS Data
 				success = [fits syncLoadDataOfHDUAtIndex:i];
 				if (success) {
 					FITSHDU *hdu = [fits HDUAtIndex:i];
-
-					if (i == 0) {
-						NSString *tabFirstTitle = ([fits countOfHDUs] == 1) ? @"Show Data" : @"Show Extensions";
-						[synthesizedInfo setObject:tabFirstTitle forKey:@"SecondaryTabFirstTitle"];
-						NSString *tabSecondTitle = ([fits countOfHDUs] == 1) ? @"Show Header" : @"Show Header of Main HDU";
-						[synthesizedInfo setObject:tabSecondTitle forKey:@"SecondaryTabSecondTitle"];
-					}
 
 					if ([hdu type] == FITSHDUTypeImage) {
 						NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];
@@ -95,9 +86,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 						NSDictionary *options = @{(__bridge NSString *)kQLPreviewPropertyDisplayNameKey: objectName,
 												  (__bridge NSNumber *)kQLPreviewPropertyWidthKey: @(800),
 												  (__bridge NSNumber *)kQLPreviewPropertyHeightKey: @(800)};
-
-						// We use "NSUserName" to avoid collisions for plugins installed on whole system in multi-users machines.
-						NSString *HDUImageFileName = [NSString stringWithFormat:@"/tmp/QLFits3_%@_ext%lu.tiff", NSUserName(), i+1];
 
 						if ([img is2D]) {
 							CGImageRef cgImage = [img CGImageScaledToSize:maxSize];
@@ -112,7 +100,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 								}
 								else {
 									NSImage *img = [[NSImage alloc] initWithCGImage:cgImage size:maxSize];
-									success = [[img TIFFRepresentation] writeToFile:HDUImageFileName atomically:YES];
+									success = [[img TIFFRepresentation] writeToFile:HDUImageFilePath atomically:YES];
+
+									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
+																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
+
+									[attachements setObject:attachement forKey:[NSString stringWithFormat:@"HDUData%lu", i]];
 								}
 							}
 						}
@@ -131,22 +124,61 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 								else {
 									NSImage *img = [[NSImage alloc] initWithSize:maxSize];
 									[img lockFocus];
+
 									CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
 									DrawSpectrumCanvas(context, maxSize);
 									DrawSpectrum(context, maxSize, spectrum);
 									DrawObjectName(context, maxSize, objectName);
 									CGContextFlush(context);
 									[img unlockFocus];
-									success = [[img TIFFRepresentation] writeToFile:HDUImageFileName atomically:YES];
+
+									success = [[img TIFFRepresentation] writeToFile:HDUImageFilePath atomically:YES];
+
+									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
+																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
+
+									[attachements setObject:attachement forKey:[NSString stringWithFormat:@"HDUData%lu", i]];
 								}
 							}
 						}
 					}
 				}
+
+				// FITS Data Div
+				[HDULinesString appendFormat:@"\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
+				[HDULinesString appendFormat:@"\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
+				[HDULinesString appendString:@"\t</div>\n"];
+
+				// FITS Header
+				NSMutableString *headerString = [NSMutableString stringWithString:@""];
+				success = [fits syncLoadHeaderOfHDUAtIndex:i];
+				if (success) {
+					[headerString appendString:@"\t\t<table>\n"];
+					FITSHeader *header = [[fits mainHDU] header];
+
+					for (NSUInteger i = 0; i < [header countOfLines]; i++) {
+						FITSHeaderLine *headerLine = [header lineAtIndex:i];
+						[headerString appendFormat:@"\t\t<tr><td class=FITSHeaderKey>%@</td><td> = </td>", headerLine.key];
+						[headerString appendFormat:@"<td class=FITSHeaderValue>%@</td><td> / </td>", headerLine.value];
+						[headerString appendFormat:@"<td class=FITSHeaderComment>%@</td></tr>\n", headerLine.comment];
+					}
+
+					[headerString appendString:@"\t\t</table>\n"];
+				}
+
+				// FITS Header Div
+				[HDULinesString appendFormat:@"\t<div class=\"FITSHeader\" id=\"HDUHeader%lu\" style=\"display:none;\">\n", (unsigned long)i];
+				[HDULinesString appendFormat:@"%@", headerString];
+				[HDULinesString appendString:@"\t</div>\n"]; // Header div
+
+				[HDULinesString appendString:@"</div>\n"]; // Whole HDU container div
+				[HDULinesString appendString:@"</td></tr>"];
+
 			}
+
+			[synthesizedInfo setObject:HDULinesString forKey:@"HDUTableLines"];
 		}
 
-		NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
 		NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
 		[synthesizedInfo setObject:versionString forKey:@"BundleVersion"];
 
@@ -159,15 +191,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[html replaceOccurrencesOfString:replacementToken withString:replacementValue options:0 range:NSMakeRange(0, [html length])];
 		}
 
-		NSDictionary *properties = @{(__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey : @"UTF-8",
-									 (__bridge NSString *)kQLPreviewPropertyMIMETypeKey : @"text/html",
-									 (__bridge NSNumber *)kQLPreviewPropertyWidthKey : @(800),
-									 (__bridge NSNumber *)kQLPreviewPropertyHeightKey : @(800) };
+//		NSLog(@"%@", html);
 
 		QLPreviewRequestSetDataRepresentation(preview,
 											  (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
 											  kUTTypeHTML,
-											  (__bridge CFDictionaryRef)properties);
+											  (__bridge CFDictionaryRef)previewProperties);
 
 	}
 

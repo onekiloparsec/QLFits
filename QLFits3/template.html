@@ -150,19 +150,19 @@
 		}
 		</style>
 		<script>
-			function toggleDetails() {
-				var buttonElement = document.getElementById('toggle_button')
-				var headerElement = document.getElementById('firstHeader');
-				var dataElement = document.getElementById('extensions');
+			function toggleDetails(var i) {
+				var buttonElement = document.getElementById('toggle_button'+i)
+				var headerElement = document.getElementById('FITSHeader'+i);
+				var dataElement = document.getElementById('FITSData'+i);
 				if (dataElement.style.display == 'none') {
 					dataElement.style.display = 'block';
 					headerElement.style.display = 'none';
-					buttonElement.innerHTML = '__SecondaryTabSecondTitle__';
+					buttonElement.innerHTML = 'Show Header';
 				}
 				else {
 					dataElement.style.display = 'none';
 					headerElement.style.display = 'block ';
-					buttonElement.innerHTML = '__SecondaryTabFirstTitle__';
+					buttonElement.innerHTML = 'Show Data';
 				}
 			}
 		</script>
@@ -175,28 +175,10 @@
 			</div>
 		</div>
 
-		<div class="container" id="devices">
-			<div class="header">
-				<div class="label">__HeaderTitle__</div>
-				<div class="detail"><a href="#toggle" onclick="toggleDetails();" id="toggle_button">__SecondaryTabFirstTitle__</a></div>
-			</div>
-			<div class="FITSHeader" id="firstHeader">__HeaderLinesFormatted__</div>
-			<div class="FITSData" id="extensions" style="display: none;">
-				<div class="data">__ExtensionsData__</div>
-			</div>
-		</div>
-
-
-		<div class="container" id="data">
-			<div class="header">
-				<div class="item">Raw Data</div>
-			</div>
-			<div class="section" id="raw_help">
-				<div class="summary">Want to copy text from this Quick Look preview? <a href="http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html">Follow these instructions</a>.</div>
-			</div>
-			<div class="section divider" id="raw_data" style="display: none;">
-				<div class="data">__RawData__</div>
-			</div>
+		<div class="container" id="HDUs">
+			<table style="width:100%">
+				<div id="HDULines">__HDUTableLines__</div>
+			</table>
 		</div>
 
 		<div class="container last" id="ad">
