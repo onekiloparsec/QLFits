@@ -123,16 +123,16 @@
 			font-weight: bold;
 			float: left;
 		}
-		div#devices > div.header > div.label {
+		div#HDU > div.header > div.label {
 			float: left;
 		}
-		div#devices > div.section {
+		div#HDU > div.section {
 			overflow: auto;
 		}
-		div#devices > div.section > div.data {
+		div#HDU > div.section > div.data {
 			float: left;
 		}
-		div#devices > div.header > div.label {
+		div#HDU > div.header > div.label {
 			float: left;
 		}
 		div#ad > div.section {
@@ -150,10 +150,10 @@
 		}
 		</style>
 		<script>
-			function toggleDetails(var i) {
-				var buttonElement = document.getElementById('toggle_button'+i)
-				var headerElement = document.getElementById('FITSHeader'+i);
-				var dataElement = document.getElementById('FITSData'+i);
+			function toggleDetails(i) {
+				var buttonElement = document.getElementById('toggle_button'+i);
+				var headerElement = document.getElementById('HDUHeader'+i);
+				var dataElement = document.getElementById('HDUData'+i);
 				if (dataElement.style.display == 'none') {
 					dataElement.style.display = 'block';
 					headerElement.style.display = 'none';
@@ -168,33 +168,30 @@
 		</script>
 	</head>
 	<body>
-		<div class="container" id="header_info">
-			<div class="header">
-				<div class="label" id="filename">__FileName__</div>
-				<div class="detail" id="uuid">__ContentSummary__</div>
-			</div>
+	<div class="container" id="header_info">
+		<div class="header">
+			<div class="label" id="filename">__FileName__</div>
+			<div class="detail" id="uuid">__ContentSummary__</div>
 		</div>
+	</div>
 
-		<div class="container" id="HDUs">
-			<table style="width:100%">
-				<div id="HDULines">__HDUTableLines__</div>
-			</table>
-		</div>
+	<div class="container">
+		<table style="width:100%">
+			__HDUTableLines__
+		</table>
+	</div>
 
-		<div class="container last" id="ad">
-			<div class="header">
-				<div class="label">Flexible Image Transport System (FITS) OSX Quick Look Generator • Version __BundleVersion__</div>
-			</div>
-			<div class="section">
-				<div class="summary">This software is brought to you by <a href="onekilopars.ec">onekilopars.ec</a>, <i>Far-reaching solutions for ground-based astronomers.</i> We also develop <b>iObserve</b> <a href="http://itunes.com/mac/iobserve">for Mac<a/> and <a href="">for iPad</a>, an app that allows you to observe like a pro.</div>
-				<div class="summary">This software is based on the open source project <a href="https://github.com/onekiloparsec/ObjCFITSIO">ObjCFITSIO</a>.</div>
-			</div>
-			<div class="section" id="copy_help">
-				<div class="summary">Want to copy text from this Quick Look preview? <a href="http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html">Follow these instructions</a>.</div>
-			</div>
+	<div class="container last" id="ad">
+		<div class="header">
+			<div class="label">QLFits: Flexible Image Transport System (FITS) OSX Quick Look Generator • Version __BundleVersion__</div>
 		</div>
-
-		<div>
+		<div class="section">
+			<div class="summary">This software is brought to you by <a href="onekilopars.ec">onekilopars.ec</a>, <i>Far-reaching solutions for ground-based astronomers.</i> We also develop <b>iObserve</b> <a href="http://itunes.com/mac/iobserve">for Mac<a/> and <a href="">for iPad</a>, an app that allows you to observe like a pro.</div>
+			<div class="summary">This software is based on the open source project <a href="https://github.com/onekiloparsec/ObjCFITSIO">ObjCFITSIO</a>.</div>
 		</div>
+		<div class="section" id="copy_help">
+			<div class="summary">Want to copy text from this Quick Look preview? <a href="http://www.macworld.com/article/1164668/select_and_copy_text_within_quick_look_previews.html">Follow these instructions</a>.</div>
+		</div>
+	</div>
 	</body>
 </html>

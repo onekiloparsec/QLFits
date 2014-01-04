@@ -61,16 +61,18 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 				NSString *HDUImageFilePath = [[bundle resourcePath] stringByAppendingPathComponent:HDUImageFileName];
 
 				// Table anchor is declared in template.html
-				[HDULinesString appendString:@"\n<tr><td class=\"HDULine\">\n"];
-//				[HDULinesString appendFormat:@"<div class=\"container\" id=\"HDU%lu\">\n", (unsigned long)i];
-//
-//				// HDU line table row
-//				[HDULinesString appendString:@"\t<div class=\"header\">\n"];
-//				[HDULinesString appendFormat:@"\t\t<div class=\"label\">Header #%lu</div>\n", (unsigned long)i];
-//				[HDULinesString appendFormat:
-//				 @"\t\t<div class=\"detail\"><a href=\"#toggle%lu\" onclick=\"toggleDetails(%lu);\" id=\"toggle_button%lu\">Show Data</a></div>\n",
-//				 (unsigned long)i, (unsigned long)i, (unsigned long)i];
-//				[HDULinesString appendString:@"\t</div>\n"];
+				[HDULinesString appendString:@"\n\t\t<tr><td class=\"HDULine\">\n"];
+				[HDULinesString appendString:@"\t\t<div class=\"container\" id=\"HDU\">\n"];
+
+				// HDU line table row
+				[HDULinesString appendString:@"\n\t\t\t<div class=\"header\">\n"];
+				[HDULinesString appendFormat:@"\t\t\t\t<div class=\"label\">Header #%lu</div>\n", (unsigned long)i];
+
+				[HDULinesString appendString:@"\t\t\t\t<div class=\"detail\">"];
+				[HDULinesString appendFormat:@"<a href=\"#toggle%lu\" ", (unsigned long)i];
+				[HDULinesString appendFormat:@"onclick=\"toggleDetails(%lu);\" ", (unsigned long)i];
+				[HDULinesString appendFormat:@"id=\"toggle_button%lu\">Show Data</a></div>\n", (unsigned long)i];
+				[HDULinesString appendString:@"\t\t\t</div>\n\n"];
 
 				// FITS Data
 				success = [fits syncLoadDataOfHDUAtIndex:i];
@@ -105,7 +107,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
 																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
 
-									[attachements setObject:attachement forKey:[NSString stringWithFormat:@"HDUData%lu", i]];
+									[attachements setObject:attachement forKey:HDUImageFileName];
 								}
 							}
 						}
@@ -137,7 +139,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
 																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
 
-									[attachements setObject:attachement forKey:[NSString stringWithFormat:@"HDUData%lu", i]];
+									[attachements setObject:attachement forKey:HDUImageFileName];
 								}
 							}
 						}
@@ -145,34 +147,34 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 				}
 
 				// FITS Data Div
-				[HDULinesString appendFormat:@"\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
-				[HDULinesString appendFormat:@"\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
-				[HDULinesString appendString:@"\t</div>\n"];
+				[HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
+				[HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
+				[HDULinesString appendString:@"\t\t\t</div>\n"];
 
 				// FITS Header
 				NSMutableString *headerString = [NSMutableString stringWithString:@""];
 				success = [fits syncLoadHeaderOfHDUAtIndex:i];
 				if (success) {
-					[headerString appendString:@"\t\t<table>\n"];
+					[headerString appendString:@"\t\t\t<table>\n"];
 					FITSHeader *header = [[fits mainHDU] header];
 
 					for (NSUInteger i = 0; i < [header countOfLines]; i++) {
 						FITSHeaderLine *headerLine = [header lineAtIndex:i];
-						[headerString appendFormat:@"\t\t<tr><td class=FITSHeaderKey>%@</td><td> = </td>", headerLine.key];
+						[headerString appendFormat:@"\t\t\t\t<tr><td class=FITSHeaderKey>%@</td><td> = </td>", headerLine.key];
 						[headerString appendFormat:@"<td class=FITSHeaderValue>%@</td><td> / </td>", headerLine.value];
 						[headerString appendFormat:@"<td class=FITSHeaderComment>%@</td></tr>\n", headerLine.comment];
 					}
 
-					[headerString appendString:@"\t\t</table>\n"];
+					[headerString appendString:@"\t\t\t</table>\n"];
 				}
 
 				// FITS Header Div
-				[HDULinesString appendFormat:@"\t<div class=\"FITSHeader\" id=\"HDUHeader%lu\" style=\"display:none;\">\n", (unsigned long)i];
+				[HDULinesString appendFormat:@"\n\t\t\t<div class=\"FITSHeader\" id=\"HDUHeader%lu\" style=\"display:none;\">\n", (unsigned long)i];
 				[HDULinesString appendFormat:@"%@", headerString];
-				[HDULinesString appendString:@"\t</div>\n"]; // Header div
+				[HDULinesString appendString:@"\t\t\t</div>\n\n"]; // Header div
 
-				[HDULinesString appendString:@"</div>\n"]; // Whole HDU container div
-				[HDULinesString appendString:@"</td></tr>"];
+				[HDULinesString appendString:@"\t\t</div>\n"]; // Whole HDU container div
+				[HDULinesString appendString:@"\t\t</td></tr>\n"];
 
 			}
 
@@ -191,7 +193,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[html replaceOccurrencesOfString:replacementToken withString:replacementValue options:0 range:NSMakeRange(0, [html length])];
 		}
 
-//		NSLog(@"%@", html);
+		NSLog(@"%@", html);
 
 		QLPreviewRequestSetDataRepresentation(preview,
 											  (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
