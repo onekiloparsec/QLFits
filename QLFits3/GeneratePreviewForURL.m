@@ -58,7 +58,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			for (NSUInteger i = 0; i < [fits countOfHDUs]; i++) {
 				// We use "NSUserName" to avoid collisions for plugins installed on whole system in multi-users machines.
 				NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3_%@_HDU%lu.tiff", NSUserName(), i+1];
-				NSString *HDUImageFilePath = [[bundle resourcePath] stringByAppendingPathComponent:HDUImageFileName];
 
 				// Table anchor is declared in template.html
 				[HDULinesString appendString:@"\n\t\t<tr><td class=\"HDULine\">\n"];
@@ -66,13 +65,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 
 				// HDU line table row
 				[HDULinesString appendString:@"\n\t\t\t<div class=\"header\">\n"];
-				[HDULinesString appendFormat:@"\t\t\t\t<div class=\"label\">Header #%lu</div>\n", (unsigned long)i];
-
-				[HDULinesString appendString:@"\t\t\t\t<div class=\"detail\">"];
-				[HDULinesString appendFormat:@"<a href=\"#toggle%lu\" ", (unsigned long)i];
-				[HDULinesString appendFormat:@"onclick=\"toggleDetails(%lu);\" ", (unsigned long)i];
-				[HDULinesString appendFormat:@"id=\"toggle_button%lu\">Show Data</a></div>\n", (unsigned long)i];
-				[HDULinesString appendString:@"\t\t\t</div>\n\n"];
 
 				// FITS Data
 				success = [fits syncLoadDataOfHDUAtIndex:i];
@@ -83,6 +75,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 						NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];
 						FITSImage *img = [hdu image];
 						CGSize maxSize = CGSizeMake(800.0, 800.0);
+
+						[HDULinesString appendFormat:@"\t\t\t\t<div class=\"label\">HDU %lu", (unsigned long)i];
+						[HDULinesString appendFormat:@"&nbsp;&nbsp; –– &nbsp;&nbsp; Image, size: %@", NSStringFromFITSSize(img.size)];
+						[HDULinesString appendString:@"</div>\n"];
 
 						if (objectName == nil) objectName = [(__bridge NSURL *)url lastPathComponent];
 						NSDictionary *options = @{(__bridge NSString *)kQLPreviewPropertyDisplayNameKey: objectName,
@@ -102,7 +98,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 								}
 								else {
 									NSImage *img = [[NSImage alloc] initWithCGImage:cgImage size:maxSize];
-									success = [[img TIFFRepresentation] writeToFile:HDUImageFilePath atomically:YES];
 
 									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
 																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
@@ -134,8 +129,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 									CGContextFlush(context);
 									[img unlockFocus];
 
-									success = [[img TIFFRepresentation] writeToFile:HDUImageFilePath atomically:YES];
-
 									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
 																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
 
@@ -145,6 +138,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 						}
 					}
 				}
+
+				[HDULinesString appendString:@"\t\t\t\t<div class=\"detail\">"];
+				[HDULinesString appendFormat:@"<a href=\"#toggle%lu\" ", (unsigned long)i];
+				[HDULinesString appendFormat:@"onclick=\"toggleDetails(%lu);\" ", (unsigned long)i];
+				[HDULinesString appendFormat:@"id=\"toggle_button%lu\">Show Header</a></div>\n", (unsigned long)i];
+				[HDULinesString appendString:@"\t\t\t</div>\n\n"];
 
 				// FITS Data Div
 				[HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
