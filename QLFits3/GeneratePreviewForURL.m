@@ -6,6 +6,8 @@
 #import "Common.h"
 #import "cdlzscale.h"
 
+#define MAX_HDU_COUNT 10
+
 OSStatus GeneratePreviewForURL(void *thisInterface,
 							   QLPreviewRequestRef preview,
 							   CFURLRef url,
@@ -49,7 +51,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 		else {
 			NSMutableString *HDULinesString = [NSMutableString string];
 
-			for (NSUInteger i = 0; i < [fits countOfHDUs]; i++) {
+			for (NSUInteger i = 0; i < MIN(MAX_HDU_COUNT, [fits countOfHDUs]); i++) {
 				// We use "NSUserName" to avoid collisions for plugins installed on whole system in multi-users machines.
 				NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3_%@_HDU%lu.tiff", NSUserName(), i+1];
 
@@ -163,6 +165,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 				[HDULinesString appendString:@"\t\t</div>\n"]; // Whole HDU container div
 				[HDULinesString appendString:@"\t\t</td></tr>\n"];
 
+			}
+
+			if ([fits countOfHDUs] > MAX_HDU_COUNT) {
+				[HDULinesString appendFormat:
+				 @"<div style=\"text-align:center\">For speed reasons, only %i out of %li HDUs are previewed.</div>",
+				 MAX_HDU_COUNT, [fits countOfHDUs]];
 			}
 
 			[synthesizedInfo setObject:HDULinesString forKey:@"HDUTableLines"];
