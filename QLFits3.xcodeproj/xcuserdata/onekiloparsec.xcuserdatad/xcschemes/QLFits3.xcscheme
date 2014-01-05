@@ -44,7 +44,7 @@
       </PathRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-p ~/Dropbox/FITS/fitsHierarchy/folder1/FORS1.2008-07-29T01\:19\:32.696.fits"
+            argument = "-p ~/Dropbox/FITS/fitsScreenshot/ib6o23020_00692_2D.fits"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

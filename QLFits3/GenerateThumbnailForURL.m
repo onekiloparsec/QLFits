@@ -19,7 +19,8 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 
     if ([fits countOfHDUs] >= 1) {
         [fits syncLoadDataOfHDUAtIndex:0];
-        // no success
+        [fits syncLoadHeaderOfHDUAtIndex:0];
+        // no success?
 
         FITSHDU *hdu = [[fits HDUs] objectAtIndex:0];
         NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];
@@ -33,7 +34,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
                     CGContextRef context = QLThumbnailRequestCreateContext(thumbnail, maxSize, true, NULL);
                     CGRect renderRect = CGRectMake(0., 0., maxSize.width, maxSize.height);
                     CGContextDrawImage(context, renderRect, cgImage);
-					DrawObjectName(context, renderRect.size, objectName);
+					DrawObjectName(context, renderRect.size, objectName, YES, NO);
                     QLThumbnailRequestFlushContext(thumbnail, context);
                     CFRelease(context);
                 }
@@ -50,7 +51,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
                 CGContextRef context = QLThumbnailRequestCreateContext(thumbnail, canvasSize, true, NULL);
                 DrawSpectrumCanvas(context, canvasSize);
 				DrawSpectrum(context, canvasSize, spectrum);
-				DrawObjectName(context, canvasSize, objectName);
+				DrawObjectName(context, canvasSize, objectName, YES, YES);
                 QLThumbnailRequestFlushContext(thumbnail, context);
                 CFRelease(context);
             }

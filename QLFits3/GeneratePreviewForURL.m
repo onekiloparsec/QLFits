@@ -6,8 +6,6 @@
 #import "Common.h"
 #import "cdlzscale.h"
 
-#define DRAW_IMAGE_IN_QL_CONTEXT 0
-
 OSStatus GeneratePreviewForURL(void *thisInterface,
 							   QLPreviewRequestRef preview,
 							   CFURLRef url,
@@ -27,10 +25,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
     DebugLog(@"Previewing %@", (__bridge NSURL *)url);
 
 	@autoreleasepool {
-		BOOL success = NO;
-
-		NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
-
 		NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
 		[previewProperties setObject:@"UTF-8" forKey:(__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey];
 		[previewProperties setObject:@"text/html" forKey:(__bridge NSString *)kQLPreviewPropertyMIMETypeKey];
@@ -65,112 +59,106 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 
 				// HDU line table row
 				[HDULinesString appendString:@"\n\t\t\t<div class=\"header\">\n"];
+				[HDULinesString appendFormat:@"\t\t\t\t<div class=\"label\">HDU %lu", (unsigned long)i];
 
 				// FITS Data
-				success = [fits syncLoadDataOfHDUAtIndex:i];
-				if (success) {
-					FITSHDU *hdu = [fits HDUAtIndex:i];
+				BOOL hasData = [fits syncLoadDataOfHDUAtIndex:i];
+				FITSHDU *hdu = [fits HDUAtIndex:i];
 
+				[fits syncLoadHeaderOfHDUAtIndex:i];
+				NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];
+
+				if (hasData) {
 					if ([hdu type] == FITSHDUTypeImage) {
-						NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];
-						FITSImage *img = [hdu image];
+						FITSImage *fitsImage = [hdu image];
+
+						BOOL isEmptySize = FITSIsEmptySize(fitsImage.size);
+						hasData &= !isEmptySize;
+
+						NSMutableString *titleString = [NSMutableString string];
+						if (!isEmptySize) {
+							[titleString appendString:@"&nbsp;&nbsp; –– &nbsp;&nbsp;"];
+						}
+
 						CGSize maxSize = CGSizeMake(800.0, 800.0);
+						NSImage *img = [[NSImage alloc] initWithSize:maxSize];
+						[img lockFocus];
 
-						[HDULinesString appendFormat:@"\t\t\t\t<div class=\"label\">HDU %lu", (unsigned long)i];
-						[HDULinesString appendFormat:@"&nbsp;&nbsp; –– &nbsp;&nbsp; Image, size: %@", NSStringFromFITSSize(img.size)];
-						[HDULinesString appendString:@"</div>\n"];
+						CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
 
-						if (objectName == nil) objectName = [(__bridge NSURL *)url lastPathComponent];
-						NSDictionary *options = @{(__bridge NSString *)kQLPreviewPropertyDisplayNameKey: objectName,
-												  (__bridge NSNumber *)kQLPreviewPropertyWidthKey: @(800),
-												  (__bridge NSNumber *)kQLPreviewPropertyHeightKey: @(800)};
-
-						if ([img is2D]) {
-							CGImageRef cgImage = [img CGImageScaledToSize:maxSize];
+						if ([fitsImage is2D]) {
+							[titleString appendFormat:@"Image, size: %@", NSStringFromFITSSize(fitsImage.size)];
+							CGImageRef cgImage = [fitsImage CGImageScaledToSize:maxSize];
 							if (cgImage != NULL) {
-								if (DRAW_IMAGE_IN_QL_CONTEXT) {
-									CGContextRef context = QLPreviewRequestCreateContext(preview, maxSize, true, (__bridge CFDictionaryRef)options);
-									CGRect renderRect = CGRectMake(0., 0., maxSize.width, maxSize.height);
-									CGContextDrawImage(context, renderRect, cgImage);
-									DrawObjectName(context, renderRect.size, objectName);
-									QLPreviewRequestFlushContext(preview, context);
-									CFRelease(context);
-								}
-								else {
-									NSImage *img = [[NSImage alloc] initWithCGImage:cgImage size:maxSize];
-
-									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
-																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
-
-									[attachements setObject:attachement forKey:HDUImageFileName];
-								}
+								CGRect renderRect = CGRectMake(0., 0., maxSize.width, maxSize.height);
+								CGContextDrawImage(context, renderRect, cgImage);
+								DrawObjectName(context, maxSize, objectName, NO, NO);
 							}
 						}
-						else if ([img is1D]) {
-							FITSSpectrum *spectrum = [img spectrum];
+						else if ([fitsImage is1D]) {
+							FITSSpectrum *spectrum = [fitsImage spectrum];
+							[titleString appendFormat:@"Spectrum, length: %lu", spectrum.numberOfPoints];
+
 							if (spectrum != nil) {
-								if (DRAW_IMAGE_IN_QL_CONTEXT) {
-									CGContextRef context = QLPreviewRequestCreateContext(preview, maxSize, true, (__bridge CFDictionaryRef)options);
-									DrawSpectrumCanvas(context, maxSize);
-									DrawSpectrum(context, maxSize, spectrum);
-									DrawObjectName(context, maxSize, objectName);
-									CGContextFlush(context);
-									QLPreviewRequestFlushContext(preview, context);
-									CFRelease(context);
-								}
-								else {
-									NSImage *img = [[NSImage alloc] initWithSize:maxSize];
-									[img lockFocus];
-
-									CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-									DrawSpectrumCanvas(context, maxSize);
-									DrawSpectrum(context, maxSize, spectrum);
-									DrawObjectName(context, maxSize, objectName);
-									CGContextFlush(context);
-									[img unlockFocus];
-
-									NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
-																  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
-
-									[attachements setObject:attachement forKey:HDUImageFileName];
-								}
+								DrawSpectrumCanvas(context, maxSize);
+								DrawSpectrum(context, maxSize, spectrum);
+								DrawObjectName(context, maxSize, objectName, NO, YES);
 							}
 						}
+						else {
+							if (!isEmptySize) {
+								[titleString appendFormat:@"Data Unit, size: %@", NSStringFromFITSSize(fitsImage.size)];
+							}
+						}
+
+						CGContextFlush(context);
+						[img unlockFocus];
+
+						NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
+													  (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
+
+						[attachements setObject:attachement forKey:HDUImageFileName];
+						[HDULinesString appendString:titleString];
 					}
 				}
 
-				[HDULinesString appendString:@"\t\t\t\t<div class=\"detail\">"];
-				[HDULinesString appendFormat:@"<a href=\"#toggle%lu\" ", (unsigned long)i];
-				[HDULinesString appendFormat:@"onclick=\"toggleDetails(%lu);\" ", (unsigned long)i];
-				[HDULinesString appendFormat:@"id=\"toggle_button%lu\">Show Header</a></div>\n", (unsigned long)i];
-				[HDULinesString appendString:@"\t\t\t</div>\n\n"];
+				[HDULinesString appendString:@"</div>\n"]; // div class="label"
 
-				// FITS Data Div
-				[HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
-				[HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
-				[HDULinesString appendString:@"\t\t\t</div>\n"];
+				if (hasData) {
+					[HDULinesString appendString:@"\t\t\t\t<div class=\"detail\">"];
+					[HDULinesString appendFormat:@"<a href=\"#toggle%lu\" ", (unsigned long)i];
+					[HDULinesString appendFormat:@"onclick=\"toggleDetails(%lu);\" ", (unsigned long)i];
+					[HDULinesString appendFormat:@"id=\"toggle_button%lu\">Show Header</a></div>\n", (unsigned long)i];
+				}
+
+				[HDULinesString appendString:@"\t\t\t</div>\n\n"]; // HDULine header.
+
+				if (hasData) {
+					// FITS Data Div
+					[HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
+					[HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
+					[HDULinesString appendString:@"\t\t\t</div>\n"];
+				}
 
 				// FITS Header
 				NSMutableString *headerString = [NSMutableString stringWithString:@""];
-				success = [fits syncLoadHeaderOfHDUAtIndex:i];
-				if (success) {
-					[headerString appendString:@"\t\t\t<table>\n"];
-					FITSHeader *header = [[fits mainHDU] header];
+				[headerString appendString:@"\t\t\t<table>\n"];
+				FITSHeader *header = [hdu header];
 
-					for (NSUInteger i = 0; i < [header countOfLines]; i++) {
-						FITSHeaderLine *headerLine = [header lineAtIndex:i];
-						[headerString appendFormat:@"\t\t\t\t<tr><td class=FITSHeaderKey>%@</td><td> = </td>", headerLine.key];
-						[headerString appendFormat:@"<td class=FITSHeaderValue>%@</td><td> / </td>", headerLine.value];
-						[headerString appendFormat:@"<td class=FITSHeaderComment>%@</td></tr>\n", headerLine.comment];
-					}
-
-					[headerString appendString:@"\t\t\t</table>\n"];
+				for (NSUInteger i = 0; i < [header countOfLines]; i++) {
+					FITSHeaderLine *headerLine = [header lineAtIndex:i];
+					[headerString appendFormat:@"\t\t\t\t<tr><td class=FITSHeaderKey>%@</td><td> = </td>", headerLine.key];
+					[headerString appendFormat:@"<td class=FITSHeaderValue>%@</td><td> / </td>", headerLine.value];
+					[headerString appendFormat:@"<td class=FITSHeaderComment>%@</td></tr>\n", headerLine.comment];
 				}
 
+				[headerString appendString:@"\t\t\t</table>\n"];
+
 				// FITS Header Div
-				[HDULinesString appendFormat:@"\n\t\t\t<div class=\"FITSHeader\" id=\"HDUHeader%lu\" style=\"display:none;\">\n", (unsigned long)i];
+				NSString *display = (hasData) ? @"none" : @"block";
+				[HDULinesString appendFormat:@"\n\t\t\t<div class=\"FITSHeader\" id=\"HDUHeader%lu\" style=\"display:%@;\">\n", (unsigned long)i, display];
 				[HDULinesString appendFormat:@"%@", headerString];
-				[HDULinesString appendString:@"\t\t\t</div>\n\n"]; // Header div
+				[HDULinesString appendString:@"\t\t\t</div>\n\n"]; // FITS Header div
 
 				[HDULinesString appendString:@"\t\t</div>\n"]; // Whole HDU container div
 				[HDULinesString appendString:@"\t\t</td></tr>\n"];
@@ -180,6 +168,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[synthesizedInfo setObject:HDULinesString forKey:@"HDUTableLines"];
 		}
 
+		NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
 		NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
 		[synthesizedInfo setObject:versionString forKey:@"BundleVersion"];
 
@@ -192,6 +181,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[html replaceOccurrencesOfString:replacementToken withString:replacementValue options:0 range:NSMakeRange(0, [html length])];
 		}
 
+#warning only debug
 		NSLog(@"%@", html);
 
 		QLPreviewRequestSetDataRepresentation(preview,

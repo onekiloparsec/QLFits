@@ -12,4 +12,4 @@
 
 void DrawSpectrumCanvas(CGContextRef context, CGSize canvasSize);
 void DrawSpectrum(CGContextRef context, CGSize canvasSize, FITSSpectrum *spectrum);
-void DrawObjectName(CGContextRef context, CGSize canvasSize, NSString *objectName);
+void DrawObjectName(CGContextRef context, CGSize canvasSize, NSString *objectName, BOOL forThumbnail, BOOL forSpectrum);
