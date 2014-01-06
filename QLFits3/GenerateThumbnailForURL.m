@@ -27,6 +27,10 @@ OSStatus GenerateThumbnailForURL(void *thisInterface,
 
         if ([hdu type] == FITSHDUTypeImage) {
             FITSImage *img = [hdu image];
+			if (FITSIsEmptySize(img.size) && [fits countOfHDUs] > 1) {
+				[fits syncLoadDataOfHDUAtIndex:1];
+				img = [[fits HDUAtIndex:1] image];
+			}
 
             if ([img is2D]) {
                 CGImageRef cgImage = [img CGImageScaledToSize:maxSize];
