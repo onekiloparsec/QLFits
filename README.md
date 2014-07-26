@@ -13,6 +13,10 @@ Put it in _/Library/QuickLook_ or _~/Library/QuickLook_ and run the command, to 
 
     /bin/sh qlmanage -r
 
+Enjoy seeing the content of your FITS files in the Finder:
+
+<img src="Resources/QLFits3_Finder_Screenshot.png" width=700px>
+<img src="Resources/QLFits3_QL_Window.png" width=700px>
 
 
 Project Notes For Developers
