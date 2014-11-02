@@ -23,6 +23,7 @@
 				<string>arf</string>
 				<string>rsp</string>
 				<string>pi</string>
+				<string>fits.gz</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>QLGenerator</string>
@@ -124,6 +125,7 @@
 					<string>arf</string>
 					<string>rsp</string>
 					<string>pi</string>
+					<string>fits.gz</string>
 				</array>
 				<key>public.mime-type</key>
 				<string>image/fits</string>
