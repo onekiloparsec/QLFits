@@ -1,1 +1,0 @@
-../../../../ObjCFITSIO/ObjCFITSIO/NSArray+NumericalOperations.h

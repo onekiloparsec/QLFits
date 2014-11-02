@@ -9,3 +9,5 @@ xcuserdata
 *.xcworkspace
 *.xcuserdatad
 *.xcscheme
+Pods
+

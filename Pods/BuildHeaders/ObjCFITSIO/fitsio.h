@@ -1,1 +1,0 @@
-../../../../ObjCFITSIO/cfitsio/fitsio.h

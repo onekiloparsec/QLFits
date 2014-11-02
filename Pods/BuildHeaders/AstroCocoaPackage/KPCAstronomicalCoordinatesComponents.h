@@ -1,1 +1,0 @@
-../../../../AstroCocoaPackage/KPCAstronomicalCoordinatesComponents.h
