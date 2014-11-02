@@ -189,8 +189,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface,
 			[html replaceOccurrencesOfString:replacementToken withString:replacementValue options:0 range:NSMakeRange(0, [html length])];
 		}
 
-#warning only debug
+#ifdef DEBUG
 		NSLog(@"%@", html);
+#endif
 
 		QLPreviewRequestSetDataRepresentation(preview,
 											  (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],

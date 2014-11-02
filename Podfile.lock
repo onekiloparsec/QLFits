@@ -1,17 +1,17 @@
 PODS:
   - AstroCocoaKit (0.1.1)
-  - ObjCFITSIO (0.2.0):
+  - ObjCFITSIO (0.2.3):
     - RegexKitLite (~> 4.0)
   - RegexKitLite (4.0)
 
 DEPENDENCIES:
   - AstroCocoaKit (~> 0.1)
-  - ObjCFITSIO (~> 0.2)
+  - ObjCFITSIO (~> 0.2.3)
   - RegexKitLite (~> 4.0)
 
 SPEC CHECKSUMS:
   AstroCocoaKit: 09bf1260b3c87e4beb67a62768faf5a12b3a03ca
-  ObjCFITSIO: ceb58f96136a019bb9d0383d9f496c6b3008a6da
+  ObjCFITSIO: cdc349417ad0a2f9dc14e2039875181919c04ca0
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
 
 COCOAPODS: 0.34.4
