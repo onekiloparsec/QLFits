@@ -45,6 +45,8 @@
 				<string>dyn.ah62d4rv4ge81n7xgrf4a</string>
 				<string>dyn.ah62d4rv4ge80w5pgrf4hg</string>
 				<string>dyn.ah62d4rv4ge81n7xgrf4hg</string>
+				<string>org.gnu.gnu-zip-archive</string>
+				<string>public.bzip2-archive</string>
 			</array>
 		</dict>
 	</array>
@@ -126,6 +128,7 @@
 					<string>rsp</string>
 					<string>pi</string>
 					<string>fits.gz</string>
+					<string>fits.bz2</string>
 				</array>
 				<key>public.mime-type</key>
 				<string>image/fits</string>

@@ -400,7 +400,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76AA943441C90363A932E286 /* Pods-QLFits3.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "QLFits3/QLFits3-Prefix.pch";
@@ -416,7 +415,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6792D58F3B827051B20141 /* Pods-QLFits3.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "QLFits3/QLFits3-Prefix.pch";
