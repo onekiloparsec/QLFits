@@ -38,6 +38,7 @@
 		9FF55C4F1A067C4E005AA2BD /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
 		9FF55C501A067C4E005AA2BD /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		9FF55C581A067D3D005AA2BD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9FFD33E91AA4AA4300D0B271 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				9FF55C3C1A067BF4005AA2BD /* QLFits3 */,
+				9FF55C3D1A067BF4005AA2BD /* Supporting Files */,
 				9FF55C3B1A067BF4005AA2BD /* Products */,
 				0FB0C020AB7F0F6C6997F8DC /* Pods */,
 				5F80857175C128FA0C69EF83 /* Frameworks */,
@@ -101,7 +103,6 @@
 				9FF55C4D1A067C4E005AA2BD /* Common.m */,
 				9FF55C4E1A067C4E005AA2BD /* DebugLog.h */,
 				9FF55C4F1A067C4E005AA2BD /* DebugLog.m */,
-				9FF55C3D1A067BF4005AA2BD /* Supporting Files */,
 			);
 			path = QLFits3;
 			sourceTree = "<group>";
@@ -109,10 +110,12 @@
 		9FF55C3D1A067BF4005AA2BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9FFD33E91AA4AA4300D0B271 /* README.md */,
 				9FF55C501A067C4E005AA2BD /* template.html */,
 				9FF55C3E1A067BF4005AA2BD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = QLFits3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
