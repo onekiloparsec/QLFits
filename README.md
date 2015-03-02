@@ -1,32 +1,74 @@
 QLFits 3
 ========
 
-_Note: QLFits2 was broken on OX 10.9 Mavericks! This is the new QLFits3._
+_Note: QLFits2 was broken on OX 10.9 Mavericks! This is the new QLFits3. It works for Mavericks (10.9) and up._
 
 QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data.)
 
-QLFits 3 is an entirely new implementation of QLFits, using the open-source project [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO)
-
-*[Download the latest binary.](http://onekilopars.ec/softwares/QLFits3.qlgenerator.tar.gz)*
-
-Put it in _/Library/QuickLook_ or _~/Library/QuickLook_ and run the command, to reset the quicklook daemon (it is safe and instantaneous):
-
-    /bin/sh qlmanage -r
+QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit)
 
 Enjoy seeing the content of your FITS files in the Finder:
 
 <img src="Resources/QLFits3_Finder_Screenshot.png" width=700px>
 <img src="Resources/QLFits3_QL_Window.png" width=700px>
 
+It is released open source under the [GNU General Public Licence](http://en.wikipedia.org/wiki/GNU_General_Public_License).
+
+
+Installation
+------------
+
+*[Download the latest binary.](http://onekilopars.ec/softwares/QLFits3.qlgenerator.tar.gz)*
+
+Put the QLFits3.qlgenerator bundle in _/Library/QuickLook_ or _~/Library/QuickLook_ and run the (safe and instantenous) command: `/bin/sh qlmanage -r` to reset the quicklook daemon. Then, enjoy seeing the content of your FITS files in the Finder:
+
+<img src="Resources/QLFits3_Finder_Screenshot.png" width=700px>
+<img src="Resources/QLFits3_QL_Window.png" width=700px>
+
+
+Contribute!
+-----------
+
+If you want to contibute, you need:
+* A recent Mac
+* A copy of [Xcode](https://itunes.apple.com/fr/app/xcode/id497799835?l=en&mt=12) (Xcode 6, as of now, March 2015, but Xcode 5 should also work)
+* A working installation of [CocoaPods](http://cocoapods.org)
+* Some knowledge of Objective-C and C... and FITS!
+
+Then, 
+
+1. simply fork this project on GitHub, 
+2. Go to the project directory, and run `pod install`
+3. Open the Xcode _workspace_ (and not the .xcodeproj)
+3. make your modifications (I can help), 
+4. test (I can also help, if time permits, business as usual), 
+5. and submit a pull request.
+
+
+How to debug
+------------
+
+In Xcode, you should locate the `qlmanage` binary file, and include it as the "Executable" in the "Run" section of the "QLFits3" scheme. To do so:
+
+* Edit the "QLFits3" scheme in Xcode, select the "Run section"
+* Choose "Other..." in the drop down, a 'Open Dialog' will open.
+* Type `open -a Finder /user/bin/qlmanage` in a Terminal.
+* Drag & Drop the 'qlmanage' executable from the Finder anywhere in the Open Dialog.
+* Click "Choose" and close the dialog.
+
+Now one can "Run" the QLFits3 project from within Xcode. But we haven't yet told it what to do exactly at run. So go back to the QLFits3 scheme, and choose the 'Arguments' tab of the same "Run" section. In the section "Arguments Passed On Launch" add `-p <path/to/any/of/your/fits/file>`
+
+Use `-t` to create thrumbnails instead of previews. You can put multiple entries here, but only the first selected one will be used once qlmanage runs.
+
+<img src="Resources/QLFits3_XcodeScheme1.png" width=700px>
+<img src="Resources/QLFits3_XcodeScheme2.png" width=700px>
+
 
 Project Notes For Developers
 ----------------------------
 
-It is released open source under the [GNU General Public Licence](http://en.wikipedia.org/wiki/GNU_General_Public_License).
 
-The following command line is run at the end of the Xcode build phase to ensure the QuickLook daemon is restarted:
-
-    /bin/sh qlmanage -r
+The following command line is run at the end of the Xcode build phase to ensure the QuickLook daemon is restarted: `/bin/sh qlmanage -r`
     
 Once done, you can enjoy seeing the content of your FITS files directly in the Finder!
 
