@@ -2,7 +2,7 @@
 #include <CoreServices/CoreServices.h>
 #include <QuickLook/QuickLook.h>
 
-#import "ObjCFITSIO.h"
+#import <ObjCFITSIO/ObjCFITSIO.h>
 #import "Common.h"
 #import "cdlzscale.h"
 #import "DebugLog.h"

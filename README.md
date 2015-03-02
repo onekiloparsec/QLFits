@@ -1,3 +1,5 @@
+ [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 QLFits 3
 ========
 
@@ -32,14 +34,13 @@ Contribute!
 If you want to contibute, you need:
 * A recent Mac
 * A copy of [Xcode](https://itunes.apple.com/fr/app/xcode/id497799835?l=en&mt=12) (Xcode 6, as of now, March 2015, but Xcode 5 should also work)
-* A working installation of [CocoaPods](http://cocoapods.org)
+* A working installation of [Carthage](https://github.com/Carthage/Carthage) (Install it with Homebrew: `brew install carthage`)
 * Some knowledge of Objective-C and C... and FITS!
 
 Then, 
 
 1. simply fork this project on GitHub, 
-2. Go to the project directory, and run `pod install`
-3. Open the Xcode _workspace_ (and not the .xcodeproj)
+2. Go to the project directory, and run `carthage update`
 3. make your modifications (I can help), 
 4. test (I can also help, if time permits, business as usual), 
 5. and submit a pull request.

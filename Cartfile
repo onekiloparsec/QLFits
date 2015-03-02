@@ -1,0 +1,3 @@
+github "onekiloparsec/ObjCFITSIO" ~> 0.2
+github "onekiloparsec/AstroCocoaKit" ~> 0.1
+

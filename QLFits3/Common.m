@@ -7,7 +7,7 @@
 //
 
 #import "Common.h"
-#import "ObjCFITSIO.h"
+#import <ObjCFITSIO/ObjCFITSIO.h>
 
 static CGFloat pad = 20.0;
 

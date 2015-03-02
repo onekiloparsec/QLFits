@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		613AD53D9EA6DB75FFF2821B /* libPods-QLFits3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E76B61771709C7A1E95CA59 /* libPods-QLFits3.a */; };
 		9FF55C401A067BF4005AA2BD /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */; };
 		9FF55C421A067BF4005AA2BD /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C411A067BF4005AA2BD /* GeneratePreviewForURL.m */; };
 		9FF55C441A067BF4005AA2BD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C431A067BF4005AA2BD /* main.c */; };
@@ -19,11 +18,30 @@
 		9FF55C561A067C4E005AA2BD /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C4F1A067C4E005AA2BD /* DebugLog.m */; };
 		9FF55C571A067C4E005AA2BD /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 9FF55C501A067C4E005AA2BD /* template.html */; };
 		9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF55C581A067D3D005AA2BD /* AppKit.framework */; };
+		9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */; };
+		9FFD33FB1AA4BD8F00D0B271 /* AstroCocoaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */; };
+		9FFD33FC1AA4BD8F00D0B271 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */; };
+		9FFD33FE1AA4BDB500D0B271 /* AstroCocoaKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FFD33FF1AA4BDB500D0B271 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FFD34011AA4C04000D0B271 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD34001AA4C04000D0B271 /* Cartfile */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9FFD33FD1AA4BD9B00D0B271 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9FFD33FE1AA4BDB500D0B271 /* AstroCocoaKit.framework in CopyFiles */,
+				9FFD33FF1AA4BDB500D0B271 /* ObjCFITSIO.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3BD8111F1BC2E0AA1CBD7C6A /* Pods-QLFits3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3.release.xcconfig"; sourceTree = "<group>"; };
-		4E76B61771709C7A1E95CA59 /* libPods-QLFits3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QLFits3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7E8491F608D40287A1B3AB /* Pods-QLFits3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3.debug.xcconfig"; sourceTree = "<group>"; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF55C3E1A067BF4005AA2BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +57,10 @@
 		9FF55C501A067C4E005AA2BD /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		9FF55C581A067D3D005AA2BD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9FFD33E91AA4AA4300D0B271 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AstroCocoaKit.framework; path = Carthage/Build/Mac/AstroCocoaKit.framework; sourceTree = "<group>"; };
+		9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = "<group>"; };
+		9FFD34001AA4C04000D0B271 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +68,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FFD33FB1AA4BD8F00D0B271 /* AstroCocoaKit.framework in Frameworks */,
+				9FFD33FC1AA4BD8F00D0B271 /* ObjCFITSIO.framework in Frameworks */,
+				9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */,
 				9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */,
-				613AD53D9EA6DB75FFF2821B /* libPods-QLFits3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +90,10 @@
 		5F80857175C128FA0C69EF83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */,
+				9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */,
+				9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */,
 				9FF55C581A067D3D005AA2BD /* AppKit.framework */,
-				4E76B61771709C7A1E95CA59 /* libPods-QLFits3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,6 +139,7 @@
 				9FFD33E91AA4AA4300D0B271 /* README.md */,
 				9FF55C501A067C4E005AA2BD /* template.html */,
 				9FF55C3E1A067BF4005AA2BD /* Info.plist */,
+				9FFD34001AA4C04000D0B271 /* Cartfile */,
 			);
 			name = "Supporting Files";
 			path = QLFits3;
@@ -138,12 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FF55C471A067BF4005AA2BD /* Build configuration list for PBXNativeTarget "QLFits3" */;
 			buildPhases = (
-				9E1544052D779204169521D5 /* Check Pods Manifest.lock */,
 				9FF55C351A067BF4005AA2BD /* Sources */,
 				9FF55C361A067BF4005AA2BD /* Frameworks */,
 				9FF55C371A067BF4005AA2BD /* Headers */,
+				9FFD33FD1AA4BD9B00D0B271 /* CopyFiles */,
 				9FF55C381A067BF4005AA2BD /* Resources */,
-				4772DAFF9CEC69CFAADC9B4B /* Copy Pods Resources */,
 				9FFFEA181A0680D000CA6007 /* Install QuickLook Plugin */,
 			);
 			buildRules = (
@@ -192,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FFD34011AA4C04000D0B271 /* Cartfile in Resources */,
 				9FF55C571A067C4E005AA2BD /* template.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,36 +226,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4772DAFF9CEC69CFAADC9B4B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9E1544052D779204169521D5 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		9FFFEA181A0680D000CA6007 /* Install QuickLook Plugin */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,14 +337,21 @@
 		};
 		9FF55C481A067BF4005AA2BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7E8491F608D40287A1B3AB /* Pods-QLFits3.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-rpath",
+					"@loader_path/../Frameworks/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -356,14 +360,21 @@
 		};
 		9FF55C491A067BF4005AA2BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BD8111F1BC2E0AA1CBD7C6A /* Pods-QLFits3.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-rpath",
+					"@loader_path/../Frameworks/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = qlgenerator;
