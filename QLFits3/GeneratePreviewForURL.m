@@ -20,7 +20,7 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-    DebugLog(@"Previewing %@", (__bridge NSURL *)url);
+    DebugLog(@"[QLFits3] Previewing %@", (__bridge NSURL *)url);
     
     @autoreleasepool {
         NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
@@ -38,19 +38,26 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         NSDictionary *shortSummary = [FITSFile FITSFileShortSummaryWithURL:(__bridge NSURL *)url];
         [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];
         
+        DebugLog(@"[QLFits3] Open FITS file");
         FITSFile *fits = [FITSFile FITSFileWithURL:(__bridge NSURL *)url];
-        [fits open];
+        BOOL success = [fits open];
         
-        if ([fits countOfHDUs] == 0 || QLPreviewRequestIsCancelled(preview)) {
+        // The above might have taken some time, so before proceeding make sure the user didn't cancel the request
+        if (QLPreviewRequestIsCancelled(preview)) return noErr;
+        
+        NSString *templateName = nil;
+        if ([fits countOfHDUs] == 0 || !success) {
             [fits close];
+            templateName = @"template_error";
+            [synthesizedInfo setObject:@"Unable to open FITS file, or count of HDUs is 0" forKey:@"ErrorMessage"];
         }
         else {
+            templateName = @"template";
             NSMutableString *HDULinesString = [NSMutableString string];
             
             for (NSUInteger i = 0; i < MIN(MAX_HDU_COUNT, [fits countOfHDUs]); i++) {
-                // We use "NSUserName" to avoid collisions for plugins installed on whole system in multi-users machines.
-                NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3_%@_HDU%lu.tiff", NSUserName(), i+1];
-                
+                NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3___%@___HDU%lu.tiff", [(__bridge NSURL *)url lastPathComponent], i+1];
+
                 // Table anchor is declared in template.html
                 [HDULinesString appendString:@"\n\t\t<tr><td class=\"HDULine\">\n"];
                 [HDULinesString appendString:@"\t\t<div class=\"container\" id=\"HDU\">\n"];
@@ -59,6 +66,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 [HDULinesString appendString:@"\n\t\t\t<div class=\"header\">\n"];
                 [HDULinesString appendFormat:@"\t\t\t\t<div class=\"label\">HDU %lu", (unsigned long)i];
                 
+                DebugLog(@"[QLFits3] Loading FITS Data of HDU at index %i", i);
+
                 // FITS Data
                 BOOL hasData = [fits syncLoadDataOfHDUAtIndex:i];
                 FITSHDU *hdu = [fits HDUAtIndex:i];
@@ -68,6 +77,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 
                 if (hasData) {
                     if ([hdu type] == FITSHDUTypeImage) {
+                        DebugLog(@"Creating HDU image named '%@'", HDUImageFileName);
+
                         FITSImage *fitsImage = [hdu image];
                         
                         BOOL isEmptySize = FITSIsEmptySize(fitsImage.size);
@@ -77,14 +88,18 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                         if (!isEmptySize) {
                             [titleString appendString:@"&nbsp;&nbsp; –– &nbsp;&nbsp;"];
                         }
+  
+//                        NSURL *imgURL = [NSURL fileURLWithPath:@"/Users/onekiloparsec/Desktop/bug.png"];
+//                        NSImage *img = [[NSImage alloc] initWithContentsOfURL:imgURL];
                         
                         CGSize maxSize = CGSizeMake(800.0, 800.0);
                         NSImage *img = [[NSImage alloc] initWithSize:maxSize];
                         [img lockFocus];
                         
-                        CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+                        CGContextRef context = [[NSGraphicsContext currentContext] CGContext];
                         
                         if ([fitsImage is2D]) {
+                            DebugLog(@"[QLFits3] Drawing a 2D image");
                             [titleString appendFormat:@"Image, size: %@", NSStringFromFITSSize(fitsImage.size)];
                             CGImageRef cgImage = [fitsImage CGImageScaledToSize:maxSize];
                             if (cgImage != NULL) {
@@ -94,6 +109,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                             }
                         }
                         else if ([fitsImage is1D]) {
+                            DebugLog(@"[QLFits3] Drawing a 1D spectrum");
                             FITSSpectrum *spectrum = [fitsImage spectrum];
                             [titleString appendFormat:@"Spectrum, length: %lu", spectrum.numberOfPoints];
                             
@@ -117,8 +133,17 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                         
                         [attachements setObject:attachement forKey:HDUImageFileName];
                         [HDULinesString appendString:titleString];
+                        
+                        NSData *data = [img TIFFRepresentation];
+                        NSBitmapImageRep *bmpRep = [[NSBitmapImageRep alloc] initWithData:data];
+                        NSData *pngData = [bmpRep representationUsingType:NSJPEGFileType properties:nil];
+                        NSString *fileName = [[HDUImageFileName stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpeg"];
+                        [pngData writeToFile:[@"/tmp/" stringByAppendingPathComponent:fileName] atomically:NO];
                     }
                 }
+                
+                // The above might have taken some time, so before proceeding make sure the user didn't cancel the request
+                if (QLPreviewRequestIsCancelled(preview)) return noErr;
                 
                 [HDULinesString appendString:@"</div>\n"]; // div class="label"
                 
@@ -134,7 +159,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 if (hasData) {
                     // FITS Data Div
                     [HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
-                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
+//                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
+                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"/tmp/%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
                     [HDULinesString appendString:@"\t\t\t</div>\n"];
                 }
                 
@@ -173,10 +199,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         }
         
         NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
-        NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
-        [synthesizedInfo setObject:versionString forKey:@"BundleVersion"];
+        //        NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
+        [synthesizedInfo setObject:@"3" forKey:@"BundleVersion"];
         
-        NSURL *htmlURL = [bundle URLForResource:@"template" withExtension:@"html"];
+        NSURL *htmlURL = [bundle URLForResource:templateName withExtension:@"html"];
         NSMutableString *html = [NSMutableString stringWithContentsOfURL:htmlURL encoding:NSUTF8StringEncoding error:NULL];
         
         for (NSString *key in [synthesizedInfo allKeys]) {
@@ -185,15 +211,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             [html replaceOccurrencesOfString:replacementToken withString:replacementValue options:0 range:NSMakeRange(0, [html length])];
         }
         
-//#ifdef DEBUG
-//        NSLog(@"%@", html);
-//#endif
-        
+        DebugLog(@"[QLFits3] Ready to shoot.");
+
         QLPreviewRequestSetDataRepresentation(preview,
                                               (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
                                               kUTTypeHTML,
-                                              (__bridge CFDictionaryRef)previewProperties);
-        
+                                              (__bridge CFDictionaryRef)[previewProperties copy]);
     }
     
     return noErr;

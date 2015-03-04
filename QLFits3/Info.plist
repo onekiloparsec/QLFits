@@ -7,6 +7,23 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>fits</string>
+				<string>fit</string>
+				<string>fts</string>
+				<string>ft</string>
+				<string>mt</string>
+				<string>imfits</string>
+				<string>imfit</string>
+				<string>uvfits</string>
+				<string>uvfit</string>
+				<string>pha</string>
+				<string>rmf</string>
+				<string>arf</string>
+				<string>rsp</string>
+				<string>pi</string>
+			</array>
 			<key>CFBundleTypeRole</key>
 			<string>QLGenerator</string>
 			<key>LSItemContentTypes</key>
@@ -32,71 +49,12 @@
 				<string>dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsv3u</string>
 				<string>org.gnu.gnu-zip-archive</string>
 			</array>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>fits</string>
-				<string>fit</string>
-				<string>fts</string>
-				<string>ft</string>
-				<string>mt</string>
-				<string>imfits</string>
-				<string>imfit</string>
-				<string>uvfits</string>
-				<string>uvfit</string>
-				<string>pha</string>
-				<string>rmf</string>
-				<string>arf</string>
-				<string>rsp</string>
-				<string>pi</string>
-				<string>fits.gz</string>
-				<string>fits.bz2</string>
-			</array>
-		</dict>
-	</array>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.image</string>
-				<string>public.data</string>
-				<string>public.composite-content</string>
-				<string>public.archive</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Flexible Image Transport System file</string>
-			<key>UTTypeIdentifier</key>
-			<string>gov.nasa.gsfc.fits</string>
-			<key>UTTypeReferenceURL</key>
-			<string>http://fits.gsfc.nasa.gov</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>fits</string>
-					<string>fit</string>
-					<string>fts</string>
-					<string>ft</string>
-					<string>mt</string>
-					<string>imfits</string>
-					<string>imfit</string>
-					<string>uvfits</string>
-					<string>uvfit</string>
-					<string>pha</string>
-					<string>rmf</string>
-					<string>arf</string>
-					<string>rsp</string>
-					<string>pi</string>
-					<string>fits.gz</string>
-					<string>fits.bz2</string>
-				</array>
-			</dict>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.onekiloparsec.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.onekiloparsec.QLFits3</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -137,5 +95,44 @@
 	<false/>
 	<key>QLThumbnailMinimumSize</key>
 	<real>17</real>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.image</string>
+				<string>public.data</string>
+				<string>public.item</string>
+				<string>public.composite-content</string>
+				<string>public.archive</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Flexible Image Transport System file</string>
+			<key>UTTypeIdentifier</key>
+			<string>gov.nasa.gsfc.fits</string>
+			<key>UTTypeReferenceURL</key>
+			<string>http://fits.gsfc.nasa.gov</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>fits</string>
+					<string>fit</string>
+					<string>fts</string>
+					<string>ft</string>
+					<string>mt</string>
+					<string>imfits</string>
+					<string>imfit</string>
+					<string>uvfits</string>
+					<string>uvfit</string>
+					<string>pha</string>
+					<string>rmf</string>
+					<string>arf</string>
+					<string>rsp</string>
+					<string>pi</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

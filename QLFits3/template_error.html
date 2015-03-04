@@ -29,6 +29,12 @@
 			font-weight: normal;
 			font-family: HelveticaNeue;
 		}
+        div.label_error {
+            color: red;
+            align: center;
+            font-weight: normal;
+            font-family: HelveticaNeue;
+        }
 		div.header {
 			height: 1.1em;
 			padding: 0.5em;
@@ -157,9 +163,9 @@
 	</div>
 
 	<div class="container">
-		<table style="width:100%">
-			__HDUTableLines__
-		</table>
+        <div class="header">
+            <div class="label_error">__ErrorMessage__</div>
+        </div>
 	</div>
 
 	<div class="container last" id="ad">
