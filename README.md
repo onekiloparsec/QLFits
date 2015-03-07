@@ -1,5 +1,3 @@
- [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
 QLFits 3
 ========
 
@@ -16,6 +14,10 @@ Enjoy seeing the content of your FITS files in the Finder:
 <img src="Resources/QLFits3_QL_Window.png" width=700px>
 
 It is released open source under the [GNU General Public Licence](http://en.wikipedia.org/wiki/GNU_General_Public_License).
+
+QLFits3 open the following extensions: fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi. (See Info.plist file inside QLFits3.qlgenerator in case of doubt.) If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic OSX type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognizes.
+
+QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
 
 
 Installation
@@ -76,4 +78,31 @@ Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImport
 
 * QuickLook plug-ins sometimes don't like to install. Learn to use "qlmanage -r" to reset the daemon. Using "qlmanage -m plugins" will tell you if the plug-in has been recognized. Sometimes you have to login and out before the plug-in is recognized.
 
+
+OSX dynamic types
+-----------------
+
+For custom or special file extensions, OSX assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extension.) To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
+
+List of known extensions: (See Info.plist file inside QLFits3.qlgenerator for the exact list):
+
+* gov.nasa.gsfc.fits
+* gov.nasa.gsfc.fits-header
+* com.sao.SAOImageDS9
+* dyn.ah62d4rv4ge80q4pysq
+* dyn.ah62d4rv4ge80q4py
+* dyn.ah62d4rv4ge80q7a
+* dyn.ah62d4rv4ge8047a
+* dyn.ah62d4rv4ge81a4db
+* dyn.ah62d4rv4ge80c6xg
+* dyn.ah62d4rv4ge81e5pg
+* dyn.ah62d4rv4ge81e65u
+* dyn.ah62d4rv4ge81a4k
+* dyn.ah62d4rv4ge80w5pgrf4a
+* dyn.ah62d4rv4ge81n7xgrf4a
+* dyn.ah62d4rv4ge80w5pgrf4hg
+* dyn.ah62d4rv4ge81n7xgrf4hg
+* dyn.ah62d4rv4ge80262
+* dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsu
+* dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsv3u
 
