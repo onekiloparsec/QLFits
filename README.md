@@ -12,10 +12,12 @@ Enjoy seeing the content of your FITS files in the Finder:
 
 <img src="Resources/QLFits3_Finder_Screenshot.png" width=700px>
 <img src="Resources/QLFits3_QL_Window.png" width=700px>
+<img src="Resources/QLFits3_QL_Window2.png" width=700px>
+<img src="Resources/QLFits3_QL_Window3.png" width=700px>
 
 It is released open source under the [GNU General Public Licence](http://en.wikipedia.org/wiki/GNU_General_Public_License).
 
-QLFits3 open the following extensions: fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi. (See Info.plist file inside QLFits3.qlgenerator in case of doubt.) If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic OSX type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognizes.
+QLFits3 open the following extensions: fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi. (See Info.plist file inside QLFits3.qlgenerator in case of doubt.) If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic OSX type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
 
 QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
 
