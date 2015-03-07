@@ -202,9 +202,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             [synthesizedInfo setObject:HDULinesString forKey:@"HDUTableLines"];
         }
         
+        // This NEVER works in debug???
         NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
-        //        NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
-        [synthesizedInfo setObject:@"3" forKey:@"BundleVersion"];
+        NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];        
+        [synthesizedInfo setObject:versionString forKey:@"BundleVersion"];
         
         NSURL *htmlURL = [bundle URLForResource:templateName withExtension:@"html"];
         NSMutableString *html = [NSMutableString stringWithContentsOfURL:htmlURL encoding:NSUTF8StringEncoding error:NULL];

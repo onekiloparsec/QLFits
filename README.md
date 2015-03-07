@@ -21,7 +21,7 @@ It is released open source under the [GNU General Public Licence](http://en.wiki
 Installation
 ------------
 
-*[Download the latest binary (3.0.2)](http://onekilopars.ec/softwares/QLFits3.qlgenerator.zip)*
+*[Download the latest binary](http://onekilopars.ec/softwares/QLFits3.qlgenerator.zip)*
 
 Put the QLFits3.qlgenerator bundle in _/Library/QuickLook_ (not in _~/Library/QuickLook_) and run the (safe and instantenous) command: `/bin/sh qlmanage -r` to reset the quicklook daemon. 
 
