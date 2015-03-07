@@ -42,8 +42,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3BD8111F1BC2E0AA1CBD7C6A /* Pods-QLFits3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3.release.xcconfig"; sourceTree = "<group>"; };
-		5B7E8491F608D40287A1B3AB /* Pods-QLFits3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3.debug.xcconfig"; sourceTree = "<group>"; };
 		9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = "<group>"; };
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,15 +78,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FB0C020AB7F0F6C6997F8DC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5B7E8491F608D40287A1B3AB /* Pods-QLFits3.debug.xcconfig */,
-				3BD8111F1BC2E0AA1CBD7C6A /* Pods-QLFits3.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		5F80857175C128FA0C69EF83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +95,6 @@
 				9FF55C3C1A067BF4005AA2BD /* QLFits3 */,
 				9FF55C3D1A067BF4005AA2BD /* Supporting Files */,
 				9FF55C3B1A067BF4005AA2BD /* Products */,
-				0FB0C020AB7F0F6C6997F8DC /* Pods */,
 				5F80857175C128FA0C69EF83 /* Frameworks */,
 			);
 			sourceTree = "<group>";

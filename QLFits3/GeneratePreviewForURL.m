@@ -57,8 +57,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             NSMutableString *HDULinesString = [NSMutableString string];
             
             for (NSUInteger i = 0; i < MIN(MAX_HDU_COUNT, [fits countOfHDUs]); i++) {
+#if ATTACH_IMAGES
                 NSString *rawFileName = [[(__bridge NSURL *)url lastPathComponent] stringByReplacingOccurrencesOfString:@"." withString:@"_"];
                 NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3___%@___HDU%lu.tiff", rawFileName, i+1];
+#endif
                 NSString *HDUImageString = nil;
 
                 // Table anchor is declared in template.html
