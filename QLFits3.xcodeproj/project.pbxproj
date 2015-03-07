@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F1B47F11AA7AA3E000C0B59 /* QLFits3.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 9F1B47F01AA7AA3E000C0B59 /* QLFits3.entitlements */; };
+		9F087E6D1AAB5627001497A2 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */; };
+		9F087E6E1AAB562F001497A2 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F276CC61AA7BD1500038036 /* template_error.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F276CC51AA7BD1500038036 /* template_error.html */; };
 		9FF55C401A067BF4005AA2BD /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */; };
 		9FF55C421A067BF4005AA2BD /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C411A067BF4005AA2BD /* GeneratePreviewForURL.m */; };
@@ -22,9 +23,7 @@
 		9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF55C581A067D3D005AA2BD /* AppKit.framework */; };
 		9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */; };
 		9FFD33FB1AA4BD8F00D0B271 /* AstroCocoaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */; };
-		9FFD33FC1AA4BD8F00D0B271 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */; };
 		9FFD33FE1AA4BDB500D0B271 /* AstroCocoaKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9FFD33FF1AA4BDB500D0B271 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FFD34011AA4C04000D0B271 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD34001AA4C04000D0B271 /* Cartfile */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +34,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9F087E6E1AAB562F001497A2 /* ObjCFITSIO.framework in CopyFiles */,
 				9FFD33FE1AA4BDB500D0B271 /* AstroCocoaKit.framework in CopyFiles */,
-				9FFD33FF1AA4BDB500D0B271 /* ObjCFITSIO.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +44,7 @@
 /* Begin PBXFileReference section */
 		3BD8111F1BC2E0AA1CBD7C6A /* Pods-QLFits3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.release.xcconfig"; path = "Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3.release.xcconfig"; sourceTree = "<group>"; };
 		5B7E8491F608D40287A1B3AB /* Pods-QLFits3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QLFits3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QLFits3/Pods-QLFits3.debug.xcconfig"; sourceTree = "<group>"; };
-		9F1B47F01AA7AA3E000C0B59 /* QLFits3.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QLFits3.entitlements; sourceTree = SOURCE_ROOT; };
+		9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = "<group>"; };
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF55C3E1A067BF4005AA2BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +62,6 @@
 		9FFD33E91AA4AA4300D0B271 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AstroCocoaKit.framework; path = Carthage/Build/Mac/AstroCocoaKit.framework; sourceTree = "<group>"; };
-		9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = "<group>"; };
 		9FFD34001AA4C04000D0B271 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -73,7 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FFD33FB1AA4BD8F00D0B271 /* AstroCocoaKit.framework in Frameworks */,
-				9FFD33FC1AA4BD8F00D0B271 /* ObjCFITSIO.framework in Frameworks */,
+				9F087E6D1AAB5627001497A2 /* ObjCFITSIO.framework in Frameworks */,
 				9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */,
 				9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */,
 			);
@@ -94,8 +92,8 @@
 		5F80857175C128FA0C69EF83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */,
 				9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */,
-				9FFD33FA1AA4BD8F00D0B271 /* ObjCFITSIO.framework */,
 				9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */,
 				9FF55C581A067D3D005AA2BD /* AppKit.framework */,
 			);
@@ -145,7 +143,6 @@
 				9F276CC51AA7BD1500038036 /* template_error.html */,
 				9FF55C3E1A067BF4005AA2BD /* Info.plist */,
 				9FFD34001AA4C04000D0B271 /* Cartfile */,
-				9F1B47F01AA7AA3E000C0B59 /* QLFits3.entitlements */,
 			);
 			name = "Supporting Files";
 			path = QLFits3;
@@ -224,7 +221,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F1B47F11AA7AA3E000C0B59 /* QLFits3.entitlements in Resources */,
 				9FFD34011AA4C04000D0B271 /* Cartfile in Resources */,
 				9FF55C571A067C4E005AA2BD /* template.html in Resources */,
 				9F276CC61AA7BD1500038036 /* template_error.html in Resources */,
@@ -284,8 +280,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = QLFits3.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -302,10 +297,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
+				OTHER_CODE_SIGN_FLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -327,8 +322,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = QLFits3.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_ENTITLEMENTS = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -340,9 +334,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
+				OTHER_CODE_SIGN_FLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -350,22 +344,19 @@
 		9FF55C481A067BF4005AA2BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/QLFits3-frqqegoraideifhczwyqawqxqgbp/Build/Products/Debug",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-rpath",
 					"@loader_path/../Frameworks/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -373,22 +364,19 @@
 		9FF55C491A067BF4005AA2BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/QLFits3-frqqegoraideifhczwyqawqxqgbp/Build/Products/Debug",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-rpath",
 					"@loader_path/../Frameworks/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;

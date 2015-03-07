@@ -53,7 +53,7 @@ void DrawObjectName(CGContextRef context, CGSize canvasSize, NSString *objectNam
 {
 	if (objectName != nil && [objectName length] > 0) {
 		const char *objName = [objectName UTF8String];
-		CGFloat fontPoint = (forSpectrum) ? 128.0 : 24.0;
+		CGFloat fontPoint = (forSpectrum && forThumbnail) ? 56.0 : 24.0;
 		CGContextSelectFont(context, "Futura", fontPoint, kCGEncodingMacRoman);
 		CGContextSetTextDrawingMode(context, kCGTextFillStroke);
 		CGContextSetRGBStrokeColor(context, 1., 1., 1., 0.6);

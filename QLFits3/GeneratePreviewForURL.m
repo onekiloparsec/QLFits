@@ -8,6 +8,7 @@
 #import "DebugLog.h"
 
 #define MAX_HDU_COUNT 10
+#define ATTACH_IMAGES NO
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
@@ -40,13 +41,13 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         
         DebugLog(@"[QLFits3] Open FITS file");
         FITSFile *fits = [FITSFile FITSFileWithURL:(__bridge NSURL *)url];
-        BOOL success = [fits open];
+        CFITSIO_STATUS status = [fits open];
         
         // The above might have taken some time, so before proceeding make sure the user didn't cancel the request
         if (QLPreviewRequestIsCancelled(preview)) return noErr;
         
         NSString *templateName = nil;
-        if ([fits countOfHDUs] == 0 || !success) {
+        if ([fits countOfHDUs] == 0 || status != CFITSIO_STATUS_OK) {
             [fits close];
             templateName = @"template_error";
             [synthesizedInfo setObject:@"Unable to open FITS file, or count of HDUs is 0" forKey:@"ErrorMessage"];
@@ -56,7 +57,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             NSMutableString *HDULinesString = [NSMutableString string];
             
             for (NSUInteger i = 0; i < MIN(MAX_HDU_COUNT, [fits countOfHDUs]); i++) {
-                NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3___%@___HDU%lu.tiff", [(__bridge NSURL *)url lastPathComponent], i+1];
+                NSString *rawFileName = [[(__bridge NSURL *)url lastPathComponent] stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+                NSString *HDUImageFileName = [NSString stringWithFormat:@"QLFits3___%@___HDU%lu.tiff", rawFileName, i+1];
+                NSString *HDUImageString = nil;
 
                 // Table anchor is declared in template.html
                 [HDULinesString appendString:@"\n\t\t<tr><td class=\"HDULine\">\n"];
@@ -88,10 +91,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                         if (!isEmptySize) {
                             [titleString appendString:@"&nbsp;&nbsp; –– &nbsp;&nbsp;"];
                         }
-  
-//                        NSURL *imgURL = [NSURL fileURLWithPath:@"/Users/onekiloparsec/Desktop/bug.png"];
-//                        NSImage *img = [[NSImage alloc] initWithContentsOfURL:imgURL];
-                        
+                          
                         CGSize maxSize = CGSizeMake(800.0, 800.0);
                         NSImage *img = [[NSImage alloc] initWithSize:maxSize];
                         [img lockFocus];
@@ -128,17 +128,16 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                         CGContextFlush(context);
                         [img unlockFocus];
                         
+#if ATTACH_IMAGES
                         NSDictionary *attachement = @{(__bridge NSString *)kQLPreviewPropertyMIMETypeKey: @"image/tiff",
                             (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: [img TIFFRepresentation]};
                         
                         [attachements setObject:attachement forKey:HDUImageFileName];
                         [HDULinesString appendString:titleString];
-                        
-                        NSData *data = [img TIFFRepresentation];
-                        NSBitmapImageRep *bmpRep = [[NSBitmapImageRep alloc] initWithData:data];
-                        NSData *pngData = [bmpRep representationUsingType:NSJPEGFileType properties:nil];
-                        NSString *fileName = [[HDUImageFileName stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpeg"];
-                        [pngData writeToFile:[@"/tmp/" stringByAppendingPathComponent:fileName] atomically:NO];
+#else
+                        NSString *base64 = [[NSString alloc] initWithData:[[img TIFFRepresentation] base64EncodedDataWithOptions:0] encoding:NSUTF8StringEncoding];
+                        HDUImageString = [NSString stringWithFormat:@"data:image/tiff;base64,%@", base64];
+#endif
                     }
                 }
                 
@@ -156,11 +155,14 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 
                 [HDULinesString appendString:@"\t\t\t</div>\n\n"]; // HDULine header.
                 
-                if (hasData) {
+                if (hasData && HDUImageString) {
                     // FITS Data Div
                     [HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
-//                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"cid:%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
-                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"/tmp/%@\" border=0 width=100%% /></div>\n", HDUImageFileName];
+#if ATTACH_IMAGES
+                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"%@:%@\" border=0 width=100%% /></div>\n", kQLPreviewContentIDScheme, HDUImageFileName];
+#else
+                    [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"%@\" border=0 width=100%% /></div>\n", HDUImageString];
+#endif
                     [HDULinesString appendString:@"\t\t\t</div>\n"];
                 }
                 
