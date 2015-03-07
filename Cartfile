@@ -1,3 +1,2 @@
-github "onekiloparsec/ObjCFITSIO" ~> 0.2
-github "onekiloparsec/AstroCocoaKit" ~> 0.1
-
+github "onekiloparsec/AstroCocoaKit" "0.1.2"
+github "onekiloparsec/ObjCFITSIO" "0.2.10"
