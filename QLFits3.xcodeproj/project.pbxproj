@@ -44,6 +44,7 @@
 /* Begin PBXFileReference section */
 		9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = "<group>"; };
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
+		9F69F7391AB073E700F85482 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = install.sh; path = Scripts/install.sh; sourceTree = SOURCE_ROOT; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF55C3E1A067BF4005AA2BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 				9F276CC51AA7BD1500038036 /* template_error.html */,
 				9FF55C3E1A067BF4005AA2BD /* Info.plist */,
 				9FFD34001AA4C04000D0B271 /* Cartfile */,
+				9F69F7391AB073E700F85482 /* install.sh */,
 			);
 			name = "Supporting Files";
 			path = QLFits3;
