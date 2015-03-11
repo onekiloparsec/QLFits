@@ -1,14 +1,25 @@
 QLFits 3
 ========
 
-_Note: QLFits2 was broken on OX 10.9 Mavericks! This is the new QLFits3. It works for Mavericks (10.9) and up._
-_Update (March 2015): QLFits3 had some troubles displaying images. It was due to a bug in OSX 10.10 Yosemite (and 10.9 Mavericks). It has been worked around._
+**One-line Installer**: Copy-paste the following command into a Terminal window: 
 
-QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data.)
+`curl -fsSL https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh | sh`
 
-QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit)
 
-Enjoy seeing the content of your FITS files in the Finder:
+Description
+-----------
+
+**Update (March 2015):** QLFits3 had some troubles displaying images. It was due to a bug in OSX 10.10 Yosemite (and 10.9 Mavericks). It has been worked around.
+
+QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data). It is for OSX 10.8 and up.
+
+QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit) written by yours truly.
+
+QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi**. If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic OSX type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
+
+QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
+
+Et voilà! Enjoy seeing the content of your FITS files in the Finder:
 
 <img src="Resources/QLFits3_Finder_Screenshot.png" width=700px>
 <img src="Resources/QLFits3_QL_Window.png" width=700px>
@@ -16,10 +27,6 @@ Enjoy seeing the content of your FITS files in the Finder:
 <img src="Resources/QLFits3_QL_Window3.png" width=700px>
 
 It is released open source under the [GNU General Public Licence](http://en.wikipedia.org/wiki/GNU_General_Public_License).
-
-QLFits3 open the following extensions: fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi. (See Info.plist file inside QLFits3.qlgenerator in case of doubt.) If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic OSX type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
-
-QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
 
 
 Installation
@@ -84,7 +91,7 @@ Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImport
 OSX dynamic types
 -----------------
 
-For custom or special file extensions, OSX assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extension.) To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
+For custom or special file extensions, OSX assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extensions). See Info.plist file inside QLFits3.qlgenerator in case of doubt. To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
 
 List of known extensions: (See Info.plist file inside QLFits3.qlgenerator for the exact list):
 
