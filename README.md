@@ -1,7 +1,7 @@
 QLFits 3
 ========
 
-**One-line Installer**: Copy-paste the following command into a Terminal window (click [https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh](here) to check that it is harmless): 
+**One-line Installer**: Copy-paste the following command into a Terminal window (click [here](https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh) to check that it is harmless): 
 
 `curl -fsSL https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh | sh`
 
