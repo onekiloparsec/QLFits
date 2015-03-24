@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F087E6D1AAB5627001497A2 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */; };
-		9F087E6E1AAB562F001497A2 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F276CC61AA7BD1500038036 /* template_error.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F276CC51AA7BD1500038036 /* template_error.html */; };
 		9FF55C401A067BF4005AA2BD /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */; };
 		9FF55C421A067BF4005AA2BD /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C411A067BF4005AA2BD /* GeneratePreviewForURL.m */; };
@@ -22,9 +20,8 @@
 		9FF55C571A067C4E005AA2BD /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 9FF55C501A067C4E005AA2BD /* template.html */; };
 		9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF55C581A067D3D005AA2BD /* AppKit.framework */; };
 		9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */; };
-		9FFD33FB1AA4BD8F00D0B271 /* AstroCocoaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */; };
-		9FFD33FE1AA4BDB500D0B271 /* AstroCocoaKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9FFD34011AA4C04000D0B271 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 9FFD34001AA4C04000D0B271 /* Cartfile */; };
+		9FFD60631AC191E9000F2F94 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */; };
+		9FFD60641AC191F8000F2F94 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,15 +31,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9F087E6E1AAB562F001497A2 /* ObjCFITSIO.framework in CopyFiles */,
-				9FFD33FE1AA4BDB500D0B271 /* AstroCocoaKit.framework in CopyFiles */,
+				9FFD60641AC191F8000F2F94 /* ObjCFITSIO.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = "<group>"; };
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
 		9F69F7391AB073E700F85482 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = install.sh; path = Scripts/install.sh; sourceTree = SOURCE_ROOT; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,8 +55,7 @@
 		9FF55C581A067D3D005AA2BD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9FFD33E91AA4AA4300D0B271 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AstroCocoaKit.framework; path = Carthage/Build/Mac/AstroCocoaKit.framework; sourceTree = "<group>"; };
-		9FFD34001AA4C04000D0B271 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjCFITSIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFD33FB1AA4BD8F00D0B271 /* AstroCocoaKit.framework in Frameworks */,
-				9F087E6D1AAB5627001497A2 /* ObjCFITSIO.framework in Frameworks */,
+				9FFD60631AC191E9000F2F94 /* ObjCFITSIO.framework in Frameworks */,
 				9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */,
 				9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */,
 			);
@@ -82,8 +75,7 @@
 		5F80857175C128FA0C69EF83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9F087E641AAB5513001497A2 /* ObjCFITSIO.framework */,
-				9FFD33F91AA4BD8F00D0B271 /* AstroCocoaKit.framework */,
+				9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */,
 				9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */,
 				9FF55C581A067D3D005AA2BD /* AppKit.framework */,
 			);
@@ -131,7 +123,6 @@
 				9FF55C501A067C4E005AA2BD /* template.html */,
 				9F276CC51AA7BD1500038036 /* template_error.html */,
 				9FF55C3E1A067BF4005AA2BD /* Info.plist */,
-				9FFD34001AA4C04000D0B271 /* Cartfile */,
 				9F69F7391AB073E700F85482 /* install.sh */,
 			);
 			name = "Supporting Files";
@@ -211,7 +202,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FFD34011AA4C04000D0B271 /* Cartfile in Resources */,
 				9FF55C571A067C4E005AA2BD /* template.html in Resources */,
 				9F276CC61AA7BD1500038036 /* template_error.html in Resources */,
 			);

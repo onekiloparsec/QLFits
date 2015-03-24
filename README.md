@@ -43,16 +43,15 @@ Contribute!
 If you want to contibute, you need:
 * A recent Mac
 * A copy of [Xcode](https://itunes.apple.com/fr/app/xcode/id497799835?l=en&mt=12) (Xcode 6, as of now, March 2015, but Xcode 5 should also work)
-* A working installation of [Carthage](https://github.com/Carthage/Carthage) (Install it with [Homebrew](http://brew.sh): `brew install carthage`)
+* A clone of [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO.git) at the same level of the QLFits folder.
 * Some knowledge of Objective-C and C... and FITS!
 
 Then, 
 
-1. simply fork this project on GitHub, 
-2. Go to the project directory, and run `carthage update`
-3. Open QLFits3.xcproj and make your modifications (I can help), 
-4. Test – see Debugt below (I can also help, if time permits, business as usual), 
-5. Submit a pull request (via GitHub)!
+1. Simply fork this project on GitHub, 
+2. Open QLFits3.xc**workspace** (and not *xcodeproj*) and make your modifications (I can help), 
+3. Test – see Debug below (I can also help, if time permits, business as usual), 
+4. Submit a pull request (via GitHub)!
 
 
 How to debug

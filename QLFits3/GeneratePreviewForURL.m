@@ -82,7 +82,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 
                 if (hasData) {
                     if ([hdu type] == FITSHDUTypeImage) {
-                        DebugLog(@"Creating HDU image named '%@'", HDUImageFileName);
+                        DebugLog(@"Creating HDU image");
 
                         FITSImage *fitsImage = [hdu image];
                         
