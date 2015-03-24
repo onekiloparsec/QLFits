@@ -34,7 +34,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         [previewProperties setObject:attachements forKey:(__bridge NSString *)kQLPreviewPropertyAttachmentsKey];
         
         NSMutableDictionary *synthesizedInfo = [NSMutableDictionary dictionary];
-        [synthesizedInfo setObject:[[(__bridge NSURL *)url absoluteString] lastPathComponent] forKey:@"FileName"];
+        [synthesizedInfo setObject:[[(__bridge NSURL *)url path] lastPathComponent] forKey:@"FileName"];
         
         NSDictionary *shortSummary = [FITSFile FITSFileShortSummaryWithURL:(__bridge NSURL *)url];
         [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];

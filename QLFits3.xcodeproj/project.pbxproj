@@ -327,7 +327,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/QLFits3-frqqegoraideifhczwyqawqxqgbp/Build/Products/Debug",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
@@ -347,7 +346,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/QLFits3-frqqegoraideifhczwyqawqxqgbp/Build/Products/Debug",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
