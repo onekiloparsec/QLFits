@@ -23,6 +23,11 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 {
     DebugLog(@"[QLFits3] Previewing %@", (__bridge NSURL *)url);
     
+    // This NEVER works in debug???
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
+    NSURL *urlConfig = [NSURL fileURLWithPath:[[bundle bundlePath] stringByAppendingPathComponent:@"QLFitsConfig.app"]];
+    LSRegisterURL((__bridge CFURLRef) urlConfig, false);
+
     @autoreleasepool {
         NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
         [previewProperties setObject:@"UTF-8" forKey:(__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey];
@@ -39,6 +44,11 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         NSDictionary *shortSummary = [FITSFile FITSFileShortSummaryWithURL:(__bridge NSURL *)url];
         [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];
         
+        NSMutableString *options = [NSMutableString string];
+        [options appendString:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" onClick=\"saveConfig(this);return true;\" />"];
+        [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(Unchecked, HDUs with no data will appear empty)</span></div>"];
+        [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
+
         DebugLog(@"[QLFits3] Open FITS file");
         FITSFile *fits = [FITSFile FITSFileWithURL:(__bridge NSURL *)url];
         CFITSIO_STATUS status = [fits open];
@@ -202,9 +212,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             [synthesizedInfo setObject:HDULinesString forKey:@"HDUTableLines"];
         }
         
-        // This NEVER works in debug???
-        NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
-        NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];        
+        NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
         [synthesizedInfo setObject:versionString forKey:@"BundleVersion"];
         
         NSURL *htmlURL = [bundle URLForResource:templateName withExtension:@"html"];

@@ -91,6 +91,31 @@
 		div.summary > a {
 			color: #6aa1d3;
 		}
+        
+        div.options_header {
+            height: 1.1em;
+            padding: 0.5em;
+            border-radius: 3px 3px 0 0;
+            background-color: #eee;
+        }
+        
+        div.OptionTitle {
+            width: auto;
+            text-align: left;
+            color: #000;
+            float: left;
+        }
+        span.OptionSubtitle {
+            width: auto;
+            text-align: left;
+            color: #666;
+            font-size: 0.9em;
+            clear: right;
+        }
+        input.OptionInput {
+            float:right;
+            clear:both;
+        }
 
 		div#header_info > div.header {
 			font-weight: bold;
@@ -131,28 +156,19 @@
 		}
 		</style>
 		<script>
-			function toggleDetails(i) {
-				var buttonElement = document.getElementById('toggle_button'+i);
-				var headerElement = document.getElementById('HDUHeader'+i);
-				var dataElement = document.getElementById('HDUData'+i);
-				if (dataElement.style.display == 'none') {
-					dataElement.style.display = 'block';
-					headerElement.style.display = 'none';
-					buttonElement.innerHTML = 'Show Header';
-				}
-				else {
-					dataElement.style.display = 'none';
-					headerElement.style.display = 'block ';
-					buttonElement.innerHTML = 'Show Data';
-				}
-			}
+            function saveConfig (a) {
+                console.log("HEY!!!");
+                a.href  = "qlfitsconfig://save";
+                a.href += "/alwaysShowHeaders=" + document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
+            }
 		</script>
 	</head>
 	<body>
+        
 	<div class="container" id="header_info">
 		<div class="header">
 			<div class="label" id="filename">__FileName__</div>
-			<div class="detail" id="uuid">__ContentSummary__</div>
+			<div class="detail" id="summary">__ContentSummary__</div>
 		</div>
 	</div>
 
@@ -161,6 +177,15 @@
 			__HDUTableLines__
 		</table>
 	</div>
+
+    <div class="container" id="options">
+        <div class="header">
+            <div class="label">QuickLook Options</div>
+        </div>
+        <div class="options_header">
+            __QuickLookOptions__
+        </div>
+    </div>
 
 	<div class="container last" id="ad">
 		<div class="header">

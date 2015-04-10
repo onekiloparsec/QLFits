@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9F276CC61AA7BD1500038036 /* template_error.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F276CC51AA7BD1500038036 /* template_error.html */; };
+		9F9EAACB1AD50B2600EE2C25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAACA1AD50B2600EE2C25 /* AppDelegate.m */; };
+		9F9EAACD1AD50B2600EE2C25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAACC1AD50B2600EE2C25 /* main.m */; };
+		9F9EAADE1AD50B2600EE2C25 /* QLFitsConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAADD1AD50B2600EE2C25 /* QLFitsConfigTests.m */; };
+		9FA598CB1AD81DBF00A9F265 /* QLFitsConfig.app in Copy Config App */ = {isa = PBXBuildFile; fileRef = 9F9EAAC51AD50B2600EE2C25 /* QLFitsConfig.app */; };
 		9FF55C401A067BF4005AA2BD /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */; };
 		9FF55C421A067BF4005AA2BD /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C411A067BF4005AA2BD /* GeneratePreviewForURL.m */; };
 		9FF55C441A067BF4005AA2BD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C431A067BF4005AA2BD /* main.c */; };
@@ -24,7 +28,35 @@
 		9FFD60641AC191F8000F2F94 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9F9EAAD81AD50B2600EE2C25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FF55C311A067BF4005AA2BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F9EAAC41AD50B2600EE2C25;
+			remoteInfo = QLFitsConfig;
+		};
+		9FA598C81AD81D5500A9F265 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9FF55C311A067BF4005AA2BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F9EAAC41AD50B2600EE2C25;
+			remoteInfo = QLFitsConfig;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		9FA598CA1AD81D7200A9F265 /* Copy Config App */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Helpers";
+			dstSubfolderSpec = 0;
+			files = (
+				9FA598CB1AD81DBF00A9F265 /* QLFitsConfig.app in Copy Config App */,
+			);
+			name = "Copy Config App";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FFD33FD1AA4BD9B00D0B271 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -40,6 +72,14 @@
 /* Begin PBXFileReference section */
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
 		9F69F7391AB073E700F85482 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = install.sh; path = Scripts/install.sh; sourceTree = SOURCE_ROOT; };
+		9F9EAAC51AD50B2600EE2C25 /* QLFitsConfig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QLFitsConfig.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9EAAC81AD50B2600EE2C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F9EAAC91AD50B2600EE2C25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9F9EAACA1AD50B2600EE2C25 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9F9EAACC1AD50B2600EE2C25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9F9EAAD71AD50B2600EE2C25 /* QLFitsConfigTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFitsConfigTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9EAADC1AD50B2600EE2C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F9EAADD1AD50B2600EE2C25 /* QLFitsConfigTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLFitsConfigTests.m; sourceTree = "<group>"; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF55C3E1A067BF4005AA2BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
@@ -59,6 +99,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9F9EAAC21AD50B2600EE2C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F9EAAD41AD50B2600EE2C25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FF55C361A067BF4005AA2BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,11 +136,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9F9EAAC61AD50B2600EE2C25 /* QLFitsConfig */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EAAC91AD50B2600EE2C25 /* AppDelegate.h */,
+				9F9EAACA1AD50B2600EE2C25 /* AppDelegate.m */,
+				9F9EAAC71AD50B2600EE2C25 /* Supporting Files */,
+			);
+			path = QLFitsConfig;
+			sourceTree = "<group>";
+		};
+		9F9EAAC71AD50B2600EE2C25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EAAC81AD50B2600EE2C25 /* Info.plist */,
+				9F9EAACC1AD50B2600EE2C25 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9F9EAADA1AD50B2600EE2C25 /* QLFitsConfigTests */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EAADD1AD50B2600EE2C25 /* QLFitsConfigTests.m */,
+				9F9EAADB1AD50B2600EE2C25 /* Supporting Files */,
+			);
+			path = QLFitsConfigTests;
+			sourceTree = "<group>";
+		};
+		9F9EAADB1AD50B2600EE2C25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9F9EAADC1AD50B2600EE2C25 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9FF55C301A067BF4005AA2BD = {
 			isa = PBXGroup;
 			children = (
 				9FF55C3C1A067BF4005AA2BD /* QLFits3 */,
 				9FF55C3D1A067BF4005AA2BD /* Supporting Files */,
+				9F9EAAC61AD50B2600EE2C25 /* QLFitsConfig */,
+				9F9EAADA1AD50B2600EE2C25 /* QLFitsConfigTests */,
 				9FF55C3B1A067BF4005AA2BD /* Products */,
 				5F80857175C128FA0C69EF83 /* Frameworks */,
 			);
@@ -96,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */,
+				9F9EAAC51AD50B2600EE2C25 /* QLFitsConfig.app */,
+				9F9EAAD71AD50B2600EE2C25 /* QLFitsConfigTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +239,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9F9EAAC41AD50B2600EE2C25 /* QLFitsConfig */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F9EAAE31AD50B2600EE2C25 /* Build configuration list for PBXNativeTarget "QLFitsConfig" */;
+			buildPhases = (
+				9F9EAAC11AD50B2600EE2C25 /* Sources */,
+				9F9EAAC21AD50B2600EE2C25 /* Frameworks */,
+				9F9EAAC31AD50B2600EE2C25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QLFitsConfig;
+			productName = QLFitsConfig;
+			productReference = 9F9EAAC51AD50B2600EE2C25 /* QLFitsConfig.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9F9EAAD61AD50B2600EE2C25 /* QLFitsConfigTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F9EAAE41AD50B2600EE2C25 /* Build configuration list for PBXNativeTarget "QLFitsConfigTests" */;
+			buildPhases = (
+				9F9EAAD31AD50B2600EE2C25 /* Sources */,
+				9F9EAAD41AD50B2600EE2C25 /* Frameworks */,
+				9F9EAAD51AD50B2600EE2C25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F9EAAD91AD50B2600EE2C25 /* PBXTargetDependency */,
+			);
+			name = QLFitsConfigTests;
+			productName = QLFitsConfigTests;
+			productReference = 9F9EAAD71AD50B2600EE2C25 /* QLFitsConfigTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9FF55C391A067BF4005AA2BD /* QLFits3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FF55C471A067BF4005AA2BD /* Build configuration list for PBXNativeTarget "QLFits3" */;
@@ -154,11 +283,13 @@
 				9FF55C371A067BF4005AA2BD /* Headers */,
 				9FFD33FD1AA4BD9B00D0B271 /* CopyFiles */,
 				9FF55C381A067BF4005AA2BD /* Resources */,
+				9FA598CA1AD81D7200A9F265 /* Copy Config App */,
 				9FFFEA181A0680D000CA6007 /* Install QuickLook Plugin */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9FA598C91AD81D5500A9F265 /* PBXTargetDependency */,
 			);
 			name = QLFits3;
 			productName = QLFits3;
@@ -174,6 +305,13 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = onekiloparsec;
 				TargetAttributes = {
+					9F9EAAC41AD50B2600EE2C25 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					9F9EAAD61AD50B2600EE2C25 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 9F9EAAC41AD50B2600EE2C25;
+					};
 					9FF55C391A067BF4005AA2BD = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = MD266WQ2E2;
@@ -186,6 +324,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 9FF55C301A067BF4005AA2BD;
 			productRefGroup = 9FF55C3B1A067BF4005AA2BD /* Products */;
@@ -193,11 +332,27 @@
 			projectRoot = "";
 			targets = (
 				9FF55C391A067BF4005AA2BD /* QLFits3 */,
+				9F9EAAC41AD50B2600EE2C25 /* QLFitsConfig */,
+				9F9EAAD61AD50B2600EE2C25 /* QLFitsConfigTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9F9EAAC31AD50B2600EE2C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F9EAAD51AD50B2600EE2C25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FF55C381A067BF4005AA2BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +382,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9F9EAAC11AD50B2600EE2C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F9EAACD1AD50B2600EE2C25 /* main.m in Sources */,
+				9F9EAACB1AD50B2600EE2C25 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F9EAAD31AD50B2600EE2C25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F9EAADE1AD50B2600EE2C25 /* QLFitsConfigTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FF55C351A067BF4005AA2BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,7 +414,88 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9F9EAAD91AD50B2600EE2C25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F9EAAC41AD50B2600EE2C25 /* QLFitsConfig */;
+			targetProxy = 9F9EAAD81AD50B2600EE2C25 /* PBXContainerItemProxy */;
+		};
+		9FA598C91AD81D5500A9F265 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F9EAAC41AD50B2600EE2C25 /* QLFitsConfig */;
+			targetProxy = 9FA598C81AD81D5500A9F265 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		9F9EAADF1AD50B2600EE2C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = QLFitsConfig/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9F9EAAE01AD50B2600EE2C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = QLFitsConfig/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9F9EAAE11AD50B2600EE2C25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = QLFitsConfigTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QLFitsConfig.app/Contents/MacOS/QLFitsConfig";
+			};
+			name = Debug;
+		};
+		9F9EAAE21AD50B2600EE2C25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = QLFitsConfigTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QLFitsConfig.app/Contents/MacOS/QLFitsConfig";
+			};
+			name = Release;
+		};
 		9FF55C451A067BF4005AA2BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -362,6 +615,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9F9EAAE31AD50B2600EE2C25 /* Build configuration list for PBXNativeTarget "QLFitsConfig" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F9EAADF1AD50B2600EE2C25 /* Debug */,
+				9F9EAAE01AD50B2600EE2C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F9EAAE41AD50B2600EE2C25 /* Build configuration list for PBXNativeTarget "QLFitsConfigTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F9EAAE11AD50B2600EE2C25 /* Debug */,
+				9F9EAAE21AD50B2600EE2C25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9FF55C341A067BF4005AA2BD /* Build configuration list for PBXProject "QLFits3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
