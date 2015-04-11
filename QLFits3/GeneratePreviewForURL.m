@@ -25,7 +25,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     
     // This NEVER works in debug???
     NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
-    NSURL *urlConfig = [NSURL fileURLWithPath:[[bundle bundlePath] stringByAppendingPathComponent:@"QLFitsConfig.app"]];
+    NSURL *urlConfig = [NSURL fileURLWithPath:[[bundle bundlePath] stringByAppendingPathComponent:@"Contents/Helpers/QLFitsConfig.app"]];
     LSRegisterURL((__bridge CFURLRef) urlConfig, false);
 
     @autoreleasepool {
