@@ -1,4 +1,7 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta http-equiv="Content-Language" content="en-us" />
@@ -156,10 +159,11 @@
 		}
 		</style>
 		<script>
-            function saveConfig (a) {
-                console.log("HEY!!!");
-                a.href  = "qlfitsconfig://save";
-                a.href += "/alwaysShowHeaders=" + document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
+            function saveConfig (check) {
+                var new_location;
+                new_location  = "qlfitsconfig://save";
+                new_location += "/alwaysShowHeaders=" + (document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
+                document.location.href = new_location;
             }
 		</script>
 	</head>

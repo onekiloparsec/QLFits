@@ -26,9 +26,13 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     // This NEVER works in debug???
     NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.onekiloparsec.QLFits3"];
     NSURL *urlConfig = [NSURL fileURLWithPath:[[bundle bundlePath] stringByAppendingPathComponent:@"Contents/Helpers/QLFitsConfig.app"]];
-    LSRegisterURL((__bridge CFURLRef) urlConfig, false);
-
+    LSRegisterURL((__bridge CFURLRef) urlConfig, true);
+    
     @autoreleasepool {
+        static NSString *suiteName = @"com.onekiloparsec.qlfitsconfig.user-defaults-suite";
+        NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
+        //    BOOL alwaysShowHeaders = [[defaults stringForKey:@"alwaysShowHeaders"] boolValue];
+        
         NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
         [previewProperties setObject:@"UTF-8" forKey:(__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey];
         [previewProperties setObject:@"text/html" forKey:(__bridge NSString *)kQLPreviewPropertyMIMETypeKey];
@@ -45,7 +49,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];
         
         NSMutableString *options = [NSMutableString string];
-        [options appendString:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" onClick=\"saveConfig(this);return true;\" />"];
+        [options appendFormat:@"??? %p ???", defaults];
+        [options appendString:@"<a href=\"#\" id=\"alwaysShowHeadersLink\">"];
+        [options appendString:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" onClick=\"saveConfig(this);return true;\" /></a>"];
         [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(Unchecked, HDUs with no data will appear empty)</span></div>"];
         [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
 
