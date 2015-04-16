@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F272C331AE0093100DAD6D3 /* defaultOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F272C321AE0093100DAD6D3 /* defaultOptions.plist */; };
 		9F276CC61AA7BD1500038036 /* template_error.html in Resources */ = {isa = PBXBuildFile; fileRef = 9F276CC51AA7BD1500038036 /* template_error.html */; };
 		9F713EA41ADA66080083E78B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F713EA31ADA66080083E78B /* MainMenu.xib */; };
 		9F9EAACB1AD50B2600EE2C25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAACA1AD50B2600EE2C25 /* AppDelegate.m */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F272C321AE0093100DAD6D3 /* defaultOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultOptions.plist; sourceTree = "<group>"; };
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
 		9F69F7391AB073E700F85482 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = install.sh; path = Scripts/install.sh; sourceTree = SOURCE_ROOT; };
 		9F713EA31ADA66080083E78B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				9F9EAAC81AD50B2600EE2C25 /* Info.plist */,
+				9F272C321AE0093100DAD6D3 /* defaultOptions.plist */,
 				9F9EAACC1AD50B2600EE2C25 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F713EA41ADA66080083E78B /* MainMenu.xib in Resources */,
+				9F272C331AE0093100DAD6D3 /* defaultOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\n\nGENERATOR=\"QLFits3.qlgenerator\"\n\nrm -rf /Library/QuickLook/$GENERATOR\nqlmanage -r\n\ncp -R \"$BUILT_PRODUCTS_DIR/$GENERATOR\" /Library/QuickLook/\nqlmanage -r\n";
+			shellScript = "GENERATOR=\"QLFits3.qlgenerator\"\n\necho \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\nrm -rf /Library/QuickLook/$GENERATOR\ncp -R \"$BUILT_PRODUCTS_DIR/$GENERATOR\" /Library/QuickLook/\n\necho \"Restarting daemon...\"\nqlmanage -r\n\necho \"Restarting Helper Config app...\"\nkillall QLFitsConfig\nopen /Library/QuickLook/$GENERATOR/Contents/Helpers/QLFitsConfig.app\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

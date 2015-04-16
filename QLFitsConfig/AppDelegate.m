@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+static NSString *suiteName = @"com.onekiloparsec.qlfitsconfig.user-defaults-suite";
+
 @interface AppDelegate ()
 @property (weak) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *label1;
@@ -18,24 +20,23 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];// 1
+    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
     [appleEventManager setEventHandler:self andSelector:@selector(handleAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+
+    [[NSUserDefaults standardUserDefaults] addSuiteNamed:suiteName];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
     
-    self.label1.stringValue = NSStringFromSelector(@selector(handleAppleEvent:withReplyEvent:));
-    self.label2.stringValue = [NSString stringWithFormat:@"Respond to selector? %@", [self respondsToSelector:@selector(handleAppleEvent:withReplyEvent:)] ? @"YES" : @"NO"];
+    NSString *optionsPath = [[NSBundle mainBundle] pathForResource:@"defaultOptions" ofType:@"plist"];
+    NSDictionary *defaultOptions = [NSDictionary dictionaryWithContentsOfFile:optionsPath];
+    [defaults registerDefaults:defaultOptions];
 }
 
 - (void)handleAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
-    self.label1.stringValue = ([[event paramDescriptorForKeyword:keyDirectObject] stringValue]) ?: @"(null)";
-    self.label2.stringValue = @"(debug)";
-
     NSString *URLString = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     if (URLString) {
         NSURL *URL = [NSURL URLWithString:URLString];
         if (URL) {
-            static NSString *suiteName = @"com.onekiloparsec.qlfitsconfig.user-defaults-suite";
-            [[NSUserDefaults standardUserDefaults] addSuiteNamed:suiteName];
             NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
             
             for (NSString *component in [URL pathComponents]) {
