@@ -30,6 +30,11 @@ sudo mkdir -p "${SYSTEM_QUICKLOOK_DIR}"
 curl -L $DOWNLOAD_URL | tar xvz -C "${SYSTEM_QUICKLOOK_DIR}"
 rm "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip"
 
-echo "\n *** QLFits3 successfull downloaded and unzipped. Now reseting the daemon."
+echo "\n *** QLFits3 successfull downloaded and unzipped. Now restarting the QuickLook daemon..."
 qlmanage -r
+
+echo " *** ... and the QLFits Config Helper app."
+killall QLFitsConfig
+open "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app"
+
 echo "\n *** QLFits3 successfuly installed! Enjoy. All inquiry to be sent to cedric@onekilopars.ec\n"
