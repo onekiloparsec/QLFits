@@ -52,7 +52,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         [options appendFormat:@"??? %p ???", defaults];
         [options appendString:@"<a href=\"#\" id=\"alwaysShowHeadersLink\">"];
         [options appendString:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" onClick=\"saveConfig(this);return true;\" /></a>"];
-        [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(Unchecked, HDUs with no data will appear empty)</span></div>"];
+        [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(By default, HDUs with no data show their header)</span></div>"];
         [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
 
         DebugLog(@"[QLFits3] Open FITS file");
