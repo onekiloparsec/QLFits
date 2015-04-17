@@ -159,11 +159,10 @@
 		}
 		</style>
 		<script>
-            function saveConfig (check) {
-                var new_location;
-                new_location  = "qlfitsconfig://save";
-                new_location += "/alwaysShowHeaders=" + (document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
-                document.location.href = new_location;
+            function saveConfig (a) {
+                a.href  = "qlfitsconfig://save";
+                a.href += "/alwaysShowHeaders=" + (document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
+                return true;
             }
 		</script>
 	</head>
@@ -184,7 +183,10 @@
 
     <div class="container" id="options">
         <div class="header">
-            <div class="label">QuickLook Options</div>
+            <div class="label">
+                QuickLook Options &nbsp;
+                <a href="#" onClick="saveConfig(this);return true;"><input id="save" type="button" value="Save"></a>
+            </div>
         </div>
         <div class="options_header">
             __QuickLookOptions__

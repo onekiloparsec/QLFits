@@ -31,7 +31,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     @autoreleasepool {
         static NSString *suiteName = @"com.onekiloparsec.qlfitsconfig.user-defaults-suite";
         NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
-        //    BOOL alwaysShowHeaders = [[defaults stringForKey:@"alwaysShowHeaders"] boolValue];
+        BOOL alwaysShowHeaders = YES;
+        if ([defaults stringForKey:@"alwaysShowHeaders"]) {
+            alwaysShowHeaders = [[defaults stringForKey:@"alwaysShowHeaders"] isEqualToString:@"1"];
+        }
         
         NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
         [previewProperties setObject:@"UTF-8" forKey:(__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey];
@@ -49,10 +52,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];
         
         NSMutableString *options = [NSMutableString string];
-        [options appendFormat:@"??? %p ???", defaults];
-        [options appendString:@"<a href=\"#\" id=\"alwaysShowHeadersLink\">"];
-        [options appendString:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" onClick=\"saveConfig(this);return true;\" /></a>"];
-        [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(By default, HDUs with no data show their header)</span></div>"];
+        [options appendFormat:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" %@ />", (alwaysShowHeaders) ? @"checked" : @""];
+        [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(By default, HDUs with no data immediately show their header)</span></div>"];
         [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
 
         DebugLog(@"[QLFits3] Open FITS file");
@@ -164,7 +165,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 
                 [HDULinesString appendString:@"</div>\n"]; // div class="label"
                 
-                if (hasData) {
+                if (hasData || !alwaysShowHeaders) {
                     [HDULinesString appendString:@"\t\t\t\t<div class=\"detail\">"];
                     [HDULinesString appendFormat:@"<a href=\"#toggle%lu\" ", (unsigned long)i];
                     [HDULinesString appendFormat:@"onclick=\"toggleDetails(%lu);\" ", (unsigned long)i];
@@ -199,7 +200,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 [headerString appendString:@"\t\t\t</table>\n"];
                 
                 // FITS Header Div
-                NSString *display = (hasData) ? @"none" : @"block";
+                NSString *display = (hasData || !alwaysShowHeaders) ? @"none" : @"block";
                 [HDULinesString appendFormat:@"\n\t\t\t<div class=\"FITSHeader\" id=\"HDUHeader%lu\" style=\"display:%@;\">\n", (unsigned long)i, display];
                 [HDULinesString appendFormat:@"%@", headerString];
                 [HDULinesString appendString:@"\t\t\t</div>\n\n"]; // FITS Header div
