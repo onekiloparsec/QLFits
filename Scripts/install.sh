@@ -27,7 +27,7 @@ echo " *** Due to a bug on Yosemite, the new quicklook has to be installed in ${
 echo " *** For that reason, your password might be requested below.\n"
 
 sudo mkdir -p "${SYSTEM_QUICKLOOK_DIR}"
-curl -L $DOWNLOAD_URL | tar xvz -C "${SYSTEM_QUICKLOOK_DIR}"
+curl -kL $DOWNLOAD_URL | tar xvz -C "${SYSTEM_QUICKLOOK_DIR}"
 rm "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip"
 
 echo "\n *** QLFits3 successfull downloaded and unzipped. Now restarting the QuickLook daemon..."
