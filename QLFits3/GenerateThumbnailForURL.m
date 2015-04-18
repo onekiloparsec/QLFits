@@ -30,6 +30,13 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         FITSHDU *hdu = [[fits HDUs] objectAtIndex:0];
         NSString *objectName = [[hdu header] stringValueForKey:@"OBJECT"];
         
+        static NSString *suiteName = @"com.onekiloparsec.qlfitsconfig.user-defaults-suite";
+        NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
+        BOOL showSummaryInThumbnails = NO; // Defaults
+        if ([defaults stringForKey:@"showSummaryInThumbnails"]) {
+            showSummaryInThumbnails = [[defaults stringForKey:@"showSummaryInThumbnails"] isEqualToString:@"1"];
+        }
+        
         if ([hdu type] == FITSHDUTypeImage) {
             FITSImage *img = [hdu image];
             if (FITSIsEmptySize(img.size) && [fits countOfHDUs] > 1) {
@@ -42,8 +49,14 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
                 if (cgImage != NULL) {
                     CGContextRef context = QLThumbnailRequestCreateContext(thumbnail, maxSize, true, NULL);
                     CGRect renderRect = CGRectMake(0., 0., maxSize.width, maxSize.height);
+
                     CGContextDrawImage(context, renderRect, cgImage);
                     DrawObjectName(context, renderRect.size, objectName, YES, NO);
+                    if (showSummaryInThumbnails) {
+                        NSDictionary *summary = [fits shortSummary];
+                        DrawHDUSummary(context, renderRect.size, summary[@"summary"], YES, NO);
+                    }
+                    
                     QLThumbnailRequestFlushContext(thumbnail, context);
                     CFRelease(context);
                 }
@@ -58,9 +71,15 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
                 
                 CGSize canvasSize = CGSizeMake(img.size.nx/imgScale, img.size.nx/imgScale);
                 CGContextRef context = QLThumbnailRequestCreateContext(thumbnail, canvasSize, true, NULL);
+                
                 DrawSpectrumCanvas(context, canvasSize);
                 DrawSpectrum(context, canvasSize, spectrum);
                 DrawObjectName(context, canvasSize, objectName, YES, YES);
+                if (showSummaryInThumbnails) {
+                    NSDictionary *summary = [fits shortSummary];
+                    DrawHDUSummary(context, canvasSize, summary[@"summary"], YES, YES);
+                }
+                
                 QLThumbnailRequestFlushContext(thumbnail, context);
                 CFRelease(context);
             }

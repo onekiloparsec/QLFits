@@ -95,29 +95,24 @@
 			color: #6aa1d3;
 		}
         
-        div.options_header {
-            height: 1.1em;
+        div.option {
+            height: 2.1em;
             padding: 0.5em;
             border-radius: 3px 3px 0 0;
             background-color: #eee;
         }
-        
-        div.OptionTitle {
-            width: auto;
-            text-align: left;
+        div.option_title {
             color: #000;
+            width: 95%;
+            height: 2.2em;
             float: left;
         }
-        span.OptionSubtitle {
-            width: auto;
-            text-align: left;
+        span.option_subtitle {
             color: #666;
             font-size: 0.9em;
-            clear: right;
         }
-        input.OptionInput {
-            float:right;
-            clear:both;
+        input.option_input {
+            float: right;
         }
 
 		div#header_info > div.header {
@@ -177,6 +172,7 @@
             function saveConfig (a) {
                 a.href  = "qlfitsconfig://save";
                 a.href += "/alwaysShowHeaders=" + (document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
+                a.href += "/showSummaryInThumbnails=" + (document.getElementById("showSummaryInThumbnailsInput").checked ? "1" : "0");
                 return true;
             }
 		</script>
@@ -200,10 +196,10 @@
         <div class="header">
             <div class="label">
                 QuickLook Options &nbsp;
-                <a href="#" onClick="saveConfig(this);return true;"><input id="save" type="button" value="Save"></a>
+                <a href="#" onClick="saveConfig(this);return true;" style="float:right;"><input id="save" type="button" value="Save"></a>
             </div>
         </div>
-        <div class="options_header">
+        <div id="options">
             __QuickLookOptions__
         </div>
     </div>

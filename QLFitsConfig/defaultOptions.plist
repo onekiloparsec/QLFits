@@ -4,5 +4,7 @@
 <dict>
 	<key>alwaysShowHeaders</key>
 	<string>1</string>
+	<key>showSummaryInThumbnails</key>
+	<string>0</string>
 </dict>
 </plist>

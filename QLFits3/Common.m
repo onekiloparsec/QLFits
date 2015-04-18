@@ -68,3 +68,22 @@ void DrawObjectName(CGContextRef context, CGSize canvasSize, NSString *objectNam
 	}
 }
 
+void DrawHDUSummary(CGContextRef context, CGSize canvasSize, NSString *summaryString, BOOL forThumbnail, BOOL forSpectrum)
+{
+    if (summaryString != nil && [summaryString length] > 0) {
+        const char *summary = [summaryString UTF8String];
+        CGFloat fontPoint = (forSpectrum && forThumbnail) ? 46.0 : 20.0;
+        CGContextSelectFont(context, "Futura", fontPoint, kCGEncodingMacRoman);
+        CGContextSetTextDrawingMode(context, kCGTextFillStroke);
+        CGContextSetRGBStrokeColor(context, 1., 1., 1., 0.6);
+        CGContextSetRGBFillColor(context, 0.0, 0.5, 1.0, 1.0);
+        
+        CGFloat h = (forThumbnail) ? (canvasSize.height-1.5*pad)/2.0 : canvasSize.height-1.5*pad;
+        CGContextShowTextAtPoint(context,
+                                 (canvasSize.width - strlen(summary)/2*fontPoint)/2.0,
+                                 h - 70,
+                                 summary,
+                                 strlen(summary));
+    }
+}
+

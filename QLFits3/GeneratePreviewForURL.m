@@ -10,8 +10,21 @@
 #define MAX_HDU_COUNT 10
 #define ATTACH_IMAGES NO
 
+static NSDictionary *defaultOptionsValues = nil;
+
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
+
+NSString *optionStringForKey(NSString *key, NSString *title, NSString *subtitle, BOOL checked);
+NSString *optionStringForKey(NSString *key, NSString *title, NSString *subtitle, BOOL checked)
+{
+    NSMutableString *options = [NSMutableString string];
+    [options appendString:@"<div class=\"option\">"];
+    [options appendFormat:@"<div class=\"option_title\">%@ <span class=\"option_subtitle\">%@</span></div>", title, subtitle];
+    [options appendFormat:@"<input class=\"option_input\" type=\"checkbox\" id=\"%@Input\" %@ />", key, (checked) ? @"checked" : @""];
+    [options appendString:@"</div>"];
+    return [options copy];
+}
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file
@@ -31,9 +44,14 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     @autoreleasepool {
         static NSString *suiteName = @"com.onekiloparsec.qlfitsconfig.user-defaults-suite";
         NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
-        BOOL alwaysShowHeaders = YES;
+        
+        BOOL alwaysShowHeaders = YES; // One day, it should be retrieved from defaultOptions.plist file.
         if ([defaults stringForKey:@"alwaysShowHeaders"]) {
             alwaysShowHeaders = [[defaults stringForKey:@"alwaysShowHeaders"] isEqualToString:@"1"];
+        }
+        BOOL showSummaryInThumbnails = NO;
+        if ([defaults stringForKey:@"showSummaryInThumbnails"]) {
+            showSummaryInThumbnails = [[defaults stringForKey:@"showSummaryInThumbnails"] isEqualToString:@"1"];
         }
         
         NSMutableDictionary *previewProperties = [NSMutableDictionary dictionary];
@@ -45,20 +63,16 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         NSMutableDictionary *attachements = [NSMutableDictionary dictionary];
         [previewProperties setObject:attachements forKey:(__bridge NSString *)kQLPreviewPropertyAttachmentsKey];
         
-        NSMutableDictionary *synthesizedInfo = [NSMutableDictionary dictionary];
-        [synthesizedInfo setObject:[[(__bridge NSURL *)url path] lastPathComponent] forKey:@"FileName"];
-        
-        NSDictionary *shortSummary = [FITSFile FITSFileShortSummaryWithURL:(__bridge NSURL *)url];
-        [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];
-        
-        NSMutableString *options = [NSMutableString string];
-        [options appendFormat:@"<input class=\"OptionInput\" type=\"checkbox\" id=\"alwaysShowHeadersInput\" %@ />", (alwaysShowHeaders) ? @"checked" : @""];
-        [options appendString:@"<div class=\"OptionTitle\">Always Show Headers <span class=\"OptionSubtitle\">(By default, HDUs with no data immediately show their header)</span></div>"];
-        [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
-
         DebugLog(@"[QLFits3] Open FITS file");
         FITSFile *fits = [FITSFile FITSFileWithURL:(__bridge NSURL *)url];
         CFITSIO_STATUS status = [fits open];
+
+        NSMutableDictionary *synthesizedInfo = [NSMutableDictionary dictionary];
+        [synthesizedInfo setObject:[[(__bridge NSURL *)url path] lastPathComponent] forKey:@"FileName"];
+        
+        NSDictionary *shortSummary = [fits shortSummary];
+        [synthesizedInfo setObject:(shortSummary) ? shortSummary[@"summary"] : @"" forKey:@"ContentSummary"];
+        
         
         // The above might have taken some time, so before proceeding make sure the user didn't cancel the request
         if (QLPreviewRequestIsCancelled(preview)) return noErr;
@@ -219,6 +233,22 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             [synthesizedInfo setObject:HDULinesString forKey:@"HDUTableLines"];
         }
         
+        
+        NSMutableString *options = [NSMutableString string];
+        
+        [options appendString:optionStringForKey(@"alwaysShowHeaders",
+                                                 @"Always Show Headers",
+                                                 @"By default, for HDUs with no data, the header is displayed in place. Uncheck to hide them behind a Toggle button.",
+                                                 alwaysShowHeaders)];
+        
+        [options appendString:optionStringForKey(@"showSummaryInThumbnails",
+                                                 @"Show HDUs Summary in Thumbnails",
+                                                 @"Check to see HDUs summary also in Thumbnails.",
+                                                 showSummaryInThumbnails)];
+        
+        [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
+
+        
         NSString *versionString = [[bundle infoDictionary] objectForKey:@"CFBundleVersion"];
         [synthesizedInfo setObject:versionString forKey:@"BundleVersion"];
         
@@ -232,6 +262,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         }
         
         DebugLog(@"[QLFits3] Ready to shoot.");
+        NSLog(@"%@", html);
 
         QLPreviewRequestSetDataRepresentation(preview,
                                               (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
