@@ -159,6 +159,21 @@
 		}
 		</style>
 		<script>
+            function toggleDetails(i) {
+                var buttonElement = document.getElementById('toggle_button'+i);
+                var headerElement = document.getElementById('HDUHeader'+i);
+                var dataElement = document.getElementById('HDUData'+i);
+                if (dataElement.style.display == 'none') {
+                    dataElement.style.display = 'block';
+                    headerElement.style.display = 'none';
+                    buttonElement.innerHTML = 'Show Header';
+                }
+                else {
+                    dataElement.style.display = 'none';
+                    headerElement.style.display = 'block ';
+                    buttonElement.innerHTML = 'Show Data';
+                }
+            }
             function saveConfig (a) {
                 a.href  = "qlfitsconfig://save";
                 a.href += "/alwaysShowHeaders=" + (document.getElementById("alwaysShowHeadersInput").checked ? "1" : "0");
