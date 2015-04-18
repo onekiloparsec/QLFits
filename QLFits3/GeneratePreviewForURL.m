@@ -188,16 +188,16 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 
                 [HDULinesString appendString:@"\t\t\t</div>\n\n"]; // HDULine header.
                 
+                [HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
                 if (hasData && HDUImageString) {
                     // FITS Data Div
-                    [HDULinesString appendFormat:@"\t\t\t<div class=\"FITSData\" id=\"HDUData%lu\">\n", (unsigned long)i];
 #if ATTACH_IMAGES
                     [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"%@:%@\" border=0 width=100%% /></div>\n", kQLPreviewContentIDScheme, HDUImageFileName];
 #else
                     [HDULinesString appendFormat:@"\t\t\t\t<div class=\"data\"><img src=\"%@\" border=0 width=100%% /></div>\n", HDUImageString];
 #endif
-                    [HDULinesString appendString:@"\t\t\t</div>\n"];
                 }
+                [HDULinesString appendString:@"\t\t\t</div>\n"];
                 
                 // FITS Header
                 NSMutableString *headerString = [NSMutableString stringWithString:@""];
