@@ -3,7 +3,7 @@ QLFits 3
 
 **One-line Installer**: Copy-paste the following command into a Terminal window (click [here](https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh) to check that it is harmless): 
 
-`curl -fsSL https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh | sh`
+`curl -fsSLk https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh | sh`
 
 
 Description
