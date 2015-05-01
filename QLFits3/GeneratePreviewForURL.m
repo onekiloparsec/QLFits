@@ -262,7 +262,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         }
         
         DebugLog(@"[QLFits3] Ready to shoot.");
-        NSLog(@"%@", html);
 
         QLPreviewRequestSetDataRepresentation(preview,
                                               (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
