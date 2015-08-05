@@ -9,7 +9,7 @@
 #!/bin/sh
 
 GENERATOR_NAME="QLFits3.qlgenerator"
-DOWNLOAD_URL="https://github.com/onekiloparsec/QLFits/releases/download/3.1.1/${GENERATOR_NAME}.zip"
+DOWNLOAD_URL="https://github.com/onekiloparsec/QLFits/releases/download/3.1.2/${GENERATOR_NAME}.zip"
 SYSTEM_QUICKLOOK_DIR="/Library/QuickLook"
 LOCAL_QUICKLOOK_DIR="${HOME}/Library/QuickLook"
 ZIP_FILE_PATH="${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip"

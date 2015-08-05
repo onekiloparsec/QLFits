@@ -81,7 +81,15 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         if ([fits countOfHDUs] == 0 || status != CFITSIO_STATUS_OK) {
             [fits close];
             templateName = @"template_error";
-            [synthesizedInfo setObject:@"Unable to open FITS file, or count of HDUs is 0" forKey:@"ErrorMessage"];
+            if ([fits countOfHDUs] == 0) {
+                [synthesizedInfo setObject:@"Unable to open FITS file, count of HDUs is 0" forKey:@"ErrorMessage"];
+            }
+            else {
+                NSMutableString *s = [NSMutableString stringWithString:@"Unable to open FITS file, CFITSIO status"];
+                [s appendFormat:@" (%@)", @(status)];
+                [s appendFormat:@": '%@'.", NSStringFromCFITSIOStatus(status)];
+                [synthesizedInfo setObject:[s copy] forKey:@"ErrorMessage"];
+            }
         }
         else {
             templateName = @"template";
