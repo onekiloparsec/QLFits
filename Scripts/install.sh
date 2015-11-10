@@ -30,14 +30,14 @@ echo " === For that reason, your password might be requested below.\n"
 sudo mkdir -p "${SYSTEM_QUICKLOOK_DIR}"
 # curl -kL $DOWNLOAD_URL | /usr/bin/bsdtar -x -v -z -C "${SYSTEM_QUICKLOOK_DIR}"
 echo "\n *** Downloading QLFits3 from https://github.com/onekiloparsec/QLFits..."
-curl -kL -# $DOWNLOAD_URL -o ${ZIP_FILE_PATH}
+sudo curl -kL -# $DOWNLOAD_URL -o ${ZIP_FILE_PATH}
 echo "\n *** QLFits3 successfully downloaded. Unzipping..."
 
-unzip -o -q ${ZIP_FILE_PATH} -d ${SYSTEM_QUICKLOOK_DIR}
+sudo unzip -o -q ${ZIP_FILE_PATH} -d ${SYSTEM_QUICKLOOK_DIR}
 if [ -s ${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME} ]
 then
   echo " *** QLFits3 successfully unzipped. "
-  rm -f "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip" >& /dev/null
+  sudo rm -f "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip" >& /dev/null
 else
   echo " *** Couldn't unzip the file: ${ZIP_FILE_PATH} ???"
   echo " *** Try restarting the script. Or send a mail to cedric@onekilopars.ec\n\n"
