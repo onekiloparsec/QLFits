@@ -3,8 +3,8 @@
 </h3>
 <p align="center">
 <a href="https://github.com/onekiloparsec/arcsecond.io">arcsecond.io</a> (<a href="https://github.com/onekiloparsec/arcsecond.sdk.swift">Swift SDK</a>) &bull;
-<a href="https://github.com/onekiloparsec/SwiftAA">SwiftAA</a>
-<b>QLFits</b> &bull;
+<a href="https://github.com/onekiloparsec/SwiftAA">SwiftAA</a> &bull;
+<b>QLFits</b> 
 </p>
 
 QLFits 3
