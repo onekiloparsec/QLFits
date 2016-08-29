@@ -6,6 +6,7 @@
 <a href="https://github.com/onekiloparsec/SwiftAA">SwiftAA</a> &bull;
 <b>QLFits</b> &bull;
 <a href="https://github.com/onekiloparsec/FITSImporter">FITSImporter</a> 
+<a href="https://github.com/onekiloparsec/ObjCFITSIO">ObjCFITSIO</a> 
 </p>
 
 QLFits 3
