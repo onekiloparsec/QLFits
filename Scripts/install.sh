@@ -14,7 +14,7 @@ SYSTEM_QUICKLOOK_DIR="/Library/QuickLook"
 LOCAL_QUICKLOOK_DIR="${HOME}/Library/QuickLook"
 ZIP_FILE_PATH="${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip"
 
-echo "\n *** Installing QLFits3.qlgenerator into /Library/QuickLook"
+echo "\n *** Installing ${GENERATOR_NAME} into ${SYSTEM_QUICKLOOK_DIR}"
 
 if [ -e "${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}" ]; then
     echo "\n >>> An old generator is located in ${LOCAL_QUICKLOOK_DIR}"
@@ -58,4 +58,4 @@ then
 fi
 
 echo "\n *** QLFits3 successfuly installed! Enjoy. All inquiry to be sent to cedric@onekilopars.ec"
-echo " *** More FITS goodies as well as awesome apps for astronomers: http://onekilopars.ec\n\n"
+echo " *** More FITS utilities as well as awesome apps for astronomers: http://onekilopars.ec\n\n"

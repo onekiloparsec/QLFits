@@ -2,10 +2,10 @@
 	<img src="http://onekilopars.ec/s/1kpcAstroComponents.png" width="100%" />
 </h3>
 <p align="center">
-<a href="https://github.com/onekiloparsec/arcsecond.io">arcsecond.io</a> (<a href="https://github.com/onekiloparsec/arcsecond.swift">Swift SDK</a>) &bull;
+<a href="https://github.com/onekiloparsec/arcsecond.io">arcsecond.io</a> (<a href="https://github.com/onekiloparsec/arcsecond.sdk.swift">Swift SDK</a>) &bull;
 <a href="https://github.com/onekiloparsec/SwiftAA">SwiftAA</a> &bull;
 <b>QLFits</b> &bull;
-<a href="https://github.com/onekiloparsec/FITSImporter">FITSImporter</a>
+<a href="https://github.com/onekiloparsec/FITSImporter">FITSImporter</a> 
 </p>
 
 QLFits 3
@@ -102,7 +102,7 @@ OSX dynamic types
 
 For custom or special file extensions, OSX assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extensions). See Info.plist file inside QLFits3.qlgenerator in case of doubt. To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
 
-List of known extensions: (See Info.plist file inside QLFits3.qlgenerator for the exact list):
+List of known extensions: 
 
 * gov.nasa.gsfc.fits
 * gov.nasa.gsfc.fits-header
@@ -123,4 +123,17 @@ List of known extensions: (See Info.plist file inside QLFits3.qlgenerator for th
 * dyn.ah62d4rv4ge80262
 * dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsu
 * dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsv3u
+
+
+Author
+------
+
+[Cédric Foellmi](https://github.com/onekiloparsec) ([@onekiloparsec](https://twitter.com/onekiloparsec))
+
+
+LICENSE & NOTES
+---------------
+
+QLFits is licensed under the MIT license and hosted on GitHub at https://github.com/onekiloparsec/QLFits/ Fork the project and feel free to send pull requests with your changes!
+
 

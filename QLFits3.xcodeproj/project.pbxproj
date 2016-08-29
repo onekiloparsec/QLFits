@@ -14,6 +14,9 @@
 		9F9EAACD1AD50B2600EE2C25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAACC1AD50B2600EE2C25 /* main.m */; };
 		9F9EAADE1AD50B2600EE2C25 /* QLFitsConfigTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAADD1AD50B2600EE2C25 /* QLFitsConfigTests.m */; };
 		9FA598CB1AD81DBF00A9F265 /* QLFitsConfig.app in Copy Config App */ = {isa = PBXBuildFile; fileRef = 9F9EAAC51AD50B2600EE2C25 /* QLFitsConfig.app */; };
+		9FD71F751D749C9800E6F656 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD71F741D749C9800E6F656 /* ObjCFITSIO.framework */; };
+		9FD71F761D749CC500E6F656 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FD71F741D749C9800E6F656 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FD71F781D749D6E00E6F656 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 9FD71F771D749D6E00E6F656 /* Cartfile */; };
 		9FF55C401A067BF4005AA2BD /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */; };
 		9FF55C421A067BF4005AA2BD /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C411A067BF4005AA2BD /* GeneratePreviewForURL.m */; };
 		9FF55C441A067BF4005AA2BD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FF55C431A067BF4005AA2BD /* main.c */; };
@@ -27,7 +30,6 @@
 		9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF55C581A067D3D005AA2BD /* AppKit.framework */; };
 		9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD33F71AA4BA3500D0B271 /* libicucore.dylib */; };
 		9FFD60631AC191E9000F2F94 /* ObjCFITSIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */; };
-		9FFD60641AC191F8000F2F94 /* ObjCFITSIO.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9FFD60621AC191E9000F2F94 /* ObjCFITSIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9FFD60641AC191F8000F2F94 /* ObjCFITSIO.framework in CopyFiles */,
+				9FD71F761D749CC500E6F656 /* ObjCFITSIO.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,8 @@
 		9F9EAAD71AD50B2600EE2C25 /* QLFitsConfigTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFitsConfigTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9EAADC1AD50B2600EE2C25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F9EAADD1AD50B2600EE2C25 /* QLFitsConfigTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLFitsConfigTests.m; sourceTree = "<group>"; };
+		9FD71F741D749C9800E6F656 /* ObjCFITSIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjCFITSIO.framework; path = Carthage/Build/Mac/ObjCFITSIO.framework; sourceTree = SOURCE_ROOT; };
+		9FD71F771D749D6E00E6F656 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		9FF55C3A1A067BF4005AA2BD /* QLFits3.qlgenerator */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QLFits3.qlgenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF55C3E1A067BF4005AA2BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FF55C3F1A067BF4005AA2BD /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD71F751D749C9800E6F656 /* ObjCFITSIO.framework in Frameworks */,
 				9FFD60631AC191E9000F2F94 /* ObjCFITSIO.framework in Frameworks */,
 				9FFD33F81AA4BA3500D0B271 /* libicucore.dylib in Frameworks */,
 				9FF55C591A067D3D005AA2BD /* AppKit.framework in Frameworks */,
@@ -220,10 +225,12 @@
 			isa = PBXGroup;
 			children = (
 				9FFD33E91AA4AA4300D0B271 /* README.md */,
+				9FD71F771D749D6E00E6F656 /* Cartfile */,
 				9FF55C501A067C4E005AA2BD /* template.html */,
 				9F276CC51AA7BD1500038036 /* template_error.html */,
 				9FF55C3E1A067BF4005AA2BD /* Info.plist */,
 				9F69F7391AB073E700F85482 /* install.sh */,
+				9FD71F741D749C9800E6F656 /* ObjCFITSIO.framework */,
 			);
 			name = "Supporting Files";
 			path = QLFits3;
@@ -365,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD71F781D749D6E00E6F656 /* Cartfile in Resources */,
 				9FF55C571A067C4E005AA2BD /* template.html in Resources */,
 				9F276CC61AA7BD1500038036 /* template_error.html in Resources */,
 			);
@@ -385,7 +393,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GENERATOR=\"QLFits3.qlgenerator\"\n\necho \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\nrm -rf /Library/QuickLook/$GENERATOR\ncp -R \"$BUILT_PRODUCTS_DIR/$GENERATOR\" /Library/QuickLook/\n\necho \"Restarting daemon...\"\nqlmanage -r\n\necho \"Restarting Helper Config app...\"\nkillall QLFitsConfig\nopen /Library/QuickLook/$GENERATOR/Contents/Helpers/QLFitsConfig.app\n";
+			shellScript = "GENERATOR=\"QLFits3.qlgenerator\"\n\necho \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\n#rm -rf /Library/QuickLook/$GENERATOR\ncp -R \"$BUILT_PRODUCTS_DIR/$GENERATOR\" ~/Library/QuickLook/\n\necho \"Restarting daemon...\"\nqlmanage -r\n\necho \"Restarting Helper Config app...\"\nkillall QLFitsConfig\nopen ~/Library/QuickLook/$GENERATOR/Contents/Helpers/QLFitsConfig.app\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -589,6 +597,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/QLFits3-frqqegoraideifhczwyqawqxqgbp/Build/Products/Debug",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
@@ -608,6 +617,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/QLFits3-frqqegoraideifhczwyqawqxqgbp/Build/Products/Debug",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
