@@ -22,8 +22,6 @@ QLFits 3
 Description
 -----------
 
-**Update (March 2015):** QLFits3 had some troubles displaying images. It was due to a bug in OSX 10.10 Yosemite (and 10.9 Mavericks). It has been worked around.
-
 QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data). It is for OSX 10.8 and up.
 
 QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit) written by yours truly.
@@ -47,7 +45,7 @@ Installation
 
 *[Download the latest binary](http://onekilopars.ec/softwares/QLFits3.qlgenerator.zip)*
 
-Put the QLFits3.qlgenerator bundle in _/Library/QuickLook_ (not in _~/Library/QuickLook_) and run the (safe and instantaneous) command: `qlmanage -r` to reset the quicklook daemon. 
+Put the QLFits3.qlgenerator bundle either in `/Library/QuickLook` or in `~/Library/QuickLook` (but only if your are an a system older than macOS 10.10 Yosemite for the latter) and run the (safe and instantaneous) command: `qlmanage -r` to reset the quicklook daemon. 
 
 
 Contribute!
@@ -55,31 +53,37 @@ Contribute!
 
 If you want to contibute, you need:
 * A recent Mac
-* A copy of [Xcode](https://itunes.apple.com/fr/app/xcode/id497799835?l=en&mt=12) (Xcode 6, as of now, March 2015, but Xcode 5 should also work)
-* A clone of [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO.git) at the same level of the QLFits folder.
+* A copy of [Xcode](https://itunes.apple.com/fr/app/xcode/id497799835?l=en&mt=12) (Xcode 8, as of now, December 2016, but Xcode 7 should also work)
 * Some knowledge of Objective-C and C... and FITS!
 
 Then, 
 
-1. Simply fork this project on GitHub, 
-2. Open QLFits3.xc**workspace** (and not *xcodeproj*) and make your modifications (I can help), 
-3. Test – see Debug below (I can also help, if time permits, business as usual), 
-4. Submit a pull request (via GitHub)!
+1. Simply fork this project on GitHub,
+2. run `carthage update` to grab the ObjectFITSIO framework. See [this page](https://github.com/Carthage/Carthage) if you don't know Carthage.
+3. Open QLFits3.xcodeproj and make your modifications (I can help), 
+4. Test – see Debug below (I can also help, if time permits, business as usual), 
+5. Submit a pull request (via GitHub)!
 
 
-How to debug
-------------
+How to debug (manually)
+-----------------------
 
-* Build your (modified) QLFits3. Now, a new version is being put in /Library/QuickLook
+* Build your (modified) QLFits3. Now, a new version is being put in `~/Library/QuickLook`
 * Navigate in the Finder to look for a FITS file, and press <space>.
+* Or run the command `qlmanage -p[-t] <path/to/fits/file>` to test previews (vs thumbnails) from the Terminal. 
 
-Alternate method. _Note: What follows is supposed to work, but a bug in Yosemite prevents it._
-In Xcode, you should locate the `qlmanage` binary file, and include it as the "Executable" in the "Run" section of the "QLFits3" scheme. To do so:
+How to debug (advanced)
+-----------------------
 
-* Edit the "QLFits3" scheme in Xcode, select the "Run section"
-* Choose "Other..." in the drop down, a 'Open Dialog' will open.
-* Type `open -a Finder /user/bin/qlmanage` in a Terminal.
-* Drag & Drop the 'qlmanage' executable from the Finder anywhere in the Open Dialog.
+_Note: What follows is supposed to work, but a bug in macOS prevents it, and I never found a real workaround._ 
+(The error message being the following: "*** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0xaf03, name = 'com.apple.CFPasteboardClient'")
+
+The idea is first to locate the `qlmanage` binary file, and include it as the "Executable" in the "Run" section of the "QLFits3" scheme. To do so:
+
+* Edit the "QLFits3" scheme in Xcode, select the "Run" section, "Info" tab.
+* Choose "Other..." in the drop "Executable" down menu, a 'Open Dialog' will open.
+* Type `open -a Finder /user/bin/` in a Terminal and locate the `qlmanage` alias.
+* Drag & Drop the `qlmanage` executable from the Finder anywhere in the Open Dialog.
 * Click "Choose" and close the dialog.
 
 Now one can "Run" the QLFits3 project from within Xcode. But we haven't yet told it what to do exactly at run. So go back to the QLFits3 scheme, and choose the 'Arguments' tab of the same "Run" section. In the section "Arguments Passed On Launch" add `-p <path/to/any/of/your/fits/file>`
@@ -100,7 +104,7 @@ Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImport
 * QuickLook plug-ins sometimes don't like to install. Learn to use "qlmanage -r" to reset the daemon. Using "qlmanage -m plugins" will tell you if the plug-in has been recognized. Sometimes you have to login and out before the plug-in is recognized.
 
 
-OSX dynamic types
+macOS dynamic types
 -----------------
 
 For custom or special file extensions, OSX assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extensions). See Info.plist file inside QLFits3.qlgenerator in case of doubt. To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
