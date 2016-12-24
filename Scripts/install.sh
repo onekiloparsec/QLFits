@@ -60,5 +60,5 @@ then
   open "${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app"
 fi
 
-echo "\n *** QLFits3 ${PLUGIN_VERSION} successfuly installed! Enjoy. All inquiry to be sent to cedric@onekilopars.ec"
+echo "\n *** QLFits3 ${PLUGIN_VERSION} successfuly installed! Enjoy. All inquiries to be sent to cedric@onekilopars.ec"
 echo " *** More FITS utilities as well as awesome apps for astronomers: http://onekilopars.ec\n\n"
