@@ -22,11 +22,11 @@ QLFits 3
 Description
 -----------
 
-QLFits is a OSX Quicklook plugin for FITS (Flexible Image transport System) files (used by astronomers worldwide to store and share their data). It is for OSX 10.8 and up.
+QLFits is a macOS Quicklook plugin for FITS (Flexible Image Transport System) files, used by astronomers worldwide to store and share their data. It is for macOS 10.8 and up.
 
 QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit) written by yours truly.
 
-QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi**. If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic OSX type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
+QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi**. If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic macOS type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
 
 QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
 
@@ -97,7 +97,7 @@ Use `-t` to create thrumbnails instead of previews. You can put multiple entries
 Project Notes For Developers
 ----------------------------
 
-Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImporter), the OSX Spotlight plugin for FITS file as good companion.
+Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImporter), the macOS Spotlight plugin for FITS file as good companion.
 
 * There is a Copy Files build phase that puts the Debug build of Provisioning.qlgenerator in your /Library/QuickLook folder.
 
@@ -107,7 +107,7 @@ Note that you can use [FITSImporter](https://github.com/onekiloparsec/FITSImport
 macOS dynamic types
 -----------------
 
-For custom or special file extensions, OSX assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extensions). See Info.plist file inside QLFits3.qlgenerator in case of doubt. To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
+For custom or special file extensions, macOS assign dynamic types. QLFits3 contains a list of such types to allow it to recognize them (in addition to the filename extensions). See Info.plist file inside QLFits3.qlgenerator in case of doubt. To check the dynamic type of your FITS file, open a Terminal and type the following command `mdls <path/to/your/file> | grep kMDItemContentType`. You shluld obtain something like `kMDItemContentType             = "dyn.ah62d4rv4ge80q4pysq"`. 
 
 List of known extensions: 
 
