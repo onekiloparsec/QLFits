@@ -11,9 +11,9 @@
 QLFits 3
 ========
 
-**One-line Installer**: Copy-paste the following command into a Terminal window (click [here](https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh) to check that it is harmless): 
+**Install** with [Homebrew](http://brew.sh):
 
-`curl -fsSLk https://raw.github.com/onekiloparsec/QLFits/master/Scripts/install.sh | sh`
+`brew cask install qlfits`
 
 
 Description
