@@ -41,7 +41,7 @@ It is released open source under the [GNU General Public Licence](http://en.wiki
 Installation
 ------------
 
-*[Download the latest binary](http://onekiloparsec.dev/softwares/QLFits3.qlgenerator.zip)*
+*[Download the latest binary](https://onekiloparsec.dev/wp-content/uploads/2020/04/QLFits3.qlgenerator.zip)*
 
 Put the QLFits3.qlgenerator bundle either in `/Library/QuickLook` or in `~/Library/QuickLook` (but only if your are an a system older than macOS 10.10 Yosemite for the latter) and run the (safe and instantaneous) command: `qlmanage -r` to reset the quicklook daemon. 
 
