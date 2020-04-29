@@ -295,7 +295,6 @@
 				9FFD33FD1AA4BD9B00D0B271 /* CopyFiles */,
 				9FF55C381A067BF4005AA2BD /* Resources */,
 				9FA598CA1AD81D7200A9F265 /* Copy Config App */,
-				9FFFEA181A0680D000CA6007 /* Install QuickLook Plugin */,
 			);
 			buildRules = (
 			);
@@ -377,23 +376,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		9FFFEA181A0680D000CA6007 /* Install QuickLook Plugin */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Install QuickLook Plugin";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "GENERATOR=\"QLFits3.qlgenerator\"\n\n#echo \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\n#rm -rf /Library/QuickLook/$GENERATOR\n#cp -Rf \"$BUILT_PRODUCTS_DIR/$GENERATOR\" ~/Library/QuickLook/\n\necho \"Restarting daemon...\"\nqlmanage -r\n\necho \"Restarting Helper Config app...\"\nkillall QLFitsConfig\nopen /Library/QuickLook/$GENERATOR/Contents/Helpers/QLFitsConfig.app\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9F9EAAC11AD50B2600EE2C25 /* Sources */ = {
