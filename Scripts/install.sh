@@ -37,7 +37,7 @@ then
   sudo rm -f "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip" >& /dev/null
 else
   echo " *** Couldn't unzip the file: ${ZIP_FILE_PATH} ???"
-  echo " *** Try restarting the script. Or send a mail to cedric@onekilopars.ec\n\n"
+  echo " *** Try restarting the script. Or send a mail to cedric@onekiloparsec.dev\n\n"
   exit 1
 fi
 
@@ -54,5 +54,5 @@ then
   open "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app"
 fi
 
-echo "\n *** QLFits3 ${PLUGIN_VERSION} successfuly installed! Enjoy. All inquiries to be sent to cedric@onekilopars.ec"
-echo " *** More FITS utilities as well as awesome apps for astronomers: http://onekilopars.ec\n\n"
+echo "\n *** QLFits3 ${PLUGIN_VERSION} successfuly installed! Enjoy. All inquiries to be sent to cedric@onekiloparsec.dev"
+echo " *** More FITS utilities as well as awesome apps for astronomers: http://onekiloparsec.dev\n\n"

@@ -1,5 +1,5 @@
 <h3 align="center">
-	<img src="http://onekilopars.ec/wp-content/uploads/2018/07/1kpcProComponents.002.png" width="100%" />
+<img src="http://onekiloparsec.dev/wp-content/uploads/2018/07/1kpcProComponents.002.png" width="100%" />
 </h3>
 <p align="center">
 <a href="https://github.com/onekiloparsec/SwiftAA">SwiftAA</a> &bull;
@@ -24,7 +24,7 @@ QLFits is a macOS Quicklook plugin for FITS (Flexible Image Transport System) fi
 
 QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit) written by yours truly.
 
-QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi**. If your FITS file is not recognized, let me know (cedric at onekilopars.ec), the dynamic macOS type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
+QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi**. If your FITS file is not recognized, let me know (cedric at onekiloparsec.dev), the dynamic macOS type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
 
 QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
 
@@ -41,7 +41,7 @@ It is released open source under the [GNU General Public Licence](http://en.wiki
 Installation
 ------------
 
-*[Download the latest binary](http://onekilopars.ec/softwares/QLFits3.qlgenerator.zip)*
+*[Download the latest binary](http://onekiloparsec.dev/softwares/QLFits3.qlgenerator.zip)*
 
 Put the QLFits3.qlgenerator bundle either in `/Library/QuickLook` or in `~/Library/QuickLook` (but only if your are an a system older than macOS 10.10 Yosemite for the latter) and run the (safe and instantaneous) command: `qlmanage -r` to reset the quicklook daemon. 
 
