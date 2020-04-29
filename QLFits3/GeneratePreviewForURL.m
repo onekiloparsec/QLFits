@@ -249,10 +249,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                                                  @"By default, for HDUs with no data, the header is displayed in place. Uncheck to hide them behind a Toggle button.",
                                                  alwaysShowHeaders)];
         
-        [options appendString:optionStringForKey(@"showSummaryInThumbnails",
-                                                 @"Show HDUs Summary in Thumbnails",
-                                                 @"Check to see HDUs summary also in Thumbnails.",
-                                                 showSummaryInThumbnails)];
+//        [options appendString:optionStringForKey(@"showSummaryInThumbnails",
+//                                                 @"Show HDUs Summary in Thumbnails",
+//                                                 @"Check to see HDUs summary also in Thumbnails.",
+//                                                 showSummaryInThumbnails)];
         
         [synthesizedInfo setObject:options forKey:@"QuickLookOptions"];
 
