@@ -13,34 +13,28 @@ GENERATOR_NAME="QLFits3.qlgenerator"
 DOWNLOAD_URL="https://github.com/onekiloparsec/QLFits/releases/download/${PLUGIN_VERSION}/${GENERATOR_NAME}.zip"
 SYSTEM_QUICKLOOK_DIR="/Library/QuickLook"
 LOCAL_QUICKLOOK_DIR="${HOME}/Library/QuickLook"
-ZIP_FILE_PATH="${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip"
+ZIP_FILE_PATH="${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip"
 
-echo "\n *** Installing ${GENERATOR_NAME} ${PLUGIN_VERSION} into ${LOCAL_QUICKLOOK_DIR}"
+echo "\n *** Installing ${GENERATOR_NAME} ${PLUGIN_VERSION} into ${SYSTEM_QUICKLOOK_DIR}"
+echo " *** Installing in the system directory is mandatory for QLFits to work, sorry (otherwise, it has a weird bug preventing any display)."
 
 if [ -e "${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}" ]; then
     echo "\n >>> An old generator is located in ${LOCAL_QUICKLOOK_DIR}"
     echo " >>> You should remove it first, to avoid conflicts, and relaunch the same command."
-    echo " >>> Here is the command to issue:\n$ rm -rf ${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}\n"
+    echo " >>> Here is the command to issue:\nrm -rf ${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}\n"
     exit 1
 fi
 
-if [ -e "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}" ]; then
-    echo "\n >>> An old generator is located in ${SYSTEM_QUICKLOOK_DIR}"
-    echo " >>> You should remove it first, to avoid conflicts, and relaunch the same command."
-    echo " >>> Here is the command to issue:\n$ rm -rf ${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}\n"
-    exit 1
-fi
-
-mkdir -p "${LOCAL_QUICKLOOK_DIR}"
 echo "\n *** Downloading QLFits3 from https://github.com/onekiloparsec/QLFits..."
-curl -kL -# ${DOWNLOAD_URL} -o ${ZIP_FILE_PATH}
+echo " *** You may be prompted for your password."
+sudo curl -kL -# ${DOWNLOAD_URL} -o ${ZIP_FILE_PATH}
 echo "\n *** QLFits3 successfully downloaded. Unzipping..."
 
-unzip -o -q ${ZIP_FILE_PATH} -d ${LOCAL_QUICKLOOK_DIR}
-if [ -s ${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME} ]
+sudo unzip -o -q ${ZIP_FILE_PATH} -d ${SYSTEM_QUICKLOOK_DIR}
+if [ -s ${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME} ]
 then
   echo " *** QLFits3 successfully unzipped. "
-  rm -f "${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip" >& /dev/null
+  sudo rm -f "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}.zip" >& /dev/null
 else
   echo " *** Couldn't unzip the file: ${ZIP_FILE_PATH} ???"
   echo " *** Try restarting the script. Or send a mail to cedric@onekilopars.ec\n\n"
@@ -52,12 +46,12 @@ qlmanage -r  >& /dev/null
 
 echo " *** Restarting the QLFits Config Helper app (used for QLFits options)..."
 killall QLFitsConfig >& /dev/null
-open "${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app" >& /dev/null
+open "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app" >& /dev/null
 VAR_PID=`pgrep QLFitsConfig`
 if [ -z "$VAR_PID" ]
 then
   echo "For some reason, the helper app couldn't be started. Here is another attempt, with logs:"
-  open "${LOCAL_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app"
+  open "${SYSTEM_QUICKLOOK_DIR}/${GENERATOR_NAME}/Contents/Helpers/QLFitsConfig.app"
 fi
 
 echo "\n *** QLFits3 ${PLUGIN_VERSION} successfuly installed! Enjoy. All inquiries to be sent to cedric@onekilopars.ec"
