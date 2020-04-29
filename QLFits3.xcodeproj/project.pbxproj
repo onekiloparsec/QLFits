@@ -623,12 +623,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3.2.1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+				MARKETING_VERSION = 3.2.1;
 				OTHER_LDFLAGS = (
 					"-rpath",
 					"@loader_path/../Frameworks/",
@@ -643,12 +645,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3.2.1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+				MARKETING_VERSION = 3.2.1;
 				OTHER_LDFLAGS = (
 					"-rpath",
 					"@loader_path/../Frameworks/",
