@@ -391,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GENERATOR=\"QLFits3.qlgenerator\"\n\necho \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\nrm -rf /Library/QuickLook/$GENERATOR\ncp -Rf \"$BUILT_PRODUCTS_DIR/$GENERATOR\" /Library/QuickLook/\n\necho \"Restarting daemon...\"\nqlmanage -r\n\necho \"Restarting Helper Config app...\"\nkillall QLFitsConfig\nopen /Library/QuickLook/$GENERATOR/Contents/Helpers/QLFitsConfig.app\n";
+			shellScript = "GENERATOR=\"QLFits3.qlgenerator\"\n\n#echo \"Copying $BUILT_PRODUCTS_DIR/QLFits3.qlgenerator to QuickLook folder...\"\n#rm -rf /Library/QuickLook/$GENERATOR\n#cp -Rf \"$BUILT_PRODUCTS_DIR/$GENERATOR\" ~/Library/QuickLook/\n\necho \"Restarting daemon...\"\nqlmanage -r\n\necho \"Restarting Helper Config app...\"\nkillall QLFitsConfig\nopen /Library/QuickLook/$GENERATOR/Contents/Helpers/QLFitsConfig.app\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
