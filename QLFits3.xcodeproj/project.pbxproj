@@ -75,6 +75,7 @@
 /* Begin PBXFileReference section */
 		9F272C321AE0093100DAD6D3 /* defaultOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultOptions.plist; sourceTree = "<group>"; };
 		9F276CC51AA7BD1500038036 /* template_error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template_error.html; sourceTree = "<group>"; };
+		9F46F7502712DE7B001C58D5 /* QLFitsConfig.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QLFitsConfig.entitlements; sourceTree = "<group>"; };
 		9F69F7391AB073E700F85482 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = install.sh; path = Scripts/install.sh; sourceTree = SOURCE_ROOT; };
 		9F713EA31ADA66080083E78B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		9F9EAAC51AD50B2600EE2C25 /* QLFitsConfig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QLFitsConfig.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +147,7 @@
 		9F9EAAC61AD50B2600EE2C25 /* QLFitsConfig */ = {
 			isa = PBXGroup;
 			children = (
+				9F46F7502712DE7B001C58D5 /* QLFitsConfig.entitlements */,
 				9F9EAAC91AD50B2600EE2C25 /* AppDelegate.h */,
 				9F9EAACA1AD50B2600EE2C25 /* AppDelegate.m */,
 				9F713EA31ADA66080083E78B /* MainMenu.xib */,
@@ -312,11 +314,13 @@
 		9FF55C311A067BF4005AA2BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = onekiloparsec;
 				TargetAttributes = {
 					9F9EAAC41AD50B2600EE2C25 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = MD266WQ2E2;
+						ProvisioningStyle = Automatic;
 					};
 					9F9EAAD61AD50B2600EE2C25 = {
 						CreatedOnToolsVersion = 6.2;
@@ -325,6 +329,7 @@
 					9FF55C391A067BF4005AA2BD = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = MD266WQ2E2;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -428,17 +433,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = QLFitsConfig/QLFitsConfig.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MD266WQ2E2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = QLFitsConfig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.qlfits.quicklookgenerator-config";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -446,14 +454,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = QLFitsConfig/QLFitsConfig.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = MD266WQ2E2;
 				INFOPLIST_FILE = QLFitsConfig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.qlfits.quicklookgenerator-config";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -472,7 +483,6 @@
 				);
 				INFOPLIST_FILE = QLFitsConfigTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QLFitsConfig.app/Contents/MacOS/QLFitsConfig";
@@ -491,7 +501,6 @@
 				);
 				INFOPLIST_FILE = QLFitsConfigTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QLFitsConfig.app/Contents/MacOS/QLFitsConfig";
@@ -521,6 +530,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -576,6 +586,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -604,8 +615,11 @@
 		9FF55C481A067BF4005AA2BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3.2.2;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -619,6 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.QLFits3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -626,8 +641,11 @@
 		9FF55C491A067BF4005AA2BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 3.2.2;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -641,6 +659,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onekiloparsec.QLFits3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;
