@@ -51,7 +51,7 @@
 
 int	cdl_debug = 0;
 
-#ifdef ANSI_FUNC
+//#ifdef ANSI_FUNC
 
 void cdl_zscale(unsigned char *im, int nx, int ny, int bitpix, float *z1, float *z2, float contrast, int opt_size, int len_stdline);
 int sampleImage(unsigned char *im, int bitpix, float **sample, int nx, int ny, int optimal_size, int len_stdline);
@@ -64,15 +64,15 @@ int computeSigma(float *a, char *badpix, int npix, double *mean, double *sigma);
 int rejectPixels(float *data, float *flat, float *normx, char *badpix, int npix, double *sumxsqr, double *sumxz, double *sumx, double *sumz, double threshold, int ngrow);
 int floatCompare(float *i, float *j);
 
-#else
-
-int		rejectPixels(), computeSigma();
-int		sampleImage(), fitLine(), floatCompare();
-
-static void	flattenData();
-static void 	subSample();
-
-#endif
+//#else
+//
+//int		rejectPixels(), computeSigma();
+//int		sampleImage(), fitLine(), floatCompare();
+//
+//static void	flattenData();
+//static void 	subSample();
+//
+//#endif
 
 /* Compatibility hacks. */
 #ifdef AUX
