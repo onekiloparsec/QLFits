@@ -97,9 +97,11 @@ void DrawObjectName(CGContextRef context, CGSize canvasSize, NSString *objectNam
         CGFloat components[] = { 1.0, 1.0, 1.0, 0.6 };
         CGColorRef black = CGColorCreate(rgbColorSpace, components);
         CGColorSpaceRelease(rgbColorSpace);
-         
-        // Set the color of the first 12 chars to red.
-        CFAttributedStringSetAttribute(attrString, CFRangeMake(0, 12), kCTForegroundColorAttributeName, black);
+        
+        // Set the color of the first 12 chars to black.
+        CFIndex stringLength = CFStringGetLength((CFStringRef)objectName);
+        CFIndex rangeLength = (stringLength < 12) ? stringLength : 12;
+        CFAttributedStringSetAttribute(attrString, CFRangeMake(0, rangeLength), kCTForegroundColorAttributeName, black);
          
                 
         // Create the framesetter with the attributed string.
@@ -139,4 +141,3 @@ void DrawHDUSummary(CGContextRef context, CGSize canvasSize, NSString *summarySt
 //                                 strlen(summary));
 //    }
 }
-
