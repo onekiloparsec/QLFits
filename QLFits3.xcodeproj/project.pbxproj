@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -334,7 +334,7 @@
 				};
 			};
 			buildConfigurationList = 9FF55C341A067BF4005AA2BD /* Build configuration list for PBXProject "QLFits3" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -443,7 +443,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = QLFitsConfig/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.qlfits.quicklookgenerator-config";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -461,7 +464,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = MD266WQ2E2;
 				INFOPLIST_FILE = QLFitsConfig/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.qlfits.quicklookgenerator-config";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -482,7 +488,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = QLFitsConfigTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QLFitsConfig.app/Contents/MacOS/QLFitsConfig";
@@ -500,7 +510,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = QLFitsConfigTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.onekiloparsec.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QLFitsConfig.app/Contents/MacOS/QLFitsConfig";
@@ -557,7 +571,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				SDKROOT = macosx;
 			};
@@ -607,6 +621,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "";
 				SDKROOT = macosx;
 			};
@@ -626,7 +641,9 @@
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 3.2.2;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-rpath",
 					"@loader_path/../Frameworks/",
@@ -652,7 +669,9 @@
 				);
 				INFOPLIST_FILE = QLFits3/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 3.2.2;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-rpath",
 					"@loader_path/../Frameworks/",
