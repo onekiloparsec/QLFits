@@ -24,7 +24,7 @@ QLFits is a macOS Quicklook plugin for FITS (Flexible Image Transport System) fi
 
 QLFits 3 is an entirely new implementation of QLFits, using the open-source projects [ObjCFITSIO](https://github.com/onekiloparsec/ObjCFITSIO) and [AstroCocoaKit](https://github.com/onekiloparsec/AstroCocoaKit) written by yours truly.
 
-QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi**. If your FITS file is not recognized, let me know (cedric at onekiloparsec.dev), the dynamic macOS type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
+QLFits3 reads the following extensions: **fits, fit, fts, ft, mt, imfits, imfit, uvfits, uvfit, pha, rmf, arf, rsp, pi, lc, evt, att, orb**. If your FITS file is not recognized, let me know (cedric at onekiloparsec.dev), the dynamic macOS type of your file might not be included in the list. See below to see what dynamic types QLFits3 recognises.
 
 QLFits3 show all HDU  headers, and draw (when possible) all 2D images and 1D spectra.
 
@@ -126,6 +126,10 @@ List of known extensions:
 * dyn.ah62d4rv4ge80w5pgrf4hg
 * dyn.ah62d4rv4ge81n7xgrf4hg
 * dyn.ah62d4rv4ge80262
+* dyn.ah62d4rv4ge80222
+* dyn.ah62d4rv4ge80n7xy
+* dyn.ah62d4rv4ge80c7dy
+* dyn.ah62d4rv4ge8086xc
 * dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsu
 * dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsv3u
 
