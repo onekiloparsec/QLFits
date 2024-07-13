@@ -23,6 +23,10 @@
 				<string>arf</string>
 				<string>rsp</string>
 				<string>pi</string>
+				<string>lc</string>
+				<string>evt</string>
+				<string>att</string>
+				<string>orb</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>QLGenerator</string>
@@ -45,6 +49,10 @@
 				<string>dyn.ah62d4rv4ge80w5pgrf4hg</string>
 				<string>dyn.ah62d4rv4ge81n7xgrf4hg</string>
 				<string>dyn.ah62d4rv4ge80262</string>
+				<string>dyn.ah62d4rv4ge80222</string>
+				<string>dyn.ah62d4rv4ge80n7xy</string>
+				<string>dyn.ah62d4rv4ge80c7dy</string>
+				<string>dyn.ah62d4rv4ge8086xc</string>
 				<string>dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsu</string>
 				<string>dyn.ah62d46dzqm0gw23ssz1gw8brqz6gn25zsvu0e5dfhk2x43xmsv3u</string>
 			</array>
@@ -129,6 +137,10 @@
 					<string>arf</string>
 					<string>rsp</string>
 					<string>pi</string>
+					<string>lc</string>
+					<string>evt</string>
+					<string>att</string>
+					<string>orb</string>
 				</array>
 			</dict>
 		</dict>
