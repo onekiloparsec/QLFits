@@ -1,13 +1,6 @@
-<h3 align="center">
-<img src="http://onekiloparsec.dev/wp-content/uploads/2020/06/1kpcAstroComponents.png" width="100%" />
-</h3>
-<p align="center">
-<a href="https://github.com/onekiloparsec/SwiftAA">SwiftAA</a> &bull;
-<a href="https://github.com/onekiloparsec/AA.js">AA.js</a> &bull;
-<b>QLFits</b> &bull;
-<a href="https://github.com/onekiloparsec/FITSImporter">FITSImporter</a> &bull; 
-<a href="https://github.com/onekiloparsec/ObjCFITSIO">ObjCFITSIO</a> 
-</p>
+**This repo is not maintained anymore. Please, try [QuickFits](https://apps.apple.com/us/app/quickfits/id1551075981?mt=12)**
+
+---
 
 QLFits 3
 ========
